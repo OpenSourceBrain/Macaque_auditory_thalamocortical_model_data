@@ -2,9 +2,9 @@ name: Continuous build using OMV
 
 on:
   push:
-    branches: [ main, development, experimental, test*, feat/* ]
+    branches: [ main, development, experimental, test*, feat-* ]
   pull_request:
-    branches: [ main, development, experimental, test*, feat/* ]
+    branches: [ main, development, experimental, test*, feat-* ]
 
 jobs:
   build:
