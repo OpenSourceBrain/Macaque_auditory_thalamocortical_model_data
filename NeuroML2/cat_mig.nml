@@ -23,13 +23,17 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="mmin" dimension="time" value="0.2 ms"/>
+        <Constant name="a0m" dimension="none" value="0.04"/> 
+        <Constant name="zetam" dimension="none" value="2"/> 
+        <Constant name="gmm" dimension="none" value="0.1"/>
+        <Constant name="vhalfm" dimension="none" value="-28"/>
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
-                <Case condition="exp(0.0378 * 2 * 0.1 * (V + 28)) / (0.04 * (1 + exp(0.0378 * 2 * (V + 28)))) * TIME_SCALE .lt. mmin" value="mmin"/>
-                <Case value="exp(0.0378 * 2 * 0.1 * (V + 28)) / (0.04 * (1 + exp(0.0378 * 2 * (V + 28)))) * TIME_SCALE"/>
+                <Case condition="exp(0.0378 * zetam * gmm * (V - vhalfm)) / (a0m * (1 + exp(0.0378 * zetam * (V - vhalfm)))) * TIME_SCALE .lt. mmin" value="mmin"/>
+                <Case value="exp(0.0378 * zetam * gmm * (V - vhalfm)) / (a0m * (1 + exp(0.0378 * zetam * (V - vhalfm)))) * TIME_SCALE"/>
             </ConditionalDerivedVariable>
 
         </Dynamics>
@@ -40,13 +44,18 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>   
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="hmin" dimension="time" value="10 ms"/>
+        <Constant name="a0h" dimension="none" value="0.015"/> 
+        <Constant name="zetah" dimension="none" value="3.5"/> 
+        <Constant name="gmh" dimension="none" value="0.6"/>
+        <Constant name="vhalfh" dimension="none" value="-75"/>
+
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
-                <Case condition="exp(0.0378 * 3.5 * 0.6 * (V + 75)) / (0.015 * (1 + exp(0.0378 * 3.5 * (V + 75)))) * TIME_SCALE .lt. hmin" value="hmin"/>
-                <Case value="exp(0.0378 * 3.5 * 0.6 * (V + 75)) / (0.015 * (1 + exp(0.0378 * 3.5 * (V + 75)))) * TIME_SCALE"/>
+                <Case condition="exp(0.0378 * zetah * gmh * (V - vhalfh)) / (a0h * (1 + exp(0.0378 * zetah * (V - vhalfh)))) * TIME_SCALE .lt. hmin" value="hmin"/>
+                <Case value="exp(0.0378 * zetah * gmh * (V - vhalfh)) / (a0h * (1 + exp(0.0378 * zetah * (V - vhalfh)))) * TIME_SCALE"/>
             </ConditionalDerivedVariable>
 
         </Dynamics>
