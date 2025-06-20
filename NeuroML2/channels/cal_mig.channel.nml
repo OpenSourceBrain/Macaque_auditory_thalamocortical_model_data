@@ -3,7 +3,7 @@
 
     <ionChannel id="cal" conductance="10pS" type="ionChannelHH" species="ca">
         
-        <ConductanceScalingCaDependent type="can_scale"/>
+        <ConductanceScalingCaDependent type="cal_scale"/>
 
         <gate id="m" type="gateHHratesTau" instances="2">
             <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="25degC"/>
