@@ -1,0 +1,4 @@
+# Script for running automated tests on OSB, see https://github.com/OpenSourceBrain/osb-model-validation
+# exclude a few that use new component types and are so not valid against the schema
+target: "*.nml"
+engine: jNeuroML_validate
