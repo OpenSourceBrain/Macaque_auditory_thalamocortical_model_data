@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="NeuroML_ionChannel">
 
-    <ionChannel id="can" conductance="10pS" type="ionChannelHH" species="ca">
+    <ionChannel id="cal" conductance="10pS" type="ionChannelHH" species="ca">
         
         <ConductanceScalingCaDependent type="can_scale"/>
 
@@ -9,12 +9,12 @@
             <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="25degC"/>
             <forwardRate type="HHExpLinearRate" rate="156.9per_ms" scale="10mV" midpoint="81.5mV"/>
             <reverseRate type="HHExpRate" rate="0.29per_ms" scale="-10.86mV" midpoint="0mV"/>
-            <timeCourse type="can_m_tau"/>
+            <timeCourse type="cal_m_tau"/>
         </gate>
                             
     </ionChannel>
 
-    <ComponentType name="can_m_tau" extends="baseVoltageDepTime">
+    <ComponentType name="cal_m_tau" extends="baseVoltageDepTime">
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="mmin" dimension="time" value="0.2 ms"/>
@@ -35,7 +35,7 @@
     
     </ComponentType>
 
-    <ComponentType name="can_scale" extends="baseConductanceScaling">
+    <ComponentType name="cal_scale" extends="baseConductanceScaling">
         <Requirement name="caConc" dimension="concentration"/>
         <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
         <Constant name="ki" dimension="none" value="0.001"/>
