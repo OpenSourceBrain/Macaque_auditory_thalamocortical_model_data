@@ -1,2 +1,2 @@
 pyNeuroML[netpyne]
-osb-model-validation
+osbmodelvalidation
