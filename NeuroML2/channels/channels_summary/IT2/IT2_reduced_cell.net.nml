@@ -192,7 +192,7 @@
             </intracellularProperties>
         </biophysicalProperties>
     </cell>
-    <pulseGenerator id="pg" delay="200ms" duration="1500ms" amplitude="500pA"/>
+    <pulseGenerator id="pg" delay="200ms" duration="1500ms" amplitude="300pA"/>
     <network id="IT2_reduced_cell_net">
         <population id="IT2_reduced_cellpop" component="IT2_reduced_cell_0_0" size="1"/>
         <inputList id="input_list" population="IT2_reduced_cellpop" component="pg">

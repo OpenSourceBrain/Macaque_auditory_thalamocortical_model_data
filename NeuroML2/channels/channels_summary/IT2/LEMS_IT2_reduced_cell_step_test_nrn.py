@@ -21,7 +21,7 @@ Components:
     kdr_soma (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     nax (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     IT2_reduced_cell_0_0 (Type: cell)
-    pg (Type: pulseGenerator:  delay=0.2 (SI time) duration=1.5 (SI time) amplitude=5.0E-10 (SI current))
+    pg (Type: pulseGenerator:  delay=0.2 (SI time) duration=1.5 (SI time) amplitude=3.0E-10 (SI current))
     IT2_reduced_cell_net (Type: network)
     IT2_reduced_cell_step_test (Type: Simulation:  length=3.0 (SI time) step=1.0E-5 (SI time))
 

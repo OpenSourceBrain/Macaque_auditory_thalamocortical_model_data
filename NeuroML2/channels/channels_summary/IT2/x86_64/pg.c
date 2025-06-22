@@ -188,7 +188,7 @@ static void nrn_alloc(Prop* _prop) {
  	weight = 1;
  	delay = 200;
  	duration = 1500;
- 	amplitude = 0.5;
+ 	amplitude = 0.3;
   }
  	_prop->param = _p;
  	_prop->param_size = 8;
@@ -459,7 +459,7 @@ static const char* nmodl_file_text =
   "    weight = 1\n"
   "    delay = 200 (ms)                       : was: 0.2 (time)\n"
   "    duration = 1500 (ms)                   : was: 1.5 (time)\n"
-  "    amplitude = 0.5 (nA)                   : was: 5.0E-10 (current)\n"
+  "    amplitude = 0.3 (nA)                   : was: 3.0E-10 (current)\n"
   "}\n"
   "\n"
   "STATE {\n"
