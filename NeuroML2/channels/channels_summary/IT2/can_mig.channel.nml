@@ -51,7 +51,6 @@
     </ComponentType>
 
     <ComponentType name="can_scale" extends="baseConductanceScaling">
-        <Requirement name="caConc" dimension="concentration"/>
         <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
         <Constant name="ki" dimension="none" value="0.001"/>
         <Dynamics>

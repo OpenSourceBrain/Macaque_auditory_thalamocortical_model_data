@@ -1,0 +1,44 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.3.15 (libNeuroML v0.6.5)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="IT2_reduced_cell_step_test"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="IT2_reduced_cell.net.nml"/>
+    <Include file="can_mig.channel.nml"/>
+    <Include file="cat_mig.channel.nml"/>
+    <Include file="cal_mig.channel.nml"/>
+    <Include file="h_kole.channel.nml"/>
+    <Include file="kap_BS.channel.nml"/>
+    <Include file="pas.channel.nml"/>
+    <Include file="kBK.channel.nml"/>
+    <Include file="kdr_BS.channel.nml"/>
+    <Include file="kdr_BS_soma.channel.nml"/>
+    <Include file="nax_BS.channel.nml"/>
+
+    <Simulation id="IT2_reduced_cell_step_test" length="3000.0ms" step="0.01ms" target="IT2_reduced_cell_net" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="DispPop__IT2_reduced_cellpop" title="Membrane potentials of cells in IT2_reduced_cellpop" timeScale="1ms" xmin="-300.0" xmax="3300.0000000000005" ymin="-90" ymax="50">
+            <Line id="IT2_reduced_cellpop[0]: v" quantity="IT2_reduced_cellpop[0]/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Volts_file__IT2_reduced_cellpop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat">
+            <OutputColumn id="v_IT2_reduced_cellpop_0__v" quantity="IT2_reduced_cellpop[0]/v"/>
+        </OutputFile>
+
+        <EventOutputFile id="Spikes_file__IT2_reduced_cellpop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes" format="ID_TIME">
+            <EventSelection id="0" select="IT2_reduced_cellpop[0]" eventPort="spike"/>
+        </EventOutputFile>
+
+    </Simulation>
+
+</Lems>

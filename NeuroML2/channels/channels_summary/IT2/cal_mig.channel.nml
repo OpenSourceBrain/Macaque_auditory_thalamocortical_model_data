@@ -35,8 +35,7 @@
     
     </ComponentType>
 
-    <ComponentType name="cal_scale" extends="baseConductanceScaling">
-        <Requirement name="caConc" dimension="concentration"/>
+    <ComponentType name="cal_scale" extends="baseConductanceScaling">\
         <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
         <Constant name="ki" dimension="none" value="0.001"/>
         <Dynamics>

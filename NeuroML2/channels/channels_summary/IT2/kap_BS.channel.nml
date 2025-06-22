@@ -62,8 +62,10 @@
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
-                <Case condition="exp(1.e-3 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * gmn * (V - vhalfn - sh) * 9.648e4 / (8.315 * (273.16 + Celsius))) / (a0n * (1 + exp(1.e-03 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * (V - vhalfn - sh) * 9.648e04 / (8.315 * (273.16 + Celsius))))) * TIME_SCALE .lt. nmin" value="nmin"/>
-                <Case value="exp(1.e-3 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * gmn * (V - vhalfn - sh) * 9.648e4 / (8.315 * (273.16 + Celsius))) / (a0n * (1 + exp(1.e-03 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * (V - vhalfn - sh) * 9.648e04 / (8.315 * (273.16 + Celsius))))) * TIME_SCALE"/>
+                <Case condition="exp(1.e-3 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * gmn * (V - vhalfn - sh) * 9.648e4 / (8.315 * (273.16 + Celsius))) / 
+                (a0n * (1 + exp(1.e-03 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * (V - vhalfn - sh) * 9.648e04 / (8.315 * (273.16 + Celsius))))) * TIME_SCALE .lt. nmin" value="nmin"/>
+                <Case value="exp(1.e-3 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * gmn * (V - vhalfn - sh) * 9.648e4 / (8.315 * (273.16 + Celsius))) / 
+                (a0n * (1 + exp(1.e-03 * (zetan + pw/(1+exp((V-tq-sh)/qq))) * (V - vhalfn - sh) * 9.648e04 / (8.315 * (273.16 + Celsius))))) * TIME_SCALE"/>
             </ConditionalDerivedVariable>
 
         </Dynamics>
