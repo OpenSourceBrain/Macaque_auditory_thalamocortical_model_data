@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="NeuroML_ionChannel">
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="kdr">
 
     <ionChannel id="kdr" conductance="10pS" type="ionChannelHH" species="k">
 
@@ -48,8 +48,10 @@
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
-                <Case condition="exp(1.e-3*zetan*gmn*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))) / (a0n * (1 + exp(1.e-3*zetan*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE .lt. nmax" value="nmax"/>
-                <Case value="exp(1.e-3*zetan*gmn*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))) / (a0n * (1 + exp(1.e-3*zetan*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE"/>
+                <Case condition="exp(1.e-3*zetan*gmn*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))) /
+                 (a0n * (1 + exp(1.e-3*zetan*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE .lt. nmax" value="nmax"/>
+                <Case value="exp(1.e-3*zetan*gmn*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))) /
+                 (a0n * (1 + exp(1.e-3*zetan*(V-vhalfn-sh)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE"/>
             </ConditionalDerivedVariable>
 
         </Dynamics>

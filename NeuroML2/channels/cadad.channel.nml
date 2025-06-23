@@ -2,7 +2,7 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
-         id="NeuroML_ionChannel">
+         id="cadad">
 
     <concentrationModel id="cadad_IT2_dend_all" ion="ca" type="cadad" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
     <concentrationModel id="cadad_IT2_somatic" ion="ca" type="cadad" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  

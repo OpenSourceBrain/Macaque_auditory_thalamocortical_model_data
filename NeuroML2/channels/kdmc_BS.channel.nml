@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="kdmc">
+
+    <ionChannel id="kdmc" conductance="10pS" type="ionChannelHH" species="k">
+        
+        <gate id="m" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-25mV" scale="14mV"/>
+            <timeCourse type="kdmc_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-5mV" scale="-8mV"/>
+            <timeCourse type="kdmc_h_tau"/>
+        </gate>
+                            
+    </ionChannel>
+
+
+    <ComponentType name="kdmc_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Dynamics>
+            <DerivedVariable name="t" exposure="t" dimension="time" value="1 * TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="kdmc_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="taumin" dimension="time" value="0.1 ms"/>
+        <Constant name="a0h" dimension="none" value="0.00058"/> 
+        <Constant name="zetah" dimension="none" value="0.02"/> 
+        <Constant name="gmh" dimension="none" value="0.2"/>
+        <Constant name="vhalfh" dimension="none" value="-5"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="exp(zetah * gmh * (V - vhalfh)) / 
+                (a0h * (1 + exp(zetah * (V - vhalfh)))) * TIME_SCALE .lt. taumin" value="taumin"/>
+                <Case value="exp(zetah * gmh * (V - vhalfh)) /
+                 (a0h * (1 + exp(zetah * (V - vhalfh)))) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>
