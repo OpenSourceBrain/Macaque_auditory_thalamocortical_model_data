@@ -148,9 +148,6 @@
         </morphology>
         <biophysicalProperties id="biophys">
             <membraneProperties>
-                <channelDensity id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" erev="132.4579341637009 mV" segmentGroup="can_group" ion="ca"/>
-                <channelDensity id="cat_dend_soma" ionChannel="cat" condDensity="9.29455717585e-07 S_per_cm2" erev="132.4579341637009 mV" segmentGroup="cat_group" ion="ca"/>
-                <channelDensity id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" erev="132.4579341637009 mV" segmentGroup="cal_group" ion="ca"/>
                 <channelDensity id="ih_dend_soma" ionChannel="ih" condDensity="3.3176340367e-05 S_per_cm2" erev="-37.0 mV" segmentGroup="ih_group" ion="hcn"/>
                 <channelDensity id="kBK_dend_soma" ionChannel="kBK" condDensity="4.45651933019e-05 S_per_cm2" erev="-104 mV" segmentGroup="kBK_group" ion="k"/>
                 <channelDensity id="kap_all" ionChannel="kap" condDensity="0.0240195239098 S_per_cm2" erev="-104 mV" ion="k"/>
@@ -164,6 +161,9 @@
                 <channelDensity id="pas_Bdend" ionChannel="pas" condDensity="0.00014147647761414165 S_per_cm2" erev="-87.1335623948 mV" segmentGroup="proximal" ion="non_specific"/>
                 <channelDensity id="pas_axon" ionChannel="pas" condDensity="0.00035435694659685776 S_per_cm2" erev="-87.1335623948 mV" segmentGroup="axonal" ion="non_specific"/>
                 <channelDensity id="pas_soma" ionChannel="pas" condDensity="0.0001 S_per_cm2" erev="-86.0 mV" segmentGroup="somatic" ion="non_specific"/>
+                <channelDensityNernst id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" segmentGroup="can_group" ion="ca"/>
+                <channelDensityNernst id="cat_dend_soma" ionChannel="cat" condDensity="9.29455717585e-07 S_per_cm2" segmentGroup="cat_group" ion="ca"/>
+                <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06" segmentGroup="cal_group" ion="ca"/>
                 <spikeThresh value="5mV"/>
                 <specificCapacitance value="2.74242941886 uF_per_cm2" segmentGroup="apic"/>
                 <specificCapacitance value="2.74086279376 uF_per_cm2" segmentGroup="proximal"/>

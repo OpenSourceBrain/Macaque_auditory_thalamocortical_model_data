@@ -198,10 +198,11 @@
 
     <biophysicalProperties id="biophys">
         <membraneProperties>
+          
+            <channelDensityNernst id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" segmentGroup="can_group" ion="ca"/>
+            <channelDensityNernst id="cat_dend_soma" ionChannel="cat" condDensity="9.29455717585e-07 S_per_cm2" segmentGroup="cat_group" ion="ca"/>
+            <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06" segmentGroup="cal_group" ion="ca"/>
 
-            <channelDensity ionChannel="can" id="can_dend_soma" segmentGroup="can_group" ion="ca"  erev="132.4579341637009 mV" condDensity="8.13137955053e-07 S_per_cm2"/>
-            <channelDensity ionChannel="cat" id="cat_dend_soma" segmentGroup="cat_group" ion="ca"  erev="132.4579341637009 mV" condDensity="9.29455717585e-07 S_per_cm2"/>
-            <channelDensity ionChannel="cal" id="cal_dend_soma" segmentGroup="cal_group" ion="ca"  erev="132.4579341637009 mV" condDensity="2.39132864454e-06 S_per_cm2"/>            
             <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.3176340367e-05 S_per_cm2"/>
 
             <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.45651933019e-05 S_per_cm2"/>
