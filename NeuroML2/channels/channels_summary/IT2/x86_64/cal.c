@@ -149,9 +149,8 @@ extern double hoc_Exp(double);
 #define v_columnindex 50
 #define _g _p[51]
 #define _g_columnindex 51
-#define _ion_eca	*_ppvar[0]._pval
-#define _ion_ica	*_ppvar[1]._pval
-#define _ion_dicadv	*_ppvar[2]._pval
+#define _ion_ica	*_ppvar[0]._pval
+#define _ion_dicadv	*_ppvar[1]._pval
  
 #if MAC
 #if !defined(v)
@@ -257,7 +256,7 @@ static void _ode_map(int, double**, double**, double*, Datum*, double*, int);
 static void _ode_spec(NrnThread*, _Memb_list*, int);
 static void _ode_matsol(NrnThread*, _Memb_list*, int);
  
-#define _cvode_ieq _ppvar[3]._i
+#define _cvode_ieq _ppvar[2]._i
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
@@ -342,14 +341,12 @@ static void nrn_alloc(Prop* _prop) {
  	m_q10Settings_TENDEGREES = 10;
  	_prop->param = _p;
  	_prop->param_size = 52;
- 	_ppvar = nrn_prop_datum_alloc(_mechtype, 4, _prop);
+ 	_ppvar = nrn_prop_datum_alloc(_mechtype, 3, _prop);
  	_prop->dparam = _ppvar;
  	/*connect ionic variables to this model*/
  prop_ion = need_memb(_ca_sym);
- nrn_promote(prop_ion, 0, 1);
- 	_ppvar[0]._pval = &prop_ion->param[0]; /* eca */
- 	_ppvar[1]._pval = &prop_ion->param[3]; /* ica */
- 	_ppvar[2]._pval = &prop_ion->param[4]; /* _ion_dicadv */
+ 	_ppvar[0]._pval = &prop_ion->param[3]; /* ica */
+ 	_ppvar[1]._pval = &prop_ion->param[4]; /* _ion_dicadv */
  
 }
  static void _initlists();
@@ -378,11 +375,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
   hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
   hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
 #endif
-  hoc_register_prop_size(_mechtype, 52, 4);
+  hoc_register_prop_size(_mechtype, 52, 3);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "ca_ion");
-  hoc_register_dparam_semantics(_mechtype, 2, "ca_ion");
-  hoc_register_dparam_semantics(_mechtype, 3, "cvodeieq");
+  hoc_register_dparam_semantics(_mechtype, 2, "cvodeieq");
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
@@ -477,7 +473,6 @@ static void _ode_spec(NrnThread* _nt, _Memb_list* _ml, int _type) {
     _p = _ml->_data[_iml]; _ppvar = _ml->_pdata[_iml];
     _nd = _ml->_nodelist[_iml];
     v = NODEV(_nd);
-  eca = _ion_eca;
      _ode_spec1 (_p, _ppvar, _thread, _nt);
   }}
  
@@ -504,20 +499,19 @@ static void _ode_matsol(NrnThread* _nt, _Memb_list* _ml, int _type) {
     _p = _ml->_data[_iml]; _ppvar = _ml->_pdata[_iml];
     _nd = _ml->_nodelist[_iml];
     v = NODEV(_nd);
-  eca = _ion_eca;
  _ode_matsol_instance1(_threadargs_);
  }}
  extern void nrn_update_ion_pointer(Symbol*, Datum*, int, int);
  static void _update_ion_pointer(Datum* _ppvar) {
-   nrn_update_ion_pointer(_ca_sym, _ppvar, 0, 0);
-   nrn_update_ion_pointer(_ca_sym, _ppvar, 1, 3);
-   nrn_update_ion_pointer(_ca_sym, _ppvar, 2, 4);
+   nrn_update_ion_pointer(_ca_sym, _ppvar, 0, 3);
+   nrn_update_ion_pointer(_ca_sym, _ppvar, 1, 4);
  }
 
 static void initmodel(double* _p, Datum* _ppvar, Datum* _thread, NrnThread* _nt) {
   int _i; double _save;{
   m_q = m_q0;
  {
+   eca = 132.45793 ;
    temperature = celsius + 273.15 ;
    rates ( _threadargs_ ) ;
    rates ( _threadargs_ ) ;
@@ -547,7 +541,6 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
     _v = NODEV(_nd);
   }
  v = _v;
-  eca = _ion_eca;
  initmodel(_p, _ppvar, _thread, _nt);
  }
 }
@@ -585,7 +578,6 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
     _nd = _ml->_nodelist[_iml];
     _v = NODEV(_nd);
   }
-  eca = _ion_eca;
  _g = _nrn_current(_p, _ppvar, _thread, _nt, _v + .001);
  	{ double _dica;
   _dica = ica;
@@ -653,7 +645,6 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   }
  v=_v;
 {
-  eca = _ion_eca;
  {   states(_p, _ppvar, _thread, _nt);
   } }}
 
@@ -689,7 +680,7 @@ static const char* nmodl_file_text =
   "\n"
   "NEURON {\n"
   "    SUFFIX cal\n"
-  "    USEION ca READ eca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!\n"
+  "    USEION ca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!\n"
   "    \n"
   "    RANGE gion\n"
   "    RANGE i__cal : a copy of the variable for current which makes it easier to access from outside the mod file\n"
@@ -824,6 +815,8 @@ static const char* nmodl_file_text =
   "}\n"
   "\n"
   "INITIAL {\n"
+  "    eca = 132.45793\n"
+  "    \n"
   "    temperature = celsius + 273.15\n"
   "    \n"
   "    rates()\n"
@@ -862,7 +855,7 @@ static const char* nmodl_file_text =
   "\n"
   "PROCEDURE rates() {\n"
   "    LOCAL caConc\n"
-  "    caConc=cai\n"
+  "    caConc = cai\n"
   "    ConductanceScalingCaDependent_ca_conc = caConc /  ConductanceScalingCaDependent_CONC_SCALE ? evaluable\n"
   "    ConductanceScalingCaDependent_factor = ConductanceScalingCaDependent_ki  / ( ConductanceScalingCaDependent_ki  +  ConductanceScalingCaDependent_ca_conc ) ? evaluable\n"
   "    m_forwardRate_x = (v -  m_forwardRate_midpoint ) /  m_forwardRate_scale ? evaluable\n"

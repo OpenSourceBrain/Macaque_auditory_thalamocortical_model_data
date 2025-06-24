@@ -78,16 +78,6 @@
     "groups" : [ ],
     "sections" : [ "Bdend" ]
   }, {
-    "name" : "apical",
-    "groups" : [ ],
-    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ],
-    "inhomogeneousParameters" : [ {
-      "id" : "PathLengthOver_apical",
-      "variable" : "p",
-      "metric" : "Path Length from root",
-      "proximalTranslationStart" : "0.0"
-    } ]
-  }, {
     "name" : "all",
     "sections" : [ "soma", "axon", "Bdend", "Adend1", "Adend2", "Adend3" ]
   } ],
@@ -113,6 +103,34 @@
     "value" : "70.00155"
   } ],
   "channelDensity" : [ {
+    "id" : "can_dend_soma",
+    "ionChannel" : "can",
+    "ion" : "ca",
+    "group" : "can_group",
+    "condDens" : "8.131379E-7",
+    "erev" : "132.45793"
+  }, {
+    "id" : "cat_dend_soma",
+    "ionChannel" : "cat",
+    "ion" : "ca",
+    "group" : "cat_group",
+    "condDens" : "9.294557E-7",
+    "erev" : "132.45793"
+  }, {
+    "id" : "cal_dend_soma",
+    "ionChannel" : "cal",
+    "ion" : "ca",
+    "group" : "cal_group",
+    "condDens" : "2.3913285E-6",
+    "erev" : "132.45793"
+  }, {
+    "id" : "ih_dend_soma",
+    "ionChannel" : "ih",
+    "ion" : "hcn",
+    "group" : "ih_group",
+    "condDens" : "3.317634E-5",
+    "erev" : "-37.0"
+  }, {
     "id" : "kBK_dend_soma",
     "ionChannel" : "kBK",
     "ion" : "k",
@@ -196,38 +214,6 @@
     "group" : "somatic",
     "condDens" : "1.0E-4",
     "erev" : "-86.0"
-  }, {
-    "id" : "ih_apic",
-    "ionChannel" : "ih",
-    "group" : "apical",
-    "inhomogeneousParameter" : "PathLengthOver_apical",
-    "parameterName" : "gmax",
-    "variable" : "p",
-    "inhomogeneousValue" : "1.0E-4 * (1e4 * ((-0.869600 + 2.087000*exp((p-0.000000)*0.003000))*0.000049))",
-    "comment" : "Conversion factor of:  (1.0E-4 * ) added",
-    "ion" : "hcn",
-    "erev" : "-37.0"
-  }, {
-    "id" : "can_dend_soma",
-    "ionChannel" : "can",
-    "ion" : "ca",
-    "group" : "can_group",
-    "condDens" : "8.131379E-7",
-    "erev" : "calculated_by_Nernst_equation"
-  }, {
-    "id" : "cat_dend_soma",
-    "ionChannel" : "cat",
-    "ion" : "ca",
-    "group" : "cat_group",
-    "condDens" : "9.294557E-7",
-    "erev" : "calculated_by_Nernst_equation"
-  }, {
-    "id" : "cal_dend_soma",
-    "ionChannel" : "cal",
-    "ion" : "ca",
-    "group" : "cal_group",
-    "condDens" : "2.3913285E-6",
-    "erev" : "calculated_by_Nernst_equation"
   } ],
   "species" : [ {
     "id" : "ca",
@@ -299,8 +285,6 @@ objref somatic
 objref axonal
 // Group: {name=proximal, groups=[], sections=[Bdend]}
 objref proximal
-// Group: {name=apical, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma], inhomogeneousParameters=[{id=PathLengthOver_apical, variable=p, metric=Path Length from root, proximalTranslationStart=0.0}]}
-objref apical
 // Group: {name=all, sections=[soma, axon, Bdend, Adend1, Adend2, Adend3]}
 objref all
 
@@ -447,14 +431,6 @@ proc subsets() { local i
     proximal = new SectionList()
     Bdend proximal.append()
 
-    // Group: {name=apical, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma], inhomogeneousParameters=[{id=PathLengthOver_apical, variable=p, metric=Path Length from root, proximalTranslationStart=0.0}]}
-    apical = new SectionList()
-    Bdend apical.append()
-    Adend1 apical.append()
-    Adend2 apical.append()
-    Adend3 apical.append()
-    soma apical.append()
-
     // Group: {name=all, sections=[soma, axon, Bdend, Adend1, Adend2, Adend3]}
     all = new SectionList()
     soma all.append()
@@ -466,13 +442,8 @@ proc subsets() { local i
 
 }
 
-objref PathLengthOver_apical // inhomogeneous parameter over apical
 
 proc subsets_inhomogeneous() {
-    metric = 0
-    proximal_style =  1 
-    distal_style = 0
-    PathLengthOver_apical = new SubsetDomainIterator(apical, metric, proximal_style, distal_style)
 }
 
 proc biophys() {
@@ -487,6 +458,26 @@ proc biophys() {
     forsec all Ra = 70.00155  // units: ohm cm
 
     // Channel densities
+    forsec can_group {
+        insert can
+        gmax_can = 8.131379E-7  // units: S cm-2
+        eca = 132.45793  // units: mV
+    }
+    forsec cat_group {
+        insert cat
+        gmax_cat = 9.294557E-7  // units: S cm-2
+        eca = 132.45793  // units: mV
+    }
+    forsec cal_group {
+        insert cal
+        gmax_cal = 2.3913285E-6  // units: S cm-2
+        eca = 132.45793  // units: mV
+    }
+    forsec ih_group {
+        insert ih
+        gmax_ih = 3.317634E-5  // units: S cm-2
+        ehcn = -37.0  // units: mV
+    }
     forsec kBK_group {
         insert kBK
         gmax_kBK = 4.456519E-5  // units: S cm-2
@@ -547,26 +538,6 @@ proc biophys() {
         gmax_pas_nml2 = 1.0E-4  // units: S cm-2
         e_pas_nml2 = -86.0  // units: mV
     }
-    forsec apical {
-        insert ih
-        // gmax_ih will be set later...
-        ehcn = -37.0  // units: mV
-    }
-    forsec can_group {
-        insert can
-        gmax_can = 8.131379E-7  // units: S cm-2
-        // erev is calculated by Nernst equation
-    }
-    forsec cat_group {
-        insert cat
-        gmax_cat = 9.294557E-7  // units: S cm-2
-        // erev is calculated by Nernst equation
-    }
-    forsec cal_group {
-        insert cal
-        gmax_cal = 2.3913285E-6  // units: S cm-2
-        // erev is calculated by Nernst equation
-    }
 
     // Concentration models for species
     // Ion: ca on group: dend_all, with concentration model: cadad_IT2_dend_all
@@ -587,13 +558,6 @@ func H() { // Heaviside function
 }
 
 proc biophys_inhomogeneous() {
-
-    PathLengthOver_apical.update()
-    for PathLengthOver_apical.loop() {
-        x = PathLengthOver_apical.x
-        p = PathLengthOver_apical.p
-        gmax_ih(x) = 1.0E-4 * (1e4 * ((-0.869600 + 2.087000*exp((p-0.000000)*0.003000))*0.000049))
-    }
 }
 
 proc geom_nseg() {
