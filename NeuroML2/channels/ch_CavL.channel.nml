@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ch_CavL">
+    <notes> GHK!!!</notes>
+    <ionChannel id="ch_CavL" conductance="10pS" type="ionChannelHH" species="ca">
+        <ConductanceScalingCaDependent type="ch_CavL_scale"/>
+        <gate id="m" type="gateHHrates" instances="2">
+            <forwardRate type="HHExpLinearRate" rate="156.9per_ms" scale="10mV" midpoint="81.5mV"/>
+            <reverseRate type="HHExpRate" rate="0.29per_ms" scale="-10.86mV" midpoint="0mV"/>
+        </gate>   
+
+    </ionChannel>
+
+
+    <ComponentType name="ch_CavL_scale" extends="baseConductanceScaling">
+        <Requirement name="caConc" dimension="concentration"/>
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+        <Constant name="ki" dimension="none" value="0.001"/>
+        
+        <Dynamics>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="factor" exposure="factor" dimension="none" value="ki / (ki + ca_conc)"/>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
