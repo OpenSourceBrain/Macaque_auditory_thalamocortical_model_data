@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ch_KvCaB">
+
+    <ionChannel id="ch_KvCaB" conductance="10pS" type="ionChannelHH" species="k">
+
+        <gate id="o" type="gateHHrates" instances="1">
+            <forwardRate type="ch_KvCaB_o_alpha_rate"/>
+            <reverseRate type="ch_KvCaB_o_beta_rate"/>
+        </gate>   
+
+    </ionChannel>
+
+    <ComponentType name="ch_KvCaB_o_alpha_rate" extends="baseVoltageConcDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mol_per_cm3"/>
+
+        <Constant name="abar" dimension="none" value="0.28"/>
+        <Constant name="k1" dimension="none" value=".48e-9"/>
+        <Constant name="d1" dimension="none" value="0.84"/>
+        <Constant name="Celsius" dimension="none" value="6.3"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="abar/(1 + (k1*exp(-2*d1*V*96.4853/8.313424/(273.16+Celsius))/ca_conc)) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="ch_KvCaB_o_beta_rate" extends="baseVoltageConcDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mol_per_cm3"/>
+
+        <Constant name="bbar" dimension="none" value="0.48"/>
+        <Constant name="k2" dimension="none" value=".13e-12"/>
+        <Constant name="d2" dimension="none" value="1.0"/>
+        <Constant name="Celsius" dimension="none" value="6.3"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="bbar/(1 + ca_conc/(k2*exp(-2*d2*V*96.4853/8.313424/(273.16+Celsius)))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>
+
+
+
