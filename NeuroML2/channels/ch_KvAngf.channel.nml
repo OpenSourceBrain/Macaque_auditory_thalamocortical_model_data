@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ch_KvAngf">
+
+    <ionChannel id="ch_KvAngf" conductance="10pS" type="ionChannelHH" species="k">
+        
+        <gate id="n" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="30degC"/>
+            <steadyState type="ch_KvAngf_n_inf"/>
+            <timeCourse type="ch_KvAngf_n_tau"/>
+        </gate>
+        
+        <gate id="l" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="30degC"/>
+            <steadyState type="ch_KvAngf_l_inf"/>
+            <timeCourse type="ch_KvAngf_l_tau"/>
+        </gate>
+
+    </ionChannel>
+
+
+
+    <ComponentType name="ch_KvAngf_n_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="Celsius" dimension="none" value="30"/>
+        
+        <Constant name="zetan" dimension="none" value="-3"/>
+        <Constant name="vhalfn" dimension="none" value="-23.6"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="x" exposure="x" dimension="none" value="1 / (1 + exp(1.e-3*zetan*(V-vhalfn)*9.648e4/(8.315*(273.16+Celsius))))"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="ch_KvAngf_n_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Celsius" dimension="none" value="30"/>
+        
+        <Constant name="zetan" dimension="none" value="-3"/>
+        
+        <Constant name="gmn" dimension="none" value="0.6"/>
+        <Constant name="a0n" dimension="none" value="0.02"/>
+
+        <Constant name="vhalfn" dimension="none" value="13"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <DerivedVariable name="t" exposure="t" dimension="time" value="exp(1.e-3*zetan*gmn*(V-vhalfn)*9.648e4/(8.315*(273.16+Celsius))) / 
+            (a0n * (1 + exp(1.e-3*zetan*(V-vhalfn)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE"/>
+
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="ch_KvAngf_l_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="Celsius" dimension="none" value="30"/>
+        
+        <Constant name="zetal" dimension="none" value="4"/>
+        <Constant name="vhalfl" dimension="none" value="-83"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="x" exposure="x" dimension="none" value="1 / (1 + exp(1.e-3*zetal*(V-vhalfl)*9.648e4/(8.315*(273.16+Celsius))))"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="ch_KvAngf_l_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Celsius" dimension="none" value="30"/>
+        
+        <Constant name="zetal" dimension="none" value="4"/>
+        
+        <Constant name="gml" dimension="none" value="1"/>
+        <Constant name="a0l" dimension="none" value="0.08"/>
+
+        <Constant name="vhalfl" dimension="none" value="-83"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <DerivedVariable name="t" exposure="t" dimension="time" value="exp(1.e-3*zetal*gml*(V-vhalfl)*9.648e4/(8.315*(273.16+Celsius))) / 
+            (a0l * (1 + exp(1.e-3*zetal*(V-vhalfl)*9.648e4/(8.315*(273.16+Celsius))))) * TIME_SCALE"/>
+
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>

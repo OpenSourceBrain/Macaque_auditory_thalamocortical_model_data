@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ch_Kdrfastngf">
+
+    <ionChannel id="ch_Kdrfastngf" conductance="10pS" type="ionChannelHH" species="k">
+
+        <gate id="n" type="gateHHrates" instances="4">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
+            <forwardRate type="ch_Kdrfastngf_alpha_rate"/>
+            <reverseRate type="ch_Kdrfastngf_beta_rate"/>
+        </gate>                            
+    </ionChannel>
+
+    <ComponentType name="ch_Kdrfastngf_beta_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="slope6" dimension="none" value="0.264"/>
+        <Constant name="offset6" dimension="none" value="17"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(slope6/exp((V+65-22-offset6)/40)) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="ch_Kdrfastngf_alpha_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="slope5" dimension="none" value="0.07"/>
+        <Constant name="offset5" dimension="none" value="17"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable  name="r" exposure="r" dimension="per_time">
+                <Case condition="((V+65-47-offset5) / -6) .gt. 1e-06" value="(-1*slope5* ((V+65-47-offset5)/(exp((V+65-47-offset5)/(-6)) - 1))) / TIME_SCALE"/>
+                <Case condition="((V+65-47-offset5) / -6) .lt. -1e-06" value="(-1*slope5* ((V+65-47-offset5)/(exp((V+65-47-offset5)/(-6)) - 1))) / TIME_SCALE"/>
+                <Case value="(-1*slope5 * (-6) * (1 - (V+65-47-offset5)/(-6)/2)) / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
