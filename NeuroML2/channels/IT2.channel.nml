@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="itre">
+    <notes>GHK</notes>
+    <ionChannel id="itre" conductance="10pS" type="ionChannelHH" species="ca">
+        
+        <gate id="m" type="gateHHtauInf" instances="2">
+            <q10Settings type="q10ExpTemp" q10Factor="2.5" experimentalTemp="24degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-52mV" scale="7.4mV"/>
+            <timeCourse type="itre_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="2.5" experimentalTemp="24degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-80mV" scale="-5mV"/>
+            <timeCourse type="itre_h_tau"/>
+        </gate>
+    </ionChannel>
+
+    <ComponentType name="itre_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="shift" dimension="none" value="2"/> 
+        <Constant name="phim" dimension="none" value="2"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="t" exposure="t" dimension="time" value="( 1 + 0.33 / ( exp((V+shift+25)/10) + exp(-(V+shift+100)/15) ) ) * TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="itre_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="shift" dimension="none" value="2"/> 
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="t" exposure="t" dimension="time" value="( 85 + 1.0 / ( exp((V+shift+46)/4) + exp(-(V+shift+405)/50) ) ) * TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
