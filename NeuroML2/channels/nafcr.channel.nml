@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="Nafcr">
+
+    <ionChannel id="Nafcr" conductance="10pS" type="ionChannelHH" species="na">
+
+        <gate id="m" type="gateHHrates" instances="3">
+            <forwardRate type="HHExpLinearRate" rate="2.61888per_ms" scale="9.3mV" midpoint="-28.0mV"/>
+            <reverseRate type="HHExpLinearRate" rate="1.4784per_ms" scale="-6mV" midpoint="-1.0mV"/>
+        </gate>
+
+        <gate id="h" type="gateHHrates" instances="1">
+            <forwardRate type="Nafcr_h_alpha_rate"/>
+            <reverseRate type="Nafcr_h_beta_rate"/>
+        </gate>
+
+    </ionChannel>
+
+    <ComponentType name="Nafcr_h_alpha_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(0.098/exp((V+23.1)/20)) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="Nafcr_h_beta_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>       
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1.4/(1+exp(-(V+25.1)/10))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>
