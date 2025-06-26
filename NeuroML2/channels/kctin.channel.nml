@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" 
+         id="kctin">
+
+
+    <ionChannelKS id="kctin" conductance="10pS" species="k">
+    
+        <gateKS id="ost" instances="1">
+            
+            <closedState id="cst"/>
+
+            <closedState id="ist"/>
+            
+            <openState id="ost"/>
+            
+            <forwardTransition id="k3" from="cst" to="ost" >
+                <rate type="alpha" tmin="0.001" tmax="1" vhalf="-20" k="7"/>
+            </forwardTransition>
+            <reverseTransition id="k4" from="ost" to="cst" >
+                <rate type="alp" tmin="0.2" vhalf="-44" k="-5"/>
+            </reverseTransition>
+            
+            <forwardTransition id="k1" from="ost" to="ist" >
+                <rate type="alp" tmin="0.01" vhalf="-10" k="1"/>
+            </forwardTransition>
+            <reverseTransition id="k1_reverse" from="ost" to="cst" >
+                <rate type="_zero" />
+            </reverseTransition>
+
+            <forwardTransition id="k2" from="ist" to="cst" >
+                <rate type="alp" tmin="0.1" vhalf="-120" k="-10"/>
+            </forwardTransition>
+            <reverseTransition id="k2_reverse" from="ist" to="cst" >
+                <rate type="_zero" />
+            </reverseTransition>
+            
+        </gateKS>
+  
+    </ionChannelKS>
+    
+    
+    <ComponentType name="alp" extends="baseVoltageDepRate">
+        <Parameter name="tmin" dimension="none"/> 
+        <Parameter name="vhalf" dimension="none"/> 
+        <Parameter name="k" dimension="none"/> 
+
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1.0 / ( tmin + exp( -(V-vhalf) / k ) )) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+    
+    <ComponentType name="alpha" extends="baseVoltageDepRate">
+        <Parameter name="tmin" dimension="none"/> 
+        <Parameter name="tmax" dimension="none"/> 
+        <Parameter name="vhalf" dimension="none"/> 
+        <Parameter name="k" dimension="none"/> 
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>       
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1.0 / ( tmin + 1.0 / ( 1.0 / (tmax-tmin) + exp((V-vhalf)/k) ) )) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+    
+    <ComponentType name="_zero" extends="baseVoltageDepRate">
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        
+        <Dynamics>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="0 / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
