@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="canin">
+
+    <ionChannel id="canin" conductance="10pS" type="ionChannelHH" species="ca">
+        
+        <ConductanceScalingCaDependent type="canin_scale"/>
+
+        <gate id="m" type="gateHHtauInf" instances="2">
+            <steadyState type="canin_m_inf"/>
+            <timeCourse type="fixedTimeCourse" tau="1.5 ms"/>
+        </gate>
+
+        <gate id="n" type="gateHHtauInf" instances="1">
+            <steadyState type="canin_n_inf"/>
+            <timeCourse type="fixedTimeCourse" tau="75 ms"/>
+        </gate>
+                            
+    </ionChannel>
+
+    <ComponentType name="canin_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="Celsius" dimension="none" value="6.3"/>
+        
+        <Constant name="zetam" dimension="none" value="-3.4"/>
+
+        <Constant name="vhalfm" dimension="none" value="-21"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="x" exposure="x" dimension="none" value="1 / (1 + exp(1.e-3*zetam*(V-vhalfm)*9.648e4/(8.315*(273.16+Celsius))) )"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="canin_n_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="Celsius" dimension="none" value="6.3"/>
+
+        <Constant name="zetah" dimension="none" value="2"/>
+
+        <Constant name="vhalfh" dimension="none" value="-40"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="x" exposure="x" dimension="none" value="1 / (1 + exp(1.e-3*zetah*(V-vhalfh)*9.648e4/(8.315*(273.16+Celsius))) )"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="canin_scale" extends="baseConductanceScaling">
+        <Requirement name="caConc" dimension="concentration"/>
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+        <Constant name="ki" dimension="none" value="0.001"/>
+        <Dynamics>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="factor" exposure="factor" dimension="none" value="ki / (ki + ca_conc)"/>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
