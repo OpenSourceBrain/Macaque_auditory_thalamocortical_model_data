@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="iCcr">
+
+    <ionChannel id="iCcr" conductance="10pS" type="ionChannelHH" species="k">
+
+        <gate id="c" type="gateHHratesTau" instances="2">
+            <forwardRate type="iCcr_alpha_rate"/>
+            <reverseRate type="iCcr_beta_rate"/>
+            <timeCourse type="iCcr_tau"/>
+        </gate>   
+
+    </ionChannel>
+
+
+    <ComponentType name="iCcr_alpha_rate" extends="baseVoltageConcDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
+
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(V+(17.3717792762)*log(1000*ca_conc)+18) .lt. 1e-10
+                 .and.
+                 (V+(17.3717792762)*log(1000*ca_conc)+18) .gt. -1e-10" value="((-0.00642*(V+(17.3717792762)*log(1000*ca_conc))-0.1152)
+            /(-1+exp(-(V+0.0001+(417.3717792762)*log(1000*ca_conc)+18)/12))) / TIME_SCALE"/>
+                <Case value="((-0.00642*(V+(17.3717792762)*log(1000*ca_conc))-0.1152)
+            /(-1+exp(-(V+(17.3717792762)*log(1000*ca_conc)+18)/12))) / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="iCcr_beta_rate" extends="baseVoltageConcDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1.7*exp(-(V+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(V+(17.3717792762)*log(ca_conc*1000)+152) .lt. 1e-10
+                .and.
+                (V+(17.3717792762)*log(ca_conc*1000)+152) .gt. -1e-10" value="(1.7*exp(-(V+0.0001+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
+                <Case value="(1.7*exp(-(V+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="iCcr_tau" extends="baseVoltageConcDepTime">
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Requirement name="alpha" dimension="per_time"/>
+        <Requirement name="beta" dimension="per_time"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>        
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
+                <Case condition="(1/(ALPHA+BETA)) .gt. 1.1" value="1/(ALPHA+BETA) * TIME_SCALE"/>
+                <Case value="1.1 * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+    </ComponentType>
+
+
+</neuroml>
