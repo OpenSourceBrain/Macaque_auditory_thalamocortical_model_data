@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="naf2">
+
+    <ionChannel id="naf2" conductance="10pS" type="ionChannelHH" species="na">
+
+        <gate id="m" type="gateHHratesTau" instances="3">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="36degC"/>
+            <forwardRate type="naf2_m_alpha_rate"/>
+            <reverseRate type="naf2_m_beta_rate"/>
+            <timeCourse type="naf2_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHratesTau" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="37degC"/>
+            <forwardRate type="naf2_h_alpha_rate"/>
+            <reverseRate type="naf2_h_beta_rate"/>
+            <timeCourse type="naf2_h_tau"/>
+        </gate>
+                            
+    </ionChannel>
+
+
+    <ComponentType name="naf2_m_alpha_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="mbaserate" dimension="none" value="4.5"/>
+        <Constant name="mvhalf" dimension="none" value="-33.5"/>
+        <Constant name="vrest" dimension="none" value="0"/>
+        <Constant name="mvalence" dimension="none" value="2"/>
+        <Constant name="mgamma" dimension="none" value="0.5"/>
+
+
+        <Constant name="Celsius" dimension="none" value="36"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="mbaserate * exp((V - (mvhalf+vrest)) * mvalence * mgamma * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="naf2_m_beta_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="mbaserate" dimension="none" value="4.5"/>
+        <Constant name="mvhalf" dimension="none" value="-33.5"/>
+        <Constant name="vrest" dimension="none" value="0"/>
+        <Constant name="mvalence" dimension="none" value="2"/>
+        <Constant name="mgamma" dimension="none" value="0.5"/>
+
+        <Constant name="Celsius" dimension="none" value="36"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="mbaserate * exp((-V + (mvhalf+vrest)) * mvalence * (1 - mgamma) * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="naf2_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Requirement name="alpha" dimension="per_time"/>
+        <Requirement name="beta" dimension="per_time"/>
+        <Constant name="mbasetau" dimension="none" value="0.02"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>      
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
+                <Case condition="(1/(ALPHA+BETA)) .lt. mbasetau" value="mbasetau * TIME_SCALE"/>
+                <Case value="(1/(ALPHA+BETA)) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+    </ComponentType>
+
+
+
+    <ComponentType name="naf2_h_alpha_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="hbaserate" dimension="none" value="0.095"/>
+        <Constant name="hvhalf" dimension="none" value="-39"/>
+        <Constant name="vrest" dimension="none" value="0"/>
+        <Constant name="hvalence" dimension="none" value="-6"/>
+        <Constant name="hgamma" dimension="none" value="0.3"/>
+
+
+        <Constant name="Celsius" dimension="none" value="36"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="hbaserate * exp((v - (hvhalf+vrest)) * hvalence * hgamma * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="naf2_h_beta_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="hbaserate" dimension="none" value="0.095"/>
+        <Constant name="hvhalf" dimension="none" value="-39"/>
+        <Constant name="vrest" dimension="none" value="0"/>
+        <Constant name="hvalence" dimension="none" value="-6"/>
+        <Constant name="hgamma" dimension="none" value="0.3"/>
+
+
+        <Constant name="Celsius" dimension="none" value="36"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="hbaserate * exp((-v + (hvhalf+vrest)) * hvalence * (1 - hgamma) * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="naf2_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Requirement name="alpha" dimension="per_time"/>
+        <Requirement name="beta" dimension="per_time"/>
+        <Constant name="hbasetau" dimension="none" value="0.25"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>      
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
+                <Case condition="(1/(ALPHA+BETA)) .lt. hbasetau" value="hbasetau * TIME_SCALE"/>
+                <Case value="(1/(ALPHA+BETA)) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+    </ComponentType>
+
+</neuroml>
