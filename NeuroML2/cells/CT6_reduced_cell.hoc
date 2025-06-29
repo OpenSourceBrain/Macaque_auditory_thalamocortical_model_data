@@ -1,0 +1,69 @@
+begintemplate CT6_reduced_cell
+public init, topol, basic_shape, geom, biophys, geom_nseg
+
+public soma,Adend1,Adend2,Adend3,Bdend,axon
+public all
+
+
+proc init() {
+  topol()
+  geom()
+  biophys() 
+  geom_nseg()
+}
+
+create soma,Adend1,Adend2,Adend3,Bdend,axon
+proc topol() { 
+  connect Adend1(0), soma(1)
+  connect Adend2(0), Adend1(1)
+  connect Adend3(0), Adend2(1)
+  connect Bdend(0), soma(0.5)
+  connect axon(0), soma(0)
+  basic_shape()
+}
+proc shape3d_1(){
+  Adend1 {
+    pt3dclear()
+    pt3dadd(0, 48.4123467666, 0, 1.5831889597)
+    pt3dadd(0, 257.2748978444, 0, 1.5831889597)
+  }
+  Adend2 {
+    pt3dclear()
+    pt3dadd(0, 257.2748978444, 0, 1.5831889597)
+    pt3dadd(0, 466.13744892220006, 0, 1.5831889597)
+  }
+  Adend3 {
+    pt3dclear()
+    pt3dadd(0, 466.13744892220006, 0, 1.5831889597)
+    pt3dadd(0, 675.0000000000001, 0, 1.5831889597)
+  }
+  Bdend {
+    pt3dclear()
+    pt3dadd(0, 48.4123467666, 0, 2.2799248874)
+    pt3dadd(281.56275, -329.9750967666, 0, 2.2799248874)
+  }
+  axon {
+    pt3dclear()
+    pt3dadd(0, 0, 0, 1.40966286462)
+    pt3dadd(0, -594.292937602, 0, 1.40966286462)
+  }
+  soma {
+    pt3dclear()
+    pt3dadd(0, 0, 0, 28.2149102762)
+    pt3dadd(0, 48.4123467666, 0, 28.2149102762)
+  }
+}
+
+
+proc basic_shape(){
+  shape3d_1()
+}
+
+proc geom() {
+}
+proc geom_nseg() {
+}
+proc biophys() {
+}
+
+endtemplate CT6_reduced_cell
