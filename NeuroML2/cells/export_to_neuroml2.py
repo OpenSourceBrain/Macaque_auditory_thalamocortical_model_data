@@ -26,9 +26,9 @@ def main(acell):
     loader_hoc_file_txt = """
     /*load_file("nrngui.hoc")*/
     load_file("stdrun.hoc")
-    xopen("ITS4_reduced_cell.hoc")
+    xopen("RE_reduced_cell.hoc")
     objref cell
-    cell = new ITS4_reduced_cell()
+    cell = new RE_reduced_cell()
     """
 
     with open(loader_hoc_file, 'w') as f:

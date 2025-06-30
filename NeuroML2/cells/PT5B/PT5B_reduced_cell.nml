@@ -9,46 +9,46 @@
           Yale University and UCL 
   </notes>
 
-  <cell id="CT5A_reduced_cell_0_0">
-    <notes>Cell: CT5A_reduced_cell_0_0 exported from NEURON ModelView</notes>
+  <cell id="PT5B_reduced_cell_0_0">
+    <notes>Cell: PT5B_reduced_cell_0_0 exported from NEURON ModelView</notes>
     <morphology id="morphology">
-<!-- Section: CT5A_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
       <segment id="0" name = "Seg0_soma">
         <proximal x="0" y="0" z="0" diameter="28.2149"/>
         <distal x="0" y="48.4123" z="0" diameter="28.2149"/>
       </segment>
-<!-- Section: CT5A_reduced_cell[0].axon (segmentGroup: axon) which has 2 3D points, so 1 segment(s)-->
-      <segment id="6" name = "Seg0_axon">  <!-- Connected at 0 on parent section: CT5A_reduced_cell[0].soma  -->
+<!-- Section: PT5B_reduced_cell[0].axon (segmentGroup: axon) which has 2 3D points, so 1 segment(s)-->
+      <segment id="6" name = "Seg0_axon">  <!-- Connected at 0 on parent section: PT5B_reduced_cell[0].soma  -->
         <parent fractionAlong="0" segment="0"/>
         <proximal x="0" y="0" z="0" diameter="1.40966"/>
         <distal x="0" y="-594.293" z="0" diameter="1.40966"/>
       </segment>
-<!-- Section: CT5A_reduced_cell[0].Bdend (segmentGroup: Bdend) which has 2 3D points, so 1 segment(s)-->
-      <segment id="5" name = "Seg0_Bdend">  <!-- Connected at 0.5 on parent section: CT5A_reduced_cell[0].soma  -->
+<!-- Section: PT5B_reduced_cell[0].Bdend (segmentGroup: Bdend) which has 2 3D points, so 1 segment(s)-->
+      <segment id="5" name = "Seg0_Bdend">  <!-- Connected at 0.5 on parent section: PT5B_reduced_cell[0].soma  -->
         <parent fractionAlong="0.5" segment="0"/>
         <proximal x="0" y="48.4123" z="0" diameter="2.27992"/>
-        <distal x="281.563" y="-329.975" z="0" diameter="2.27992"/>
+        <distal x="205.207" y="-253.619" z="0" diameter="2.27992"/>
       </segment>
-<!-- Section: CT5A_reduced_cell[0].Adend1 (segmentGroup: Adend1) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend1 (segmentGroup: Adend1) which has 2 3D points, so 1 segment(s)-->
       <segment id="2" name = "Seg0_Adend1">
         <parent segment="0"/>
         <proximal x="0" y="48.4123" z="0" diameter="1.58319"/>
-        <distal x="0" y="257.275" z="0" diameter="1.58319"/>
+        <distal x="0" y="496.275" z="0" diameter="1.58319"/>
       </segment>
-<!-- Section: CT5A_reduced_cell[0].Adend2 (segmentGroup: Adend2) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend2 (segmentGroup: Adend2) which has 2 3D points, so 1 segment(s)-->
       <segment id="3" name = "Seg0_Adend2">
         <parent segment="2"/>
-        <proximal x="0" y="257.275" z="0" diameter="1.58319"/>
-        <distal x="0" y="466.137" z="0" diameter="1.58319"/>
+        <proximal x="0" y="496.275" z="0" diameter="1.58319"/>
+        <distal x="0" y="944.137" z="0" diameter="1.58319"/>
       </segment>
-<!-- Section: CT5A_reduced_cell[0].Adend3 (segmentGroup: Adend3) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend3 (segmentGroup: Adend3) which has 2 3D points, so 1 segment(s)-->
       <segment id="4" name = "Seg0_Adend3">
         <parent segment="3"/>
-        <proximal x="0" y="466.137" z="0" diameter="1.58319"/>
-        <distal x="0" y="675" z="0" diameter="1.58319"/>
+        <proximal x="0" y="944.137" z="0" diameter="1.58319"/>
+        <distal x="0" y="1392" z="0" diameter="1.58319"/>
       </segment>
 
-<!-- Section: CT5A_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "soma"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -58,7 +58,7 @@
       </segmentGroup>
 
 
-<!-- Section: CT5A_reduced_cell[0].axon (segmentGroup: axon) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].axon (segmentGroup: axon) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "axon"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -68,7 +68,7 @@
       </segmentGroup>
 
 
-<!-- Section: CT5A_reduced_cell[0].Bdend (segmentGroup: Bdend) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Bdend (segmentGroup: Bdend) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "Bdend"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -78,7 +78,7 @@
       </segmentGroup>
 
 
-<!-- Section: CT5A_reduced_cell[0].Adend1 (segmentGroup: Adend1) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend1 (segmentGroup: Adend1) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "Adend1"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -88,7 +88,7 @@
       </segmentGroup>
 
 
-<!-- Section: CT5A_reduced_cell[0].Adend2 (segmentGroup: Adend2) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend2 (segmentGroup: Adend2) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "Adend2"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -98,7 +98,7 @@
       </segmentGroup>
 
 
-<!-- Section: CT5A_reduced_cell[0].Adend3 (segmentGroup: Adend3) which has 2 3D points, so 1 segment(s)-->
+<!-- Section: PT5B_reduced_cell[0].Adend3 (segmentGroup: Adend3) which has 2 3D points, so 1 segment(s)-->
 
       <segmentGroup id = "Adend3"  neuroLexId="sao864921383">
          <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
@@ -118,5 +118,13 @@
 
     </morphology>
   </cell> 
+
+  <network id="network" type="networkWithTemperature" temperature="6 degC">
+    <population id="Pop_PT5B_reduced_cell_0_0" component="PT5B_reduced_cell_0_0" size="1" type="populationList">
+        <instance id="0">
+            <location x="0" y="0" z="0"/>
+        </instance>
+    </population>
+  </network>
  
 </neuroml>

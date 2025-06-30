@@ -31,7 +31,7 @@
       </segment>
 <!-- Section: IT2_reduced_cell[0].axon (segmentGroup: axon) which has 2 3D points, so 1 segment(s)-->
       <segment id="6" name = "Seg0_axon">  <!-- Connected at 0 on parent section: IT2_reduced_cell[0].soma  -->
-        <parent fractionAlong="1" segment="0"/>
+        <parent fractionAlong="0" segment="0"/>
         <proximal x="0" y="0" z="0" diameter="1.40966"/>
         <distal x="0" y="-594.293" z="0" diameter="1.40966"/>
       </segment>
