@@ -26,18 +26,20 @@ double* Wrap(double* x,int n,int flen){
   return y;
 }
 
-void WrapAround(void* vv) {
+double WrapAround(void* vv) {
   double* x,*y;
   int vsz,fsz,i;
   vsz = vector_instance_px(vv,&x);
   fsz = (int) *getarg(1);
   if(fsz > vsz) {
     printf("WrapAround ERRA: invalid filter len %d > vector len %d!\n",fsz,vsz);
-    return;
+    return 0;
   }
   y = Wrap(x,vsz,fsz);
   for(i=0;i<vsz;i++) x[i]=y[i];
   free(y);
+
+  return 0;
 }
 
 ENDVERBATIM
