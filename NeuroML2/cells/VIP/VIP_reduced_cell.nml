@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd"
+    id = "NeuroML2_file_exported_from_NEURON">
+
+  <notes> NeuroML 2 file generated from ModelView by: NEURON -- VERSION 8.2.6+ HEAD (078a34a9d+) 2024-07-24
+          Authors: Michael Hines, Sushil Kambampati and Padraig Gleeson,
+          Yale University and UCL 
+  </notes>
+
+  <cell id="VIP_reduced_cell_0_0">
+    <notes>Cell: VIP_reduced_cell_0_0 exported from NEURON ModelView</notes>
+    <morphology id="morphology">
+<!-- Section: VIP_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+      <segment id="0" name = "Seg0_soma">
+        <proximal x="0" y="0" z="0" diameter="25"/>
+        <distal x="0" y="20" z="0" diameter="25"/>
+      </segment>
+<!-- Section: VIP_reduced_cell[0].rad1 (segmentGroup: rad1) which has 2 3D points, so 1 segment(s)-->
+      <segment id="4" name = "Seg0_rad1">  <!-- Connected at 0 on parent section: VIP_reduced_cell[0].soma  -->
+        <parent fractionAlong="0" segment="0"/>
+        <proximal x="0" y="20" z="0" diameter="3"/>
+        <distal x="150" y="279.8" z="0" diameter="3"/>
+      </segment>
+<!-- Section: VIP_reduced_cell[0].ori1 (segmentGroup: ori1) which has 2 3D points, so 1 segment(s)-->
+      <segment id="2" name = "Seg0_ori1">  <!-- Connected at 0 on parent section: VIP_reduced_cell[0].soma  -->
+        <parent fractionAlong="0" segment="0"/>
+        <proximal x="0" y="20" z="0" diameter="1.5"/>
+        <distal x="106.05" y="-126.05" z="0" diameter="1.5"/>
+      </segment>
+<!-- Section: VIP_reduced_cell[0].rad2 (segmentGroup: rad2) which has 2 3D points, so 1 segment(s)-->
+      <segment id="5" name = "Seg0_rad2">
+        <parent segment="0"/>
+        <proximal x="0" y="20" z="0" diameter="3"/>
+        <distal x="-150" y="279.8" z="0" diameter="3"/>
+      </segment>
+<!-- Section: VIP_reduced_cell[0].ori2 (segmentGroup: ori2) which has 2 3D points, so 1 segment(s)-->
+      <segment id="3" name = "Seg0_ori2">
+        <parent segment="0"/>
+        <proximal x="0" y="20" z="0" diameter="1.5"/>
+        <distal x="-106.05" y="-126.05" z="0" diameter="1.5"/>
+      </segment>
+
+<!-- Section: VIP_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "soma"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "0"/>
+      </segmentGroup>
+
+
+<!-- Section: VIP_reduced_cell[0].rad1 (segmentGroup: rad1) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "rad1"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "4"/>
+      </segmentGroup>
+
+
+<!-- Section: VIP_reduced_cell[0].ori1 (segmentGroup: ori1) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "ori1"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "2"/>
+      </segmentGroup>
+
+
+<!-- Section: VIP_reduced_cell[0].rad2 (segmentGroup: rad2) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "rad2"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "5"/>
+      </segmentGroup>
+
+
+<!-- Section: VIP_reduced_cell[0].ori2 (segmentGroup: ori2) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "ori2"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "3"/>
+      </segmentGroup>
+
+      <segmentGroup id="all"> <!-- Replacing subset name ModelViewParmSubset_0 with all, as it contains all sections -->
+        <include segmentGroup = "soma"/>
+        <include segmentGroup = "rad1"/>
+        <include segmentGroup = "ori1"/>
+        <include segmentGroup = "rad2"/>
+        <include segmentGroup = "ori2"/>
+      </segmentGroup>
+
+    </morphology>
+  </cell> 
+
+  <network id="network" type="networkWithTemperature" temperature="6 degC">
+    <population id="Pop_VIP_reduced_cell_0_0" component="VIP_reduced_cell_0_0" size="1" type="populationList">
+        <instance id="0">
+            <location x="0" y="0" z="0"/>
+        </instance>
+    </population>
+  </network>
+ 
+</neuroml>
