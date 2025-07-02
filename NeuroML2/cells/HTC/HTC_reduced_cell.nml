@@ -36,5 +36,32 @@
       </segmentGroup>
 
     </morphology>
+
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+          
+            <channelDensityNernst id="cal_all" ionChannel="cal" condDensity="0.001 S_per_cm2" segmentGroup="all" ion="ca"/>
+
+            <channelDensity ionChannel="ia" id="ia_all" segmentGroup="all" ion="k" erev="-95.0 mV" condDensity="0.007 S_per_cm2"/>
+
+TODO:       <channelDensity ionChannel="ittc" id="ittc_all" segmentGroup="all" ion="ca"  erev="-104 mV" condDensity="0.002 S_per_cm2"/>
+TODO: htc
+TODO: hh2ad
+
+            <channelDensity ionChannel="kl" id="kl_all" segmentGroup="all" ion="k"  erev="-95.0 mV" condDensity="2.3e-05 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_all" segmentGroup="all" ion="non_specific"  erev="-50 mV" condDensity="1.8e-05 S_per_cm2"/>
+
+            
+
+          <spikeThresh value="5mV"/>
+          <specificCapacitance segmentGroup="all" value="1.0 uF_per_cm2"/>
+          <initMembPotential segmentGroup="all" value="-70 mV"/>
+        </membraneProperties>
+          <intracellularProperties>
+              <species segmentGroup="all" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_HTC_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <resistivity value="100 ohm_cm"/>
+          </intracellularProperties>
+    </biophysicalProperties>
+
   </cell> 
 </neuroml>

@@ -9,6 +9,19 @@
           Yale University and UCL 
   </notes>
 
+
+  <include href="cadad.channel.nml"></include>
+  <include href="can_mig.channel.nml"></include>
+  <include href="cat_mig.channel.nml"></include>
+  <include href="cal_mig.channel.nml"></include>
+  <include href="h_kole.channel.nml"></include>
+  <include href="kap_BS.channel.nml"></include>
+  <include href="pas.channel.nml"></include>
+  <include href="kBK.channel.nml"></include>
+  <include href="kdr_BS.channel.nml"></include>
+  <include href="kdr_BS_soma.channel.nml"></include>
+  <include href="nax_BS.channel.nml"></include>
+
   <cell id="IT3_reduced_cell_0_0">
     <notes>Cell: IT3_reduced_cell_0_0 exported from NEURON ModelView</notes>
     <morphology id="morphology">
@@ -107,6 +120,7 @@
         <member segment = "4"/>
       </segmentGroup>
 
+
       <segmentGroup id="all"> <!-- Replacing subset name ModelViewParmSubset_0 with all, as it contains all sections -->
         <include segmentGroup = "soma"/>
         <include segmentGroup = "axon"/>
@@ -116,7 +130,112 @@
         <include segmentGroup = "Adend3"/>
       </segmentGroup>
 
+      <segmentGroup id="dend_all"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+      </segmentGroup>
+
+      <segmentGroup id="apic"> 
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+      </segmentGroup>
+
+      <segmentGroup id="cal_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="can_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="cat_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="ih_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="kBK_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="somatic"> 
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="axonal"> 
+        <include segmentGroup = "axon"/>
+      </segmentGroup>
+
+      <segmentGroup id="proximal"> 
+        <include segmentGroup = "Bdend"/>
+      </segmentGroup>
+
+
     </morphology>
+
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+          
+            <channelDensityNernst id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" segmentGroup="can_group" ion="ca"/>
+            <channelDensityNernst id="cat_dend_soma" ionChannel="cat" condDensity="9.29455717585e-07 S_per_cm2" segmentGroup="cat_group" ion="ca"/>
+            <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06" segmentGroup="cal_group" ion="ca"/>
+
+            <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.3176340367e-05 S_per_cm2"/>
+
+            <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.45651933019e-05 S_per_cm2"/>
+            <channelDensity ionChannel="kap" id="kap_all" segmentGroup="all" ion="k"  erev="-104 mV" condDensity="0.0240195239098 S_per_cm2"/>
+            <channelDensity ionChannel="kdr" id="kdr_dend_all" segmentGroup="dend_all" ion="k"  erev="-104 mV" condDensity="0.00833766634808 S_per_cm2"/>
+            <channelDensity ionChannel="kdr" id="kdr_axon" segmentGroup="axonal" ion="k"  erev="-104 mV" condDensity="0.0416883317404 S_per_cm2"/>
+            <channelDensity ionChannel="kdr_soma" id="kdr_somatic" segmentGroup="somatic" ion="k"  erev="-104 mV" condDensity="0.017 S_per_cm2"/>
+
+            <channelDensity ionChannel="nax" id="nax_dend_all" segmentGroup="dend_all" ion="na"  erev="42.0 mV" condDensity="0.0768253702194 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_axon" segmentGroup="axonal" ion="na"  erev="42.0 mV" condDensity="0.384126851097 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_soma" segmentGroup="somatic" ion="na"  erev="42.0 mV" condDensity="0.043 S_per_cm2"/>
+
+            <channelDensity ionChannel="pas" id="pas_apic" segmentGroup="apic" ion="non_specific"  erev="-87.1335623948 mV" condDensity="7.199592136286027e-05 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_Bdend" segmentGroup="proximal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00014147647761414165 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00035435694659685776 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
+            
+
+          <spikeThresh value="5mV"/>
+          <specificCapacitance segmentGroup="apic" value="2.74242941886 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="proximal" value="2.74086279376 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="axonal" value="2.4630760526 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="somatic" value="2.4998269977 uF_per_cm2"/>
+          <initMembPotential segmentGroup="all" value="-85.7 mV"/>
+        </membraneProperties>
+          <intracellularProperties>
+              <species segmentGroup="dend_all" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT3_dend_all" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <species segmentGroup="somatic" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT3_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <resistivity value="70.0015514222 ohm_cm"/>
+          </intracellularProperties>
+    </biophysicalProperties>
   </cell> 
 
 </neuroml>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ia">
+    
+    <ionChannel id="ia" conductance="10pS" type="ionChannelHH" species="k">
+        
+        <gate id="m" type="gateHHtauInf" instances="4">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="23.5degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-60mV" scale="8.5mV"/>
+            <timeCourse type="ia_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHtauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="23.5degC"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-78mV" scale="-6mV"/>
+            <timeCourse type="ia_h_tau"/>
+        </gate>
+    </ionChannel>
+
+    <ComponentType name="ia_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="t" exposure="t" dimension="time" value="(1.0/  (exp((V+35.82)/19.69)+exp(-(V+79.69)/12.7)) +0.37) * TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="ia_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="V .lt. -63" value="1.0 /(exp((V+46.05)/5)+exp(-(V+238.4)/37.45)) * TIME_SCALE"/>
+                <Case value="19.0 * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>

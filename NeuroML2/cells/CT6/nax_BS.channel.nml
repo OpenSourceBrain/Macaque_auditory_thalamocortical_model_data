@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="nax">
+
+    <ionChannel id="nax" conductance="10pS" type="ionChannelHH" species="na">
+
+        <gate id="m" type="gateHHratesTau" instances="3">
+            <q10Settings type="q10ExpTemp" q10Factor="2" experimentalTemp="24degC"/>
+            <forwardRate type="nax_m_alpha_rate"/>
+            <reverseRate type="nax_m_beta_rate"/>
+            <timeCourse type="nax_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHratesTauInf" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="2" experimentalTemp="24degC"/>
+            <forwardRate type="nax_h_alpha_rate"/>
+            <reverseRate type="nax_h_beta_rate"/>
+            <steadyState type="HHSigmoidVariable" rate="1" scale="-4.0mV" midpoint="-50mV"/>
+            <timeCourse type="nax_h_tau"/>
+        </gate>
+                            
+    </ionChannel>
+
+
+    <ComponentType name="nax_m_alpha_rate" extends="baseVoltageDepRate">
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Ra" dimension="none" value="0.4"/>
+        <Constant name="qa" dimension="none" value="7.2"/>
+        <Constant name="tha" dimension="none" value="-30"/>
+        <Constant name="sh" dimension="none" value="0"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(V - (tha + sh)) .lt. 1.e-06 .and. (V - (tha + sh)) .gt. -1.e-06" value="Ra * qa  / TIME_SCALE"/>
+                <Case value="Ra * (V - (tha + sh)) / (1 - exp(-(V - (tha + sh))/qa))  / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+            
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="nax_m_beta_rate" extends="baseVoltageDepRate">
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Rb" dimension="none" value="0.124"/>
+        <Constant name="qa" dimension="none" value="7.2"/>
+        <Constant name="tha" dimension="none" value="-30"/>
+        <Constant name="sh" dimension="none" value="0"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(-V + tha + sh) .lt. 1.e-06 .and. (-V + tha + sh) .gt. -1.e-06" value="Rb * qa / TIME_SCALE"/>
+                <Case value="Rb * (-V + tha + sh) / (1 - exp(-(-V + tha + sh)/qa)) / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+    </ComponentType>
+
+
+    <ComponentType name="nax_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="mmin" dimension="none" value="0.02"/>
+
+        <Requirement name="alpha" dimension="per_time"/>
+        <Requirement name="beta" dimension="per_time"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
+                <Case condition="1/(ALPHA+BETA) .lt. mmin" value="mmin * TIME_SCALE"/>
+                <Case value="1/(ALPHA+BETA) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="nax_h_alpha_rate" extends="baseVoltageDepRate">
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Rd" dimension="none" value="0.03"/>
+        <Constant name="qd" dimension="none" value="1.5"/>
+        <Constant name="thi1" dimension="none" value="-45"/>
+        <Constant name="sh" dimension="none" value="0"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(V - (thi1 + sh)) .lt. 1.e-06 .and. (V - (thi1 + sh)) .gt. -1.e-06" value="Rd * qd  / TIME_SCALE"/>
+                <Case value="Rd * (V - (thi1 + sh)) / (1 - exp(-(V - (thi1 + sh))/qd)) / TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        
+        </Dynamics>
+
+    </ComponentType>
+
+
+    <ComponentType name="nax_h_beta_rate" extends="baseVoltageDepRate">
+
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+
+        <Constant name="Rg" dimension="none" value="0.01"/>
+        <Constant name="qg" dimension="none" value="1.5"/>
+        <Constant name="thi2" dimension="none" value="-45"/>
+        <Constant name="sh" dimension="none" value="0"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
+                <Case condition="(-V + thi2 + sh) .lt. 1.e-06 .and. (-V + thi2 + sh) .gt. -1.e-06" value="Rg * qg  / TIME_SCALE"/>
+                <Case value="Rg * (-V + thi2 + sh) / (1 - exp(-(-V + thi2 + sh)/qg))  /TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+        </Dynamics>
+    </ComponentType>
+
+    <ComponentType name="nax_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="hmin" dimension="none" value="0.5"/>
+        <Requirement name="alpha" dimension="per_time"/>
+        <Requirement name="beta" dimension="per_time"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
+                <Case condition="1/(ALPHA+BETA) .lt. hmin" value="hmin * TIME_SCALE"/>
+                <Case value="1/(ALPHA+BETA) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+
+    </ComponentType>
+</neuroml>
