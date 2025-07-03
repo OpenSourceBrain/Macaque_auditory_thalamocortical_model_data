@@ -7,7 +7,7 @@
             <forwardRate type="iCcr_alpha_rate"/>
             <reverseRate type="iCcr_beta_rate"/>
             <timeCourse type="iCcr_tau"/>
-        </gate>   
+        </gate>
 
     </ionChannel>
 
@@ -20,15 +20,13 @@
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="vs" dimension="none" value="V + (40 * (log(1000 * ca_conc)/log(10)))"/>
+            <DerivedVariable name="va" dimension="none" value="vs + 18"/>
 
             <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
-                <Case condition="(V+(17.3717792762)*log(1000*ca_conc)+18) .lt. 1e-10
-                 .and.
-                 (V+(17.3717792762)*log(1000*ca_conc)+18) .gt. -1e-10" value="((-0.00642*(V+(17.3717792762)*log(1000*ca_conc))-0.1152)
-            /(-1+exp(-(V+0.0001+(417.3717792762)*log(1000*ca_conc)+18)/12))) / TIME_SCALE"/>
-                <Case value="((-0.00642*(V+(17.3717792762)*log(1000*ca_conc))-0.1152)
-            /(-1+exp(-(V+(17.3717792762)*log(1000*ca_conc)+18)/12))) / TIME_SCALE"/>
+                <Case condition="abs(va) .lt. 1e-4" value="((-0.00642*vs - 0.1152)/(-1+exp(-(va+0.0001)/12))) / TIME_SCALE"/>
+                <Case value="((-0.00642*vs-0.1152)/(-1+exp(-(va)/12))) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
 
         </Dynamics>
@@ -43,13 +41,13 @@
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>          
-            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1.7*exp(-(V+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="vs" dimension="none" value="V + (40 * (log(1000 * ca_conc)/log(10)))"/>
+            <DerivedVariable name="vb" dimension="none" value="vs + 152"/>
+
             <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
-                <Case condition="(V+(17.3717792762)*log(ca_conc*1000)+152) .lt. 1e-10
-                .and.
-                (V+(17.3717792762)*log(ca_conc*1000)+152) .gt. -1e-10" value="(1.7*exp(-(V+0.0001+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
-                <Case value="(1.7*exp(-(V+(17.3717792762)*log(ca_conc*1000)+152)/30)) / TIME_SCALE"/>
+                <Case condition="abs(vb) .lt. 1e-4" value="((1.7*exp(-(vb+0.0001)/30))) / TIME_SCALE"/>
+                <Case value="(1.7*exp(-(vb)/30)) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
         </Dynamics>
 
@@ -65,12 +63,13 @@
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
             <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
-            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>        
+            <DerivedVariable name="csum" dimension="none" value="ALPHA + BETA"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
-                <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
-                <Case condition="(1/(ALPHA+BETA)) .gt. 1.1" value="1/(ALPHA+BETA) * TIME_SCALE"/>
-                <Case value="1.1 * TIME_SCALE"/>
+                <Case condition="csum .eq. 0" value="1.1 * TIME_SCALE"/>
+                <Case condition="(1/csum) .leq. 1.1" value="1.1 * TIME_SCALE"/>
+                <Case value="1/csum * TIME_SCALE"/>
             </ConditionalDerivedVariable>
         </Dynamics>
     </ComponentType>
