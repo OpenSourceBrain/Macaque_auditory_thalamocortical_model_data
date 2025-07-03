@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ih">
+
+    <ionChannel id="ih" conductance="10pS" type="ionChannelHH" species="hcn">
+
+        <gate id="m" type="gateHHrates" instances="1">
+            <forwardRate type="HHExpLinearRate" rate="0.02277659855per_ms" scale="-7.09800576233mV" midpoint="-119.696272155mV"/>
+            <reverseRate type="HHExpRate" rate="6.647544342per_ms" scale="23.2995848558mV" midpoint="0mV"/>
+        </gate>
+                            
+    </ionChannel>
+
+</neuroml>
