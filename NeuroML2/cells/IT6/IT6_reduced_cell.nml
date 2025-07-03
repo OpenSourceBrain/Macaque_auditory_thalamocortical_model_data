@@ -116,15 +116,113 @@
         <include segmentGroup = "Adend3"/>
       </segmentGroup>
 
+      <segmentGroup id="dend_all"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+      </segmentGroup>
+
+      <segmentGroup id="apic"> 
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+      </segmentGroup>
+
+      <segmentGroup id="cal_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="can_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="cat_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="ih_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="kBK_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="somatic"> 
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="axonal"> 
+        <include segmentGroup = "axon"/>
+      </segmentGroup>
+
+      <segmentGroup id="proximal"> 
+        <include segmentGroup = "Bdend"/>
+      </segmentGroup>
+
+
     </morphology>
+
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+          
+            <channelDensityNernst id="can_dend_soma" ionChannel="can" condDensity="8.43780573752e-05 S_per_cm2" segmentGroup="can_group" ion="ca"/>
+            <channelDensityNernst id="cat_dend_soma" ionChannel="cat" condDensity="5.85477866612e-05 S_per_cm2" segmentGroup="cat_group" ion="ca"/>
+            <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="7.79902252875e-05 S_per_cm2" segmentGroup="cal_group" ion="ca"/>
+
+            <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.13760461868e-05 S_per_cm2"/>
+
+            <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.2923494376e-05 S_per_cm2"/>
+            <channelDensity ionChannel="kap" id="kap_all" segmentGroup="all" ion="k"  erev="-104 mV" condDensity="0.306752147542 S_per_cm2"/>
+            <channelDensity ionChannel="kdr" id="kdr_dend_all" segmentGroup="dend_all" ion="k"  erev="-104 mV" condDensity="0.00501206206504 S_per_cm2"/>
+            <channelDensity ionChannel="kdr" id="kdr_axon" segmentGroup="axonal" ion="k"  erev="-104 mV" condDensity="0.025060310325199998 S_per_cm2"/>
+            <channelDensity ionChannel="kdr_soma" id="kdr_somatic" segmentGroup="somatic" ion="k"  erev="-104 mV" condDensity="0.0095 S_per_cm2"/>
+
+            <channelDensity ionChannel="nax" id="nax_dend_all" segmentGroup="dend_all" ion="na"  erev="42.0 mV" condDensity="0.146326621958 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_axon" segmentGroup="axonal" ion="na"  erev="42.0 mV" condDensity="0.73163310979 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_soma" segmentGroup="somatic" ion="na"  erev="42.0 mV" condDensity="0.25 S_per_cm2"/>
+
+            <channelDensity ionChannel="pas" id="pas_apic" segmentGroup="apic" ion="non_specific"  erev="-79.8821836579 mV" condDensity="2.068954962610324e-05 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_Bdend" segmentGroup="proximal" ion="non_specific"  erev="-79.8821836579 mV" condDensity="8.5005383721367e-05 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-79.8821836579 mV" condDensity="0.00032045160242059065 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-77 mV" condDensity="3.913592118479913e-05 S_per_cm2"/>
+            
+
+          <spikeThresh value="5mV"/>
+          <specificCapacitance segmentGroup="apic" value="2.49841939531 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="proximal" value="2.46671987855 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="axonal" value="1.87389705992 uF_per_cm2"/>
+          <specificCapacitance segmentGroup="somatic" value="1.89133252551 uF_per_cm2"/>
+          <initMembPotential segmentGroup="all" value="-80.7 mV"/>
+        </membraneProperties>
+          <intracellularProperties>
+              <species segmentGroup="dend_all" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT6_dend_all" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <species segmentGroup="somatic" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT6_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <resistivity value="114.969186163 ohm_cm"/>
+          </intracellularProperties>
+    </biophysicalProperties>
+
   </cell> 
 
-  <network id="network" type="networkWithTemperature" temperature="6 degC">
-    <population id="Pop_IT6_reduced_cell_0_0" component="IT6_reduced_cell_0_0" size="1" type="populationList">
-        <instance id="0">
-            <location x="0" y="0" z="0"/>
-        </instance>
-    </population>
-  </network>
- 
 </neuroml>

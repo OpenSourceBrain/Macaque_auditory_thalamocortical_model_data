@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="kBK">
+    <notes>Modified the values of constant caVhmin to accommodate IT2.</notes>
+    <ionChannel id="kBK" conductance="10pS" type="ionChannelHH" species="k">
+        
+        <gate id="p" type="gateHHtauInf" instances="1">
+            <steadyState type="kBK_p_inf"/>
+            <timeCourse type="fixedTimeCourse" tau="1 ms"/>
+        </gate>
+
+    </ionChannel>
+
+    <ComponentType name="kBK_p_inf" extends="baseVoltageConcDepVariable">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mol_per_cm3"/>
+
+        <Constant name="caPh" dimension="none" value="2e-9"/>
+        <Constant name="caVhmin" dimension="none" value="-2.1899738592999967"/>
+        <Constant name="caVhmax" dimension="none" value="155.67"/>
+        <Constant name="caVhh" dimension="none" value="2e-9"/>
+        <Constant name="caVhk" dimension="none" value="-0.94208"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+
+            <ConditionalDerivedVariable name="x" exposure="x" dimension="none">
+
+                <Case condition="ca_conc .lt. 1e-18" value="0"/>
+                <Case value="(1 / ( 1 + caPh / (100 * ca_conc))) / (1 + exp(((caVhmin + ( (caVhmax - caVhmin ) / ( 1 + ((caVhh/(100 * ca_conc))^caVhk)) )) - V)/17))"/>
+            </ConditionalDerivedVariable>
+           
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
