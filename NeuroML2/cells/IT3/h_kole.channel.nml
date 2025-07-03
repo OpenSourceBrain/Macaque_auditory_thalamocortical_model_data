@@ -4,8 +4,8 @@
     <ionChannel id="ih" conductance="10pS" type="ionChannelHH" species="hcn">
 
         <gate id="m" type="gateHHrates" instances="1">
-            <forwardRate type="HHExpLinearRate" rate="0.076517per_ms" scale="-11.9mV" midpoint="-154.9mV"/>
-            <reverseRate type="HHExpRate" rate="0.193per_ms" scale="33.1mV" midpoint="0mV"/>
+            <forwardRate type="HHExpLinearRate" rate="0.02277659855per_ms" scale="-7.09800576233mV" midpoint="-119.696272155mV"/>
+            <reverseRate type="HHExpRate" rate="6.647544342per_ms" scale="23.2995848558mV" midpoint="0mV"/>
         </gate>
                             
     </ionChannel>
