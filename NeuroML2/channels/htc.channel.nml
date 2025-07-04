@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="htc">
+
+    <ionChannelKS id="htc" conductance="10pS" species="none">
+
+        <gateKS id="m" instances="1">
+            <closedState id="c1"/>
+            <openState id="o1"/>
+            <openState2 id="o2"/>
+
+            <forwardTransition id="alpha_c1_o1" from="c1" to="o1">
+                <rate type="htc_m_alpha_c1_o1_rate"/>
+            </forwardTransition>
+            <reverseTransition id="beta_o1_c1" from="c1" to="o1">
+                <rate type="htc_m_beta_o1_c1_rate"/>
+            </reverseTransition>
+
+            <forwardTransition id="alpha_o1_o2" from="o1" to="o2">
+                <rate type="htc_m_alpha_o1_o2_rate"/>
+            </forwardTransition>
+            <reverseTransition id="beta_o2_o1" from="o1" to="o2">
+                <rate type="htc_m_beta_o2_o1_rate"/>
+            </reverseTransition>
+
+        </gateKS>
+
+    </ionChannelKS>
+
+    <ComponentType name="openState2"
+                   extends="KSState"
+                   description="A _KSState_ with _relativeConductance of 2">
+        <Fixed parameter="relativeConductance" value="2"/>
+    </ComponentType>
+
+    <ComponentType name="htc_m_alpha_c1_o1_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="q10" dimension="none" value="3"/>
+        <Constant name="Celsius" dimension="none" value="36"/>        
+        <Constant name="Exptemp" dimension="none" value="36"/>
+        <Constant name="shift" dimension="none" value="0"/>
+        <Constant name="taum" dimension="none" value="20"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="1 / ( 1 + exp((V+75-shift)/5.5) ) / 
+            ((taum +1000/(exp((V+71.5-shift)/14.2)+exp(-(V+89-shift)/11.6))) / (q10 ^ ((Celsius-Exptemp)/10))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="htc_m_beta_o1_c1_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="q10" dimension="none" value="3"/>
+        <Constant name="Celsius" dimension="none" value="36"/>        
+        <Constant name="Exptemp" dimension="none" value="36"/>
+        <Constant name="shift" dimension="none" value="0"/>
+        <Constant name="taum" dimension="none" value="20"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="(1 - 1 / ( 1 + exp((V+75-shift)/5.5) )) 
+            / ((taum +1000/(exp((V+71.5-shift)/14.2)+exp(-(V+89-shift)/11.6))) / (q10 ^ ((Celsius-Exptemp)/10))) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="htc_rate">
+        <Children name="gates" type="gateKS"/>
+        <Dynamics>
+            <DerivedVariable name="fopen" exposure="fopen" dimension="none" select="gates[*]/fcond" reduce="multiply"/>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="0.1 * fopen / TIME_SCALE"/>
+        </Dynamics>
+    </ComponentType>
+
+    <ComponentType name="htc_m_alpha_o1_o2_rate" extends="htc_rate">
+        <gateKS id="p" instances="1">
+            <closedState id="p0"/>
+            <openState id="p1"/>
+
+            <forwardTransition id="alpha_p0_p1" from="p0" to="p1">
+                <rate type="htc_p_alpha_p0_p1_rate"/>
+            </forwardTransition>
+            <reverseTransition id="beta_p1_p0" from="p0" to="p1">
+                <rate type="htc_p_beta_p1_p0_rate"/>
+            </reverseTransition>
+        </gateKS>
+    </ComponentType>
+
+    <ComponentType name="htc_p_alpha_p0_p1_rate" extends="baseVoltageConcDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+
+        <Constant name="k2" dimension="none" value="0.0004"/>
+        <Constant name="cac" dimension="none" value="0.002"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="k2 * (ca_conc/cac)*(ca_conc/cac)*(ca_conc/cac)*(ca_conc/cac) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="htc_p_beta_p1_p0_rate" extends="baseVoltageDepRate">
+        <Constant name="k2" dimension="none" value="0.0004"/>
+        <Dynamics>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="k2 / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+    <ComponentType name="htc_m_beta_o2_o1_rate" extends="baseVoltageDepRate">
+        <Constant name="k4" dimension="none" value="0.001"/>
+        <Dynamics>
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="k4 / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>
