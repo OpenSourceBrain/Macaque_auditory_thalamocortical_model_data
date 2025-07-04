@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ch_CavN">
+
+    <ionChannel id="ch_CavN" conductance="10pS" type="ionChannelHH" species="ca">
+
+        <gate id="c" type="gateHHrates" instances="2">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
+            <forwardRate type="ch_CavN_c_alpha_rate"/>
+            <reverseRate type="HHExpRate" rate="0.046per_ms" scale="-20.73mV" midpoint="0mV"/>
+        </gate>   
+
+
+        <gate id="d" type="gateHHrates" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
+            <forwardRate type="HHExpRate" rate="0.00016per_ms" scale="-48.4mV" midpoint="0mV"/>
+            <reverseRate type="HHSigmoidRate" rate="1per_ms" scale="10.0mV" midpoint="39mV"/>
+        </gate>
+
+    </ionChannel>
+
+    <ComponentType name="ch_CavN_c_alpha_rate" extends="baseVoltageDepRate">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+            
+            <DerivedVariable name="r" exposure="r" dimension="per_time" value="-0.19*(V-19.88)/(exp((V-19.88)/-10)-1) / TIME_SCALE"/>
+        </Dynamics>
+
+    </ComponentType>
+
+
+</neuroml>

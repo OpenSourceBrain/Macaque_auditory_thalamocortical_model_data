@@ -9,6 +9,18 @@
           Yale University and UCL 
   </notes>
 
+  <include href="cadad.channel.nml"></include>
+  <include href="can_mig.channel.nml"></include>
+  <include href="cat_mig.channel.nml"></include>
+  <include href="cal_mig.channel.nml"></include>
+  <include href="h_kole.channel.nml"></include>
+  <include href="kap_BS.channel.nml"></include>
+  <include href="pas.channel.nml"></include>
+  <include href="kBK.channel.nml"></include>
+  <include href="kdr_BS.channel.nml"></include>
+  <include href="kdr_BS_soma.channel.nml"></include>
+  <include href="nax_BS.channel.nml"></include>
+  
   <cell id="ITS4_reduced_cell_0_0">
     <notes>Cell: ITS4_reduced_cell_0_0 exported from NEURON ModelView</notes>
     <morphology id="morphology">

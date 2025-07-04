@@ -9,6 +9,17 @@
           Yale University and UCL 
   </notes>
 
+  <include href="iconc_Ca.channel.nml"></include>
+  <include href="ch_CavL.channel.nml"></include>
+  <include href="ch_CavN.channel.nml"></include>
+  <include href="ch_KCaS.channel.nml"></include>
+  <include href="h_migliore.channel.nml"></include>
+  <include href="ch_Kdrfastngf.channel.nml"></include>
+  <include href="pas.channel.nml"></include>
+  <include href="ch_KvAngf.channel.nml"></include>
+  <include href="ch_KvCaB.channel.nml"></include>
+  <include href="ch_Navngf.channel.nml"></include>
+  
   <cell id="NGF_reduced_cell_0_0">
     <notes>Cell: NGF_reduced_cell_0_0 exported from NEURON ModelView</notes>
     <morphology id="morphology">
@@ -48,7 +59,48 @@
         <include segmentGroup = "dend"/>
       </segmentGroup>
 
+      <segmentGroup id="dend_all">
+        <include segmentGroup = "dend"/>
+      </segmentGroup>
+
+      <segmentGroup id="somatic"> 
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
     </morphology>
+
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+
+          <channelDensity ionChannel="ch_Kdrfastngf" id="ch_Kdrfastngf_dend" segmentGroup="dend_all" ion="k"  erev="-90 mV" condDensity="0.05595822381551993 S_per_cm2"/>
+          <channelDensity ionChannel="ch_Kdrfastngf" id="ch_Kdrfastngf_soma" segmentGroup="somatic" ion="k"  erev="-90 mV" condDensity="0.1678746714465598 S_per_cm2"/>
+
+          <channelDensity ionChannel="ch_Navngf" id="ch_Navngf_dend" segmentGroup="dend_all" ion="na"  erev="55.0 mV" condDensity="6.758480942113871 S_per_cm2"/>
+          <channelDensity ionChannel="ch_Navngf" id="ch_Navngf_soma" segmentGroup="somatic" ion="na"  erev="55.0 mV" condDensity="0.1785111895575446 S_per_cm2"/>
+
+          <channelDensity ionChannel="pas" id="pas_dend" segmentGroup="dend_all" ion="non_specific"  erev="-60.72312530287827 mV" condDensity="0.00024895877547595626 S_per_cm2"/>
+          <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-77.03680075738289 mV" condDensity="4.1493129245992714e-07 S_per_cm2"/>
+
+          <channelDensityNernst id="ch_CavL_soma" ionChannel="ch_CavL" condDensity="0.04288556470630007 S_per_cm2" segmentGroup="somatic" ion="ca"/>   
+
+          <channelDensity ionChannel="ch_CavN" id="ch_CavN_soma" segmentGroup="somatic" ion="ca"  erev="130.0 mV" condDensity="0.0004566091272566699 S_per_cm2"/>
+
+          <channelDensity ionChannel="ch_KCaS" id="ch_KCaS_soma" segmentGroup="somatic" ion="k"  erev="-90 mV" condDensity="0.011993018513506988 S_per_cm2"/>
+          <channelDensity ionChannel="ch_KvAngf" id="ch_KvAngf_soma" segmentGroup="somatic" ion="k"  erev="-90 mV" condDensity="0.10393207183965684 S_per_cm2"/>
+          <channelDensity ionChannel="ch_KvCaB" id="ch_KvCaB_soma" segmentGroup="somatic" ion="k"  erev="-90 mV" condDensity="1.215126639573281e-06 S_per_cm2"/>
+
+          <channelDensity ionChannel="hd" id="hd_soma" segmentGroup="somatic" ion="non_specific"  erev="-30.0 mV" condDensity="5.589821152606998e-06 S_per_cm2"/>
+
+          <spikeThresh value="5mV"/>
+          <specificCapacitance segmentGroup="all" value="2.3018231258210387 uF_per_cm2"/>
+          <initMembPotential segmentGroup="all" value="-67.66 mV"/>
+        </membraneProperties>
+          <intracellularProperties>
+TODO:iconc_Ca              <species segmentGroup="somatic" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="iconc_Ca_NGF_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <resistivity value="17.578557807228727 ohm_cm"/>
+          </intracellularProperties>
+    </biophysicalProperties>
+
   </cell> 
 
 </neuroml>
