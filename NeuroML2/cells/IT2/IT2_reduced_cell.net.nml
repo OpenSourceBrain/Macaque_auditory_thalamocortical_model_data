@@ -22,7 +22,7 @@
                 <distal x="0.0" y="48.4123" z="0.0" diameter="28.2149"/>
             </segment>
             <segment id="6" name="Seg0_axon">
-                <parent segment="0"/>
+                <parent segment="0" fractionAlong="0.0"/>
                 <proximal x="0.0" y="0.0" z="0.0" diameter="1.40966"/>
                 <distal x="0.0" y="-594.293" z="0.0" diameter="1.40966"/>
             </segment>
@@ -163,7 +163,7 @@
                 <channelDensity id="pas_soma" ionChannel="pas" condDensity="0.0001 S_per_cm2" erev="-86.0 mV" segmentGroup="somatic" ion="non_specific"/>
                 <channelDensityNernst id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" segmentGroup="can_group" ion="ca"/>
                 <channelDensityNernst id="cat_dend_soma" ionChannel="cat" condDensity="9.29455717585e-07 S_per_cm2" segmentGroup="cat_group" ion="ca"/>
-                <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06" segmentGroup="cal_group" ion="ca"/>
+                <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" segmentGroup="cal_group" ion="ca"/>
                 <spikeThresh value="5mV"/>
                 <specificCapacitance value="2.74242941886 uF_per_cm2" segmentGroup="apic"/>
                 <specificCapacitance value="2.74086279376 uF_per_cm2" segmentGroup="proximal"/>
@@ -178,7 +178,7 @@
             </intracellularProperties>
         </biophysicalProperties>
     </cell>
-    <pulseGenerator id="pg" delay="200ms" duration="1500ms" amplitude="300pA"/>
+    <pulseGenerator id="pg" delay="200ms" duration="1000ms" amplitude="300pA"/>
     <network id="IT2_reduced_cell_net">
         <population id="IT2_reduced_cellpop" component="IT2_reduced_cell_0_0" size="1"/>
         <inputList id="input_list" population="IT2_reduced_cellpop" component="pg">

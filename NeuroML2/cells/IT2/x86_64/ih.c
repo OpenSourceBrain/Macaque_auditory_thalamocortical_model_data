@@ -255,12 +255,12 @@ static void nrn_alloc(Prop* _prop) {
  	gmax = 0;
  	conductance = 1e-05;
  	m_instances = 1;
- 	m_forwardRate_rate = 0.076517;
- 	m_forwardRate_midpoint = -154.9;
- 	m_forwardRate_scale = -11.9;
- 	m_reverseRate_rate = 0.193;
+ 	m_forwardRate_rate = 0.0227766;
+ 	m_forwardRate_midpoint = -119.696;
+ 	m_forwardRate_scale = -7.09801;
+ 	m_reverseRate_rate = 6.64755;
  	m_reverseRate_midpoint = 0;
- 	m_reverseRate_scale = 33.1;
+ 	m_reverseRate_scale = 23.2996;
  	_prop->param = _p;
  	_prop->param_size = 32;
  	_ppvar = nrn_prop_datum_alloc(_mechtype, 3, _prop);
@@ -304,7 +304,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 ih /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/ih.mod\n");
+ 	ivoc_help("help ?1 ih /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/ih.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -574,7 +574,7 @@ _first = 0;
 #endif
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/ih.mod";
+static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/ih.mod";
 static const char* nmodl_file_text = 
   "TITLE Mod file for component: Component(id=ih type=ionChannelHH)\n"
   "\n"
@@ -644,12 +644,12 @@ static const char* nmodl_file_text =
   "    \n"
   "    conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)\n"
   "    m_instances = 1                        : was: 1.0 (none)\n"
-  "    m_forwardRate_rate = 0.076517 (kHz)    : was: 76.517 (per_time)\n"
-  "    m_forwardRate_midpoint = -154.9 (mV)   : was: -0.1549 (voltage)\n"
-  "    m_forwardRate_scale = -11.9 (mV)       : was: -0.0119 (voltage)\n"
-  "    m_reverseRate_rate = 0.193 (kHz)       : was: 193.0 (per_time)\n"
+  "    m_forwardRate_rate = 0.0227766 (kHz)   : was: 22.77659855 (per_time)\n"
+  "    m_forwardRate_midpoint = -119.69627 (mV): was: -0.119696272155 (voltage)\n"
+  "    m_forwardRate_scale = -7.098006 (mV)   : was: -0.00709800576233 (voltage)\n"
+  "    m_reverseRate_rate = 6.647545 (kHz)    : was: 6647.544342 (per_time)\n"
   "    m_reverseRate_midpoint = 0 (mV)        : was: 0.0 (voltage)\n"
-  "    m_reverseRate_scale = 33.1 (mV)        : was: 0.033100000000000004 (voltage)\n"
+  "    m_reverseRate_scale = 23.299583 (mV)   : was: 0.0232995848558 (voltage)\n"
   "}\n"
   "\n"
   "ASSIGNED {\n"

@@ -34,10 +34,9 @@ def step_current_omv():
     net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", validate=False)
     pop = net.add(neuroml.Population, id="IT2_reduced_cellpop", component=IT2_reduced_cell.id, size=1)
 
-    # should be same as test_kc.py
     pg = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg", delay="200ms", duration="1500ms",
+            id="pg", delay="200ms", duration="1000ms",
             amplitude="300pA"
         )
     )
@@ -60,7 +59,7 @@ def step_current_omv():
         sim_id="IT2_reduced_cell_step_test",
         target=net.id,
         neuroml_file="IT2_reduced_cell.net.nml",
-        duration="3000ms",
+        duration="1500ms",
         dt="0.01ms",
         lems_file_name="LEMS_IT2_reduced_cell_step_test.xml",
         nml_doc=netdoc,

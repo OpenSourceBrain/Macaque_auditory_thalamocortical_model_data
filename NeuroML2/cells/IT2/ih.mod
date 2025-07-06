@@ -66,12 +66,12 @@ PARAMETER {
     
     conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)
     m_instances = 1                        : was: 1.0 (none)
-    m_forwardRate_rate = 0.076517 (kHz)    : was: 76.517 (per_time)
-    m_forwardRate_midpoint = -154.9 (mV)   : was: -0.1549 (voltage)
-    m_forwardRate_scale = -11.9 (mV)       : was: -0.0119 (voltage)
-    m_reverseRate_rate = 0.193 (kHz)       : was: 193.0 (per_time)
+    m_forwardRate_rate = 0.0227766 (kHz)   : was: 22.77659855 (per_time)
+    m_forwardRate_midpoint = -119.69627 (mV): was: -0.119696272155 (voltage)
+    m_forwardRate_scale = -7.098006 (mV)   : was: -0.00709800576233 (voltage)
+    m_reverseRate_rate = 6.647545 (kHz)    : was: 6647.544342 (per_time)
     m_reverseRate_midpoint = 0 (mV)        : was: 0.0 (voltage)
-    m_reverseRate_scale = 33.1 (mV)        : was: 0.033100000000000004 (voltage)
+    m_reverseRate_scale = 23.299583 (mV)   : was: 0.0232995848558 (voltage)
 }
 
 ASSIGNED {

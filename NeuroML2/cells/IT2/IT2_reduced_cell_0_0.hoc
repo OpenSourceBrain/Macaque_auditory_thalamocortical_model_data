@@ -11,7 +11,7 @@
     "id" : "axon",
     "points3d" : [ "0.0, 0.0, 0.0, 1.40966", "0.0, -594.293, 0.0, 1.40966" ],
     "parent" : "soma",
-    "fractionAlong" : 1.0
+    "fractionAlong" : 0.0
   }, {
     "name" : "Bdend",
     "id" : "Bdend",
@@ -103,27 +103,6 @@
     "value" : "70.00155"
   } ],
   "channelDensity" : [ {
-    "id" : "can_dend_soma",
-    "ionChannel" : "can",
-    "ion" : "ca",
-    "group" : "can_group",
-    "condDens" : "8.131379E-7",
-    "erev" : "132.45793"
-  }, {
-    "id" : "cat_dend_soma",
-    "ionChannel" : "cat",
-    "ion" : "ca",
-    "group" : "cat_group",
-    "condDens" : "9.294557E-7",
-    "erev" : "132.45793"
-  }, {
-    "id" : "cal_dend_soma",
-    "ionChannel" : "cal",
-    "ion" : "ca",
-    "group" : "cal_group",
-    "condDens" : "2.3913285E-6",
-    "erev" : "132.45793"
-  }, {
     "id" : "ih_dend_soma",
     "ionChannel" : "ih",
     "ion" : "hcn",
@@ -214,6 +193,27 @@
     "group" : "somatic",
     "condDens" : "1.0E-4",
     "erev" : "-86.0"
+  }, {
+    "id" : "can_dend_soma",
+    "ionChannel" : "can",
+    "ion" : "ca",
+    "group" : "can_group",
+    "condDens" : "8.131379E-7",
+    "erev" : "calculated_by_Nernst_equation"
+  }, {
+    "id" : "cat_dend_soma",
+    "ionChannel" : "cat",
+    "ion" : "ca",
+    "group" : "cat_group",
+    "condDens" : "9.294557E-7",
+    "erev" : "calculated_by_Nernst_equation"
+  }, {
+    "id" : "cal_dend_soma",
+    "ionChannel" : "cal",
+    "ion" : "ca",
+    "group" : "cal_group",
+    "condDens" : "2.3913285E-6",
+    "erev" : "calculated_by_Nernst_equation"
   } ],
   "species" : [ {
     "id" : "ca",
@@ -325,7 +325,7 @@ proc set_initial_ion_properties() {
 
 proc topol() {
     basic_shape()
-    connect axon(0), soma(1.0)
+    connect axon(0), soma(0.0)
     connect Bdend(0), soma(0.5)
     connect Adend1(0), soma(1.0)
     connect Adend2(0), Adend1(1.0)
@@ -458,21 +458,6 @@ proc biophys() {
     forsec all Ra = 70.00155  // units: ohm cm
 
     // Channel densities
-    forsec can_group {
-        insert can
-        gmax_can = 8.131379E-7  // units: S cm-2
-        eca = 132.45793  // units: mV
-    }
-    forsec cat_group {
-        insert cat
-        gmax_cat = 9.294557E-7  // units: S cm-2
-        eca = 132.45793  // units: mV
-    }
-    forsec cal_group {
-        insert cal
-        gmax_cal = 2.3913285E-6  // units: S cm-2
-        eca = 132.45793  // units: mV
-    }
     forsec ih_group {
         insert ih
         gmax_ih = 3.317634E-5  // units: S cm-2
@@ -537,6 +522,21 @@ proc biophys() {
         insert pas_nml2
         gmax_pas_nml2 = 1.0E-4  // units: S cm-2
         e_pas_nml2 = -86.0  // units: mV
+    }
+    forsec can_group {
+        insert can
+        gmax_can = 8.131379E-7  // units: S cm-2
+        // erev is calculated by Nernst equation
+    }
+    forsec cat_group {
+        insert cat
+        gmax_cat = 9.294557E-7  // units: S cm-2
+        // erev is calculated by Nernst equation
+    }
+    forsec cal_group {
+        insert cal
+        gmax_cal = 2.3913285E-6  // units: S cm-2
+        // erev is calculated by Nernst equation
     }
 
     // Concentration models for species

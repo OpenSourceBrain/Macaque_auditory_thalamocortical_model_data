@@ -187,7 +187,7 @@ static void nrn_alloc(Prop* _prop) {
  	/*initialize range parameters*/
  	weight = 1;
  	delay = 200;
- 	duration = 1500;
+ 	duration = 1000;
  	amplitude = 0.3;
   }
  	_prop->param = _p;
@@ -223,7 +223,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
   hoc_register_dparam_semantics(_mechtype, 0, "area");
   hoc_register_dparam_semantics(_mechtype, 1, "pntproc");
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 pg /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/pg.mod\n");
+ 	ivoc_help("help ?1 pg /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/pg.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -411,7 +411,7 @@ _first = 0;
 #endif
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/pg.mod";
+static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/pg.mod";
 static const char* nmodl_file_text = 
   "TITLE Mod file for component: Component(id=pg type=pulseGenerator)\n"
   "\n"
@@ -458,7 +458,7 @@ static const char* nmodl_file_text =
   "    \n"
   "    weight = 1\n"
   "    delay = 200 (ms)                       : was: 0.2 (time)\n"
-  "    duration = 1500 (ms)                   : was: 1.5 (time)\n"
+  "    duration = 1000 (ms)                   : was: 1.0 (time)\n"
   "    amplitude = 0.3 (nA)                   : was: 3.0E-10 (current)\n"
   "}\n"
   "\n"

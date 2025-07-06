@@ -1,6 +1,6 @@
 ./cadad_IT2_dend_all.c: ../cadad_IT2_dend_all.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadad_IT2_dend_all.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadad_IT2_dend_all.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./cadad_IT2_dend_all.o: ./cadad_IT2_dend_all.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -8,7 +8,7 @@
 
 ./cadad_IT2_soma.c: ../cadad_IT2_soma.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadad_IT2_soma.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadad_IT2_soma.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./cadad_IT2_soma.o: ./cadad_IT2_soma.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -16,7 +16,7 @@
 
 ./cal.c: ../cal.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cal.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cal.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./cal.o: ./cal.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -24,7 +24,7 @@
 
 ./can.c: ../can.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "can.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "can.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./can.o: ./can.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -32,7 +32,7 @@
 
 ./cat.c: ../cat.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cat.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cat.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./cat.o: ./cat.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -40,7 +40,7 @@
 
 ./ih.c: ../ih.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ih.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ih.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./ih.o: ./ih.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -48,7 +48,7 @@
 
 ./kap.c: ../kap.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kap.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kap.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./kap.o: ./kap.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -56,7 +56,7 @@
 
 ./kBK.c: ../kBK.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kBK.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kBK.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./kBK.o: ./kBK.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -64,7 +64,7 @@
 
 ./kdr.c: ../kdr.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./kdr.o: ./kdr.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -72,7 +72,7 @@
 
 ./kdr_soma.c: ../kdr_soma.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_soma.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_soma.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./kdr_soma.o: ./kdr_soma.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -80,7 +80,7 @@
 
 ./nax.c: ../nax.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nax.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nax.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./nax.o: ./nax.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -88,7 +88,7 @@
 
 ./pas_nml2.c: ../pas_nml2.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pas_nml2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pas_nml2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./pas_nml2.o: ./pas_nml2.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
@@ -96,7 +96,7 @@
 
 ./pg.c: ../pg.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pg.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/x86_64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pg.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
 
 ./pg.o: ./pg.c
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"

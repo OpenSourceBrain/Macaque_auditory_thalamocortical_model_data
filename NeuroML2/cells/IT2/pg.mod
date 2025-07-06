@@ -43,7 +43,7 @@ PARAMETER {
     
     weight = 1
     delay = 200 (ms)                       : was: 0.2 (time)
-    duration = 1500 (ms)                   : was: 1.5 (time)
+    duration = 1000 (ms)                   : was: 1.0 (time)
     amplitude = 0.3 (nA)                   : was: 3.0E-10 (current)
 }
 

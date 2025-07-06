@@ -11,7 +11,7 @@ ENDCOMMENT
 
 NEURON {
     SUFFIX cat
-    USEION ca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
+    USEION ca READ eca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
     
     RANGE gion
     RANGE i__cat : a copy of the variable for current which makes it easier to access from outside the mod file
@@ -198,8 +198,6 @@ STATE {
 }
 
 INITIAL {
-    eca = 132.45793
-    
     temperature = celsius + 273.15
     
     rates()

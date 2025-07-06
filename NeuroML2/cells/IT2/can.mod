@@ -11,7 +11,7 @@ ENDCOMMENT
 
 NEURON {
     SUFFIX can
-    USEION ca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
+    USEION ca READ eca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
     
     RANGE gion
     RANGE i__can : a copy of the variable for current which makes it easier to access from outside the mod file
@@ -146,8 +146,10 @@ ASSIGNED {
     eca (mV)
     ica (mA/cm2)
     i__can (mA/cm2)
+    
     cai (mM)
-    cao (mM)
+    
+    cao (mM) 
     ConductanceScalingCaDependent_ca_conc   : derived variable
     ConductanceScalingCaDependent_factor    : derived variable
     m_forwardRate_x                         : derived variable
@@ -192,8 +194,6 @@ STATE {
 }
 
 INITIAL {
-    eca = 132.45793
-    
     temperature = celsius + 273.15
     
     rates()
@@ -235,7 +235,9 @@ DERIVATIVE states {
 
 PROCEDURE rates() {
     LOCAL caConc
+    
     caConc = cai
+       
     ConductanceScalingCaDependent_ca_conc = caConc /  ConductanceScalingCaDependent_CONC_SCALE ? evaluable
     ConductanceScalingCaDependent_factor = ConductanceScalingCaDependent_ki  / ( ConductanceScalingCaDependent_ki  +  ConductanceScalingCaDependent_ca_conc ) ? evaluable
     m_forwardRate_x = (v -  m_forwardRate_midpoint ) /  m_forwardRate_scale ? evaluable

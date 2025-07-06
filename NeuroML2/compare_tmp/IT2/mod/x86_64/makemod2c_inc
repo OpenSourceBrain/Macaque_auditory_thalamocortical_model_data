@@ -1,0 +1,896 @@
+./APCounter2.c: ../APCounter2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "APCounter2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./APCounter2.o: ./APCounter2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ar_traub.c: ../ar_traub.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ar_traub.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ar_traub.o: ./ar_traub.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./beforestep_py.c: ../beforestep_py.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "beforestep_py.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./beforestep_py.o: ./beforestep_py.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./CA1ika.c: ../CA1ika.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "CA1ika.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./CA1ika.o: ./CA1ika.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./CA1ikdr.c: ../CA1ikdr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "CA1ikdr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./CA1ikdr.o: ./CA1ikdr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./CA1ina.c: ../CA1ina.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "CA1ina.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./CA1ina.o: ./CA1ina.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cadad.c: ../cadad.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadad.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cadad.o: ./cadad.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cadecay_destexhe.c: ../cadecay_destexhe.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadecay_destexhe.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cadecay_destexhe.o: ./cadecay_destexhe.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cad.c: ../cad.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cad.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cad.o: ./cad.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./Cadynamics.c: ../Cadynamics.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Cadynamics.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./Cadynamics.o: ./Cadynamics.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cadyn.c: ../cadyn.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadyn.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cadyn.o: ./cadyn.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cagk.c: ../cagk.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cagk.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cagk.o: ./cagk.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cal_mh.c: ../cal_mh.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cal_mh.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cal_mh.o: ./cal_mh.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cal_mig.c: ../cal_mig.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cal_mig.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cal_mig.o: ./cal_mig.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cancr.c: ../cancr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cancr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cancr.o: ./cancr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./canin.c: ../canin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "canin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./canin.o: ./canin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./can_mig.c: ../can_mig.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "can_mig.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./can_mig.o: ./can_mig.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./caolmw.c: ../caolmw.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "caolmw.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./caolmw.o: ./caolmw.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./capr.c: ../capr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "capr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./capr.o: ./capr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./catcb.c: ../catcb.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "catcb.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./catcb.o: ./catcb.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cat_mig.c: ../cat_mig.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cat_mig.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cat_mig.o: ./cat_mig.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cat_traub.c: ../cat_traub.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cat_traub.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cat_traub.o: ./cat_traub.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_CavL.c: ../ch_CavL.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_CavL.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_CavL.o: ./ch_CavL.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_CavN.c: ../ch_CavN.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_CavN.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_CavN.o: ./ch_CavN.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_KCaS.c: ../ch_KCaS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_KCaS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_KCaS.o: ./ch_KCaS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_Kdrfastngf.c: ../ch_Kdrfastngf.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_Kdrfastngf.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_Kdrfastngf.o: ./ch_Kdrfastngf.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_KvAngf.c: ../ch_KvAngf.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_KvAngf.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_KvAngf.o: ./ch_KvAngf.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_KvCaB.c: ../ch_KvCaB.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_KvCaB.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_KvCaB.o: ./ch_KvCaB.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_leak.c: ../ch_leak.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_leak.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_leak.o: ./ch_leak.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ch_Navngf.c: ../ch_Navngf.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ch_Navngf.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ch_Navngf.o: ./ch_Navngf.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cp2.c: ../cp2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cp2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cp2.o: ./cp2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./cp.c: ../cp.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cp.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./cp.o: ./cp.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./DynamicNetStim.c: ../DynamicNetStim.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "DynamicNetStim.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./DynamicNetStim.o: ./DynamicNetStim.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./gabab.c: ../gabab.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gabab.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./gabab.o: ./gabab.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./h_BS.c: ../h_BS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "h_BS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./h_BS.o: ./h_BS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./HH2.c: ../HH2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "HH2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./HH2.o: ./HH2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./h_harnett.c: ../h_harnett.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "h_harnett.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./h_harnett.o: ./h_harnett.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./HH_traub.c: ../HH_traub.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "HH_traub.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./HH_traub.o: ./HH_traub.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./hin.c: ../hin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "hin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./hin.o: ./hin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./h_kole.c: ../h_kole.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "h_kole.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./h_kole.o: ./h_kole.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./h_migliore.c: ../h_migliore.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "h_migliore.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./h_migliore.o: ./h_migliore.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./htc.c: ../htc.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "htc.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./htc.o: ./htc.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./Iahp.c: ../Iahp.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Iahp.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./Iahp.o: ./Iahp.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ICal.c: ../ICal.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ICal.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ICal.o: ./ICal.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./Ican.c: ../Ican.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ican.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./Ican.o: ./Ican.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ican_sidi.c: ../ican_sidi.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ican_sidi.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ican_sidi.o: ./ican_sidi.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./icaolmw.c: ../icaolmw.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "icaolmw.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./icaolmw.o: ./icaolmw.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./icapr.c: ../icapr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "icapr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./icapr.o: ./icapr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./iccr.c: ../iccr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iccr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./iccr.o: ./iccr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IC.c: ../IC.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IC.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IC.o: ./IC.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./iconc_Ca.c: ../iconc_Ca.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iconc_Ca.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./iconc_Ca.o: ./iconc_Ca.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./iholmkop.c: ../iholmkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iholmkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./iholmkop.o: ./iholmkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./iholmw.c: ../iholmw.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iholmw.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./iholmw.o: ./iholmw.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ihpyrkop.c: ../ihpyrkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ihpyrkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ihpyrkop.o: ./ihpyrkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IKM.c: ../IKM.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IKM.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IKM.o: ./IKM.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ikscr.c: ../ikscr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ikscr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ikscr.o: ./ikscr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IKsin.c: ../IKsin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IKsin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IKsin.o: ./IKsin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IL_gutnick.c: ../IL_gutnick.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IL_gutnick.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IL_gutnick.o: ./IL_gutnick.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IL.c: ../IL.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IL.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IL.o: ./IL.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IM_cortex.c: ../IM_cortex.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IM_cortex.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IM_cortex.o: ./IM_cortex.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ipulse3.c: ../ipulse3.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ipulse3.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ipulse3.o: ./ipulse3.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IT2.c: ../IT2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IT2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IT2.o: ./IT2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./IT.c: ../IT.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "IT.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./IT.o: ./IT.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kahppr.c: ../kahppr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kahppr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kahppr.o: ./kahppr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kaolmkop.c: ../kaolmkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kaolmkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kaolmkop.o: ./kaolmkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kap_BS.c: ../kap_BS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kap_BS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kap_BS.o: ./kap_BS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kapcb.c: ../kapcb.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kapcb.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kapcb.o: ./kapcb.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kapin.c: ../kapin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kapin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kapin.o: ./kapin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kapyrkop.c: ../kapyrkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kapyrkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kapyrkop.o: ./kapyrkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kBK.c: ../kBK.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kBK.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kBK.o: ./kBK.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kca.c: ../kca.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kca.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kca.o: ./kca.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kcaolmw.c: ../kcaolmw.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kcaolmw.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kcaolmw.o: ./kcaolmw.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kcpr.c: ../kcpr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kcpr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kcpr.o: ./kcpr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kctin.c: ../kctin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kctin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kctin.o: ./kctin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdmc_BS.c: ../kdmc_BS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdmc_BS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdmc_BS.o: ./kdmc_BS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdr2_orig.c: ../kdr2_orig.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr2_orig.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdr2_orig.o: ./kdr2_orig.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdr_BS.c: ../kdr_BS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_BS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdr_BS.o: ./kdr_BS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrbwb.c: ../kdrbwb.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrbwb.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrbwb.o: ./kdrbwb.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrcr.c: ../kdrcr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrcr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrcr.o: ./kdrcr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrin.c: ../kdrin.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrin.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrin.o: ./kdrin.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrolmkop.c: ../kdrolmkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrolmkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrolmkop.o: ./kdrolmkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrpr.c: ../kdrpr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrpr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrpr.o: ./kdrpr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kdrpyrkop.c: ../kdrpyrkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdrpyrkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kdrpyrkop.o: ./kdrpyrkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kl.c: ../kl.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kl.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kl.o: ./kl.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./km.c: ../km.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "km.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./km.o: ./km.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./kv.c: ../kv.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kv.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./kv.o: ./kv.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./MyExp2SynAlpha.c: ../MyExp2SynAlpha.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "MyExp2SynAlpha.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./MyExp2SynAlpha.o: ./MyExp2SynAlpha.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./MyExp2SynBB.c: ../MyExp2SynBB.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "MyExp2SynBB.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./MyExp2SynBB.o: ./MyExp2SynBB.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./my_exp2syn.c: ../my_exp2syn.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "my_exp2syn.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./my_exp2syn.o: ./my_exp2syn.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./MyExp2SynNMDABB.c: ../MyExp2SynNMDABB.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "MyExp2SynNMDABB.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./MyExp2SynNMDABB.o: ./MyExp2SynNMDABB.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./na_2.c: ../na_2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "na_2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./na_2.o: ./na_2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./naf2.c: ../naf2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./naf2.o: ./naf2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafbwb.c: ../nafbwb.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafbwb.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafbwb.o: ./nafbwb.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafcr.c: ../nafcr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafcr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafcr.o: ./nafcr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafolmkop.c: ../nafolmkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafolmkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafolmkop.o: ./nafolmkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafpr.c: ../nafpr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafpr.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafpr.o: ./nafpr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafpyrkop.c: ../nafpyrkop.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafpyrkop.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafpyrkop.o: ./nafpyrkop.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nafx.c: ../nafx.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nafx.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nafx.o: ./nafx.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nap_sidi.c: ../nap_sidi.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nap_sidi.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nap_sidi.o: ./nap_sidi.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nax_BS.c: ../nax_BS.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nax_BS.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nax_BS.o: ./nax_BS.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./naz.c: ../naz.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naz.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./naz.o: ./naz.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./Nca.c: ../Nca.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Nca.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./Nca.o: ./Nca.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./nsloc.c: ../nsloc.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nsloc.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./nsloc.o: ./nsloc.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ntIh.c: ../ntIh.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ntIh.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ntIh.o: ./ntIh.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ntleak.c: ../ntleak.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ntleak.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ntleak.o: ./ntleak.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ntt_int.c: ../ntt_int.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ntt_int.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ntt_int.o: ./ntt_int.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./ntt.c: ../ntt.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ntt.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./ntt.o: ./ntt.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./pasi.c: ../pasi.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pasi.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./pasi.o: ./pasi.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./savedist.c: ../savedist.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "savedist.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./savedist.o: ./savedist.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./tia.c: ../tia.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "tia.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./tia.o: ./tia.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./vecstim.c: ../vecstim.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "vecstim.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./vecstim.o: ./vecstim.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./wrap.c: ../wrap.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "wrap.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/model/mod/x86_64")
+
+./wrap.o: ./wrap.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
