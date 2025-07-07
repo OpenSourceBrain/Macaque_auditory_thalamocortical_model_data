@@ -1,6 +1,6 @@
-|Channels  |Description |Tau |Inf |
-|----------|------------|----|----|
-|**cal**   |L-type calcium channel: https://senselab.med.yale.edu/ModelDB/ShowModel.asp?model=148094&file=\kv72-R213QW-mutations\cal2.mod        |![](images/cal_tau.png)|![](images/cal_inf.png)|
+|Channels  |Description |Link_nml |Tau_mod |Tau_nml |Inf_mod |Inf_nml |
+|----------|------------|---------|--------|--------|--------|--------|
+|**cal**   |L-type calcium channel: https://senselab.med.yale.edu/ModelDB/ShowModel.asp?model=148094&file=\kv72-R213QW-mutations\cal2.mod|channels/cal_mig.channel.nml        |![](images_mod/cal_tau.png)|![](images_nml/cal_tau.png)|![](images_mod/cal_inf.png)|![](images_nml/cal_inf.png)|
 |**can**   |n-type calcium: http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=126814|![](images/can_tau.png)|![](images/can_inf.png)|
 |**cat**|T-type calcium channel: http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=126814|![](images/cat_tau.png)|![](images/cat_inf.png)|
 |**ih**|Ih-current: modified from http://senselab.med.yale.edu/ModelDB/showmodel.cshtml?model=64195&file=%5cStochastic%5cStochastic_Na%5cih.mod|![](images/ih_tau.png)|![](images/ih_inf.png)|
