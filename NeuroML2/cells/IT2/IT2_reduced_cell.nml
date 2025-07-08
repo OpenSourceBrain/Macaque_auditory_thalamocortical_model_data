@@ -21,7 +21,7 @@
   <include href="kdr_BS_soma.channel.nml"></include>
   <include href="nax_BS.channel.nml"></include>
 
-  <cell id="IT2_reduced_cell_0_0" temperature="34 degC">
+  <cell id="IT2_reduced_cell_0_0">
     <notes>Cell: IT2_reduced_cell_0_0 exported from NEURON ModelView</notes>
     <morphology id="morphology">
 <!-- Section: IT2_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
@@ -181,6 +181,15 @@
         <include segmentGroup = "soma"/>
       </segmentGroup>
 
+
+      <segmentGroup id="kap_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
       <segmentGroup id="somatic"> 
         <include segmentGroup = "soma"/>
       </segmentGroup>
@@ -206,7 +215,8 @@
             <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.3176340367e-05 S_per_cm2"/>
 
             <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.45651933019e-05 S_per_cm2"/>
-            <channelDensity ionChannel="kap" id="kap_all" segmentGroup="all" ion="k"  erev="-104 mV" condDensity="0.0240195239098 S_per_cm2"/>
+            <channelDensity ionChannel="kap" id="kap_dend_soma" segmentGroup="kap_group" ion="k"  erev="-104 mV" condDensity="0.0240195239098 S_per_cm2"/>
+            <channelDensity ionChannel="kap" id="kap_axon" segmentGroup="axonal" ion="k"  erev="-104 mV" condDensity="0.120097619549 S_per_cm2"/>
             <channelDensity ionChannel="kdr" id="kdr_dend_all" segmentGroup="dend_all" ion="k"  erev="-104 mV" condDensity="0.00833766634808 S_per_cm2"/>
             <channelDensity ionChannel="kdr" id="kdr_axon" segmentGroup="axonal" ion="k"  erev="-104 mV" condDensity="0.0416883317404 S_per_cm2"/>
             <channelDensity ionChannel="kdr_soma" id="kdr_somatic" segmentGroup="somatic" ion="k"  erev="-104 mV" condDensity="0.017 S_per_cm2"/>

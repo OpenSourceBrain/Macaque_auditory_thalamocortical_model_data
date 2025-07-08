@@ -187,7 +187,7 @@ static void nrn_alloc(Prop* _prop) {
  	/*initialize range parameters*/
  	weight = 1;
  	delay = 200;
- 	duration = 1000;
+ 	duration = 1600;
  	amplitude = 0.3;
   }
  	_prop->param = _p;
@@ -458,7 +458,7 @@ static const char* nmodl_file_text =
   "    \n"
   "    weight = 1\n"
   "    delay = 200 (ms)                       : was: 0.2 (time)\n"
-  "    duration = 1000 (ms)                   : was: 1.0 (time)\n"
+  "    duration = 1600 (ms)                   : was: 1.6 (time)\n"
   "    amplitude = 0.3 (nA)                   : was: 3.0E-10 (current)\n"
   "}\n"
   "\n"

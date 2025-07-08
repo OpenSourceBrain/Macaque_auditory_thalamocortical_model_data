@@ -14,7 +14,7 @@
 
     <ComponentType name="kdr_n_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
-        <Constant name="Celsius" dimension="none" value="24"/>
+        <Constant name="Celsius" dimension="none" value="34"/>
         
         <Constant name="zetan" dimension="none" value="-3"/>
         <Constant name="sh" dimension="none" value="0"/>
@@ -36,7 +36,7 @@
 
         <Constant name="nmax" dimension="time" value="20 ms"/>
 
-        <Constant name="Celsius" dimension="none" value="24"/>
+        <Constant name="Celsius" dimension="none" value="34"/>
         
         <Constant name="zetan" dimension="none" value="-3"/>
         <Constant name="sh" dimension="none" value="0"/>

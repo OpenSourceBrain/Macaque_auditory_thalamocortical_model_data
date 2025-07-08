@@ -394,7 +394,7 @@ static void nrn_alloc(Prop* _prop) {
  	conductance = 1e-05;
  	n_instances = 1;
  	n_steadyState_VOLT_SCALE = 1;
- 	n_steadyState_Celsius = 24;
+ 	n_steadyState_Celsius = 34;
  	n_steadyState_zetan = -1.5;
  	n_steadyState_pw = -1;
  	n_steadyState_tq = -49.715;
@@ -404,7 +404,7 @@ static void nrn_alloc(Prop* _prop) {
  	n_timeCourse_TIME_SCALE = 1;
  	n_timeCourse_VOLT_SCALE = 1;
  	n_timeCourse_nmin = 0.4;
- 	n_timeCourse_Celsius = 24;
+ 	n_timeCourse_Celsius = 34;
  	n_timeCourse_zetan = -1.5;
  	n_timeCourse_pw = -1;
  	n_timeCourse_tq = -49.715;
@@ -418,7 +418,7 @@ static void nrn_alloc(Prop* _prop) {
  	n_q10Settings_TENDEGREES = 10;
  	l_instances = 1;
  	l_steadyState_VOLT_SCALE = 1;
- 	l_steadyState_Celsius = 24;
+ 	l_steadyState_Celsius = 34;
  	l_steadyState_zetal = 3;
  	l_steadyState_sh = 0;
  	l_steadyState_vhalfl = -36.7755;
@@ -472,7 +472,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 kap /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kap.mod\n");
+ 	ivoc_help("help ?1 kap /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kap.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -765,7 +765,7 @@ _first = 0;
 #endif
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kap.mod";
+static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kap.mod";
 static const char* nmodl_file_text = 
   "TITLE Mod file for component: Component(id=kap type=ionChannelHH)\n"
   "\n"
@@ -877,7 +877,7 @@ static const char* nmodl_file_text =
   "    conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)\n"
   "    n_instances = 1                        : was: 1.0 (none)\n"
   "    n_steadyState_VOLT_SCALE = 1 (mV)      : was: 0.001 (voltage)\n"
-  "    n_steadyState_Celsius = 24             : was: 24.0 (none)\n"
+  "    n_steadyState_Celsius = 34             : was: 34.0 (none)\n"
   "    n_steadyState_zetan = -1.5             : was: -1.5 (none)\n"
   "    n_steadyState_pw = -1                  : was: -1.0 (none)\n"
   "    n_steadyState_tq = -49.714954          : was: -49.7149526489 (none)\n"
@@ -887,7 +887,7 @@ static const char* nmodl_file_text =
   "    n_timeCourse_TIME_SCALE = 1 (ms)       : was: 0.001 (time)\n"
   "    n_timeCourse_VOLT_SCALE = 1 (mV)       : was: 0.001 (voltage)\n"
   "    n_timeCourse_nmin = 0.4 (ms)           : was: 4.0E-4 (time)\n"
-  "    n_timeCourse_Celsius = 24              : was: 24.0 (none)\n"
+  "    n_timeCourse_Celsius = 34              : was: 34.0 (none)\n"
   "    n_timeCourse_zetan = -1.5              : was: -1.5 (none)\n"
   "    n_timeCourse_pw = -1                   : was: -1.0 (none)\n"
   "    n_timeCourse_tq = -49.714954           : was: -49.7149526489 (none)\n"
@@ -901,7 +901,7 @@ static const char* nmodl_file_text =
   "    n_q10Settings_TENDEGREES = 10 (K)      : was: 10.0 (temperature)\n"
   "    l_instances = 1                        : was: 1.0 (none)\n"
   "    l_steadyState_VOLT_SCALE = 1 (mV)      : was: 0.001 (voltage)\n"
-  "    l_steadyState_Celsius = 24             : was: 24.0 (none)\n"
+  "    l_steadyState_Celsius = 34             : was: 34.0 (none)\n"
   "    l_steadyState_zetal = 3                : was: 3.0 (none)\n"
   "    l_steadyState_sh = 0                   : was: 0.0 (none)\n"
   "    l_steadyState_vhalfl = -36.775482      : was: -36.7754836348 (none)\n"

@@ -18,7 +18,7 @@ netParams.stimTargetParams['Input->IT2'] = {'source': 'Input', 'sec': 'soma', 'l
 simConfig = specs.SimConfig()       # object of class SimConfig to store simulation configuration
 
 simConfig.recordCells = ['all']
-
+simConfig.hParams['celsius'] = 34
 simConfig.duration = 2000           # Duration of the simulation, in ms
 simConfig.dt = 0.01                 # Internal integration timestep to use
 simConfig.verbose = False           # Show detailed messages

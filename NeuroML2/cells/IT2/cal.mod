@@ -116,7 +116,8 @@ ASSIGNED {
     
     cai (mM)
     
-    cao (mM)   
+    cao (mM)
+    
     ConductanceScalingCaDependent_ca_conc   : derived variable
     ConductanceScalingCaDependent_factor    : derived variable
     m_forwardRate_x                         : derived variable
@@ -188,7 +189,7 @@ PROCEDURE rates() {
     LOCAL caConc
     
     caConc = cai
-       
+    
     ConductanceScalingCaDependent_ca_conc = caConc /  ConductanceScalingCaDependent_CONC_SCALE ? evaluable
     ConductanceScalingCaDependent_factor = ConductanceScalingCaDependent_ki  / ( ConductanceScalingCaDependent_ki  +  ConductanceScalingCaDependent_ca_conc ) ? evaluable
     m_forwardRate_x = (v -  m_forwardRate_midpoint ) /  m_forwardRate_scale ? evaluable

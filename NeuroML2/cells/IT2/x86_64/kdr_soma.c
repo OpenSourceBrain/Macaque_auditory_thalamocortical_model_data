@@ -290,14 +290,14 @@ static void nrn_alloc(Prop* _prop) {
  	conductance = 1e-05;
  	n_instances = 1;
  	n_steadyState_VOLT_SCALE = 1;
- 	n_steadyState_Celsius = 24;
+ 	n_steadyState_Celsius = 34;
  	n_steadyState_zetan = -3;
  	n_steadyState_sh = 0;
  	n_steadyState_vhalfn = 8;
  	n_timeCourse_TIME_SCALE = 1;
  	n_timeCourse_VOLT_SCALE = 1;
  	n_timeCourse_nmax = 20;
- 	n_timeCourse_Celsius = 24;
+ 	n_timeCourse_Celsius = 34;
  	n_timeCourse_zetan = -3;
  	n_timeCourse_sh = 0;
  	n_timeCourse_gmn = 0.7;
@@ -349,7 +349,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 kdr_soma /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kdr_soma.mod\n");
+ 	ivoc_help("help ?1 kdr_soma /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kdr_soma.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -620,7 +620,7 @@ _first = 0;
 #endif
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kdr_soma.mod";
+static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kdr_soma.mod";
 static const char* nmodl_file_text = 
   "TITLE Mod file for component: Component(id=kdr_soma type=ionChannelHH)\n"
   "\n"
@@ -703,14 +703,14 @@ static const char* nmodl_file_text =
   "    conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)\n"
   "    n_instances = 1                        : was: 1.0 (none)\n"
   "    n_steadyState_VOLT_SCALE = 1 (mV)      : was: 0.001 (voltage)\n"
-  "    n_steadyState_Celsius = 24             : was: 24.0 (none)\n"
+  "    n_steadyState_Celsius = 34             : was: 34.0 (none)\n"
   "    n_steadyState_zetan = -3               : was: -3.0 (none)\n"
   "    n_steadyState_sh = 0                   : was: 0.0 (none)\n"
   "    n_steadyState_vhalfn = 8               : was: 8.0 (none)\n"
   "    n_timeCourse_TIME_SCALE = 1 (ms)       : was: 0.001 (time)\n"
   "    n_timeCourse_VOLT_SCALE = 1 (mV)       : was: 0.001 (voltage)\n"
   "    n_timeCourse_nmax = 20 (ms)            : was: 0.02 (time)\n"
-  "    n_timeCourse_Celsius = 24              : was: 24.0 (none)\n"
+  "    n_timeCourse_Celsius = 34              : was: 34.0 (none)\n"
   "    n_timeCourse_zetan = -3                : was: -3.0 (none)\n"
   "    n_timeCourse_sh = 0                    : was: 0.0 (none)\n"
   "    n_timeCourse_gmn = 0.7                 : was: 0.7 (none)\n"

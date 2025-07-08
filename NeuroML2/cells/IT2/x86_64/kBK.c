@@ -269,11 +269,11 @@ static void nrn_alloc(Prop* _prop) {
  	p_instances = 1;
  	p_steadyState_TIME_SCALE = 1;
  	p_steadyState_VOLT_SCALE = 1;
- 	p_steadyState_CONC_SCALE = 1e+06;
- 	p_steadyState_caPh = 2e-09;
+ 	p_steadyState_CONC_SCALE = 1;
+ 	p_steadyState_caPh = 0.002;
  	p_steadyState_caVhmin = 43.9191;
  	p_steadyState_caVhmax = 155.67;
- 	p_steadyState_caVhh = 2e-09;
+ 	p_steadyState_caVhh = 0.002;
  	p_steadyState_caVhk = -0.94208;
  	p_timeCourse_tau = 1;
  	_prop->param = _p;
@@ -327,7 +327,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 kBK /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kBK.mod\n");
+ 	ivoc_help("help ?1 kBK /home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kBK.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -611,7 +611,7 @@ _first = 0;
 #endif
 
 #if NMODL_TEXT
-static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/channels/channels_summary/IT2/kBK.mod";
+static const char* nmodl_filename = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/kBK.mod";
 static const char* nmodl_file_text = 
   "TITLE Mod file for component: Component(id=kBK type=ionChannelHH)\n"
   "\n"
@@ -687,11 +687,11 @@ static const char* nmodl_file_text =
   "    p_instances = 1                        : was: 1.0 (none)\n"
   "    p_steadyState_TIME_SCALE = 1 (ms)      : was: 0.001 (time)\n"
   "    p_steadyState_VOLT_SCALE = 1 (mV)      : was: 0.001 (voltage)\n"
-  "    p_steadyState_CONC_SCALE = 1000000 (mM): was: 1000000.0 (concentration)\n"
-  "    p_steadyState_caPh = 2.0E-9            : was: 2.0E-9 (none)\n"
+  "    p_steadyState_CONC_SCALE = 1 (mM)      : was: 1.0 (concentration)\n"
+  "    p_steadyState_caPh = 0.002             : was: 0.002 (none)\n"
   "    p_steadyState_caVhmin = 43.919144      : was: 43.919142291200004 (none)\n"
   "    p_steadyState_caVhmax = 155.67         : was: 155.67 (none)\n"
-  "    p_steadyState_caVhh = 2.0E-9           : was: 2.0E-9 (none)\n"
+  "    p_steadyState_caVhh = 0.002            : was: 0.002 (none)\n"
   "    p_steadyState_caVhk = -0.94208         : was: -0.94208 (none)\n"
   "    p_timeCourse_tau = 1 (ms)              : was: 0.001 (time)\n"
   "}\n"

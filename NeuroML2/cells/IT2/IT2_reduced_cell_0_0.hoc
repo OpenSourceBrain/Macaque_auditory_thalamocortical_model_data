@@ -66,6 +66,10 @@
     "groups" : [ ],
     "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
   }, {
+    "name" : "kap_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
     "name" : "somatic",
     "groups" : [ ],
     "sections" : [ "soma" ]
@@ -117,11 +121,18 @@
     "condDens" : "4.456519E-5",
     "erev" : "-104.0"
   }, {
-    "id" : "kap_all",
+    "id" : "kap_dend_soma",
     "ionChannel" : "kap",
     "ion" : "k",
-    "group" : "all",
+    "group" : "kap_group",
     "condDens" : "0.024019523",
+    "erev" : "-104.0"
+  }, {
+    "id" : "kap_axon",
+    "ionChannel" : "kap",
+    "ion" : "k",
+    "group" : "axonal",
+    "condDens" : "0.120097615",
     "erev" : "-104.0"
   }, {
     "id" : "kdr_dend_all",
@@ -279,6 +290,8 @@ objref cat_group
 objref ih_group
 // Group: {name=kBK_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
 objref kBK_group
+// Group: {name=kap_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref kap_group
 // Group: {name=somatic, groups=[], sections=[soma]}
 objref somatic
 // Group: {name=axonal, groups=[], sections=[axon]}
@@ -419,6 +432,14 @@ proc subsets() { local i
     Adend3 kBK_group.append()
     soma kBK_group.append()
 
+    // Group: {name=kap_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    kap_group = new SectionList()
+    Bdend kap_group.append()
+    Adend1 kap_group.append()
+    Adend2 kap_group.append()
+    Adend3 kap_group.append()
+    soma kap_group.append()
+
     // Group: {name=somatic, groups=[], sections=[soma]}
     somatic = new SectionList()
     soma somatic.append()
@@ -468,9 +489,14 @@ proc biophys() {
         gmax_kBK = 4.456519E-5  // units: S cm-2
         ek = -104.0  // units: mV
     }
-    forsec all {
+    forsec kap_group {
         insert kap
         gmax_kap = 0.024019523  // units: S cm-2
+        ek = -104.0  // units: mV
+    }
+    forsec axonal {
+        insert kap
+        gmax_kap = 0.120097615  // units: S cm-2
         ek = -104.0  // units: mV
     }
     forsec dend_all {
