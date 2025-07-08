@@ -4,22 +4,22 @@
     <ionChannel id="catcb" conductance="10pS" type="ionChannelHH" species="ca">
 
         <gate id="m" type="gateHHtauInf" instances="2">
-            <steadyState type="catcb_m_inf"/>
             <timeCourse type="fixedTimeCourse" tau="1.5 ms"/>
+            <steadyState type="catcb_m_inf"/>
         </gate>
 
         <gate id="h" type="gateHHtauInf" instances="1">
-            <steadyState type="catcb_h_inf"/>
             <timeCourse type="fixedTimeCourse" tau="10 ms"/>
+            <steadyState type="catcb_h_inf"/>
         </gate>
-                            
+
     </ionChannel>
 
 
     <ComponentType name="catcb_m_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="Celsius" dimension="none" value="6.3"/>
-        
+
         <Constant name="zetam" dimension="none" value="-3.0"/>
 
         <Constant name="vhalfm" dimension="none" value="-36"/>

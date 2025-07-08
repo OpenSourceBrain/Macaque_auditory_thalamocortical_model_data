@@ -6,16 +6,16 @@
         <gate id="m" type="gateHHrates" instances="3">
             <forwardRate type="Nafx_m_alpha_rate"/>
             <reverseRate type="Nafx_m_beta_rate"/>
-        </gate>   
+        </gate>
 
         <gate id="h" type="gateHHrates" instances="1">
             <forwardRate type="Nafx_h_alpha_rate"/>
             <reverseRate type="Nafx_h_beta_rate"/>
-        </gate>   
+        </gate>
 
         <gate id="s" type="gateHHtauInf" instances="1">
-            <steadyState type="Nafx_s_inf"/>
             <timeCourse type="Nafx_s_tau"/>
+            <steadyState type="Nafx_s_inf"/>
         </gate>
 
     </ionChannel>
@@ -26,13 +26,13 @@
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            
+
              <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
                 <Case condition=" (V+28) .gt. 1e-4" value="-0.2816*(V+28)/(-1+exp(-(V+28)/9.3)) / TIME_SCALE"/>
                 <Case condition=" (V+28) .lt. -1e-4" value="-0.2816*(V+28)/(-1+exp(-(V+28)/9.3)) / TIME_SCALE"/>
                 <Case value="-0.2816*(V+28)/(-1+exp(-(V+28)/9.3)) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
- 
+
         </Dynamics>
 
     </ComponentType>
@@ -45,13 +45,13 @@
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            
+
              <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
                 <Case condition=" (V+1) .gt. 1e-4" value="0.2464*(V+1)/(-1+exp((V+1)/6)) / TIME_SCALE"/>
                 <Case condition=" (V+1) .lt. -1e-4" value="0.2464*(V+1)/(-1+exp((V+1)/6)) / TIME_SCALE"/>
                 <Case value="0.2464*(V+1)/(-1+exp((V+1)/6)) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
- 
+
         </Dynamics>
 
     </ComponentType>
@@ -76,13 +76,13 @@
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            
+
              <ConditionalDerivedVariable name="r" exposure="r" dimension="per_time">
                 <Case condition=" (V+40.1) .gt. 1e-4" value="0.098/exp((V+40.1+43.1)/20) / TIME_SCALE"/>
                 <Case condition=" (V+40.1) .lt. -1e-4" value="0.098/exp((V+40.1+43.1)/20) / TIME_SCALE"/>
                 <Case value="0.098/exp((V+40.1+43.1)/20) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
- 
+
 
         </Dynamics>
 
@@ -91,7 +91,7 @@
 
     <ComponentType name="Nafx_s_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
-        
+
         <Constant name="zetan" dimension="none" value="-3"/>
         <Constant name="vvh" dimension="none" value="-58"/>
         <Constant name="vvs" dimension="none" value="2"/>
@@ -110,7 +110,7 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
 
-        <Constant name="taumin" dimension="time" value="30 ms"/> 
+        <Constant name="taumin" dimension="time" value="30 ms"/>
         <Constant name="a0r" dimension="none" value="0.0003"/>
         <Constant name="zetar" dimension="none" value="12"/>
         <Constant name="vhalfr" dimension="none" value="-60"/>
@@ -134,4 +134,4 @@
 </neuroml>
 
 
-    
+

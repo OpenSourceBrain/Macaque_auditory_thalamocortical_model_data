@@ -8,7 +8,6 @@
             <forwardRate type="HHSigmoidRate" rate="1.6per_ms" scale="13.888888889mV" midpoint="-5.0mV"/>
             <reverseRate type="HHExpLinearRate" rate="0.1072per_ms" scale="-5.36mV" midpoint="1.31mV"/>
         </gate>
-                            
     </ionChannel>
 
 </neuroml>
