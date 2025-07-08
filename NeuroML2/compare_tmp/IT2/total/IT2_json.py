@@ -11,7 +11,7 @@ pprint.pprint(netParams.cellParams['IT2_HH_reduced'])
 
 netParams.popParams['IT2'] = {'cellType': 'IT2_HH_reduced', 'numCells': 1}
 
-netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1000, 'del': 200, 'amp': 0.3}
+netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1500, 'del': 200, 'amp': 0.3}
 netParams.stimTargetParams['Input->IT2'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'IT2_HH_reduced'}}
 
 # Simulation options
@@ -19,7 +19,7 @@ simConfig = specs.SimConfig()       # object of class SimConfig to store simulat
 
 simConfig.recordCells = ['all']
 
-simConfig.duration = 1500           # Duration of the simulation, in ms
+simConfig.duration = 2000           # Duration of the simulation, in ms
 simConfig.dt = 0.01                 # Internal integration timestep to use
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
