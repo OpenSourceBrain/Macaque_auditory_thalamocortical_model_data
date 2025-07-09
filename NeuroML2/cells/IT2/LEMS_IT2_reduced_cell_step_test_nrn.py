@@ -21,7 +21,8 @@ Components:
     kdr_soma (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     nax (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     IT2_reduced_cell_0_0 (Type: cell)
-    pg (Type: pulseGenerator:  delay=0.2 (SI time) duration=1.6 (SI time) amplitude=3.0E-10 (SI current))
+    pg1 (Type: pulseGenerator:  delay=0.2 (SI time) duration=0.3 (SI time) amplitude=3.0E-10 (SI current))
+    pg2 (Type: pulseGenerator:  delay=1.0 (SI time) duration=0.3 (SI time) amplitude=3.0E-10 (SI current))
     IT2_reduced_cell_net (Type: networkWithTemperature:  temperature=307.15 (SI temperature))
     IT2_reduced_cell_step_test (Type: Simulation:  length=2.0 (SI time) step=1.0E-5 (SI time))
 
@@ -99,14 +100,19 @@ class NeuronSimulation():
         h("objref fih_ion_IT2_reduced_cellpop")
         h('{fih_ion_IT2_reduced_cellpop = new FInitializeHandler(1, "initialiseIons_IT2_reduced_cellpop()")}')
 
-        print("Processing 1 input lists")
+        print("Processing 2 input lists")
 
-        # ######################   Input List: input_list
+        # ######################   Input List: input1_list
         # Adding single input: Component(id=0 type=input)
-        h("objref input_list_0")
-        h("a_IT2_reduced_cellpop[0].soma { input_list_0 = new pg(0.5) } ")
+        h("objref input1_list_0")
+        h("a_IT2_reduced_cellpop[0].soma { input1_list_0 = new pg1(0.5) } ")
 
-        print("Finished processing 1 input lists")
+        # ######################   Input List: input2_list
+        # Adding single input: Component(id=0 type=input)
+        h("objref input2_list_0")
+        h("a_IT2_reduced_cellpop[0].soma { input2_list_0 = new pg2(0.5) } ")
+
+        print("Finished processing 2 input lists")
 
         trec = h.Vector()
         trec.record(h._ref_t)

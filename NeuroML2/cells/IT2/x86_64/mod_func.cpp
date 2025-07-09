@@ -18,6 +18,8 @@ extern void _kdr_reg(void);
 extern void _kdr_soma_reg(void);
 extern void _nax_reg(void);
 extern void _pas_nml2_reg(void);
+extern void _pg1_reg(void);
+extern void _pg2_reg(void);
 extern void _pg_reg(void);
 
 void modl_reg() {
@@ -35,6 +37,8 @@ void modl_reg() {
     fprintf(stderr, " \"kdr_soma.mod\"");
     fprintf(stderr, " \"nax.mod\"");
     fprintf(stderr, " \"pas_nml2.mod\"");
+    fprintf(stderr, " \"pg1.mod\"");
+    fprintf(stderr, " \"pg2.mod\"");
     fprintf(stderr, " \"pg.mod\"");
     fprintf(stderr, "\n");
   }
@@ -50,6 +54,8 @@ void modl_reg() {
   _kdr_soma_reg();
   _nax_reg();
   _pas_nml2_reg();
+  _pg1_reg();
+  _pg2_reg();
   _pg_reg();
 }
 

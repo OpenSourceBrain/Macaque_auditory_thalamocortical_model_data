@@ -94,6 +94,22 @@
 	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
 	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
 
+./pg1.c: ../pg1.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pg1.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
+
+./pg1.o: ./pg1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./pg2.c: ../pg2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pg2.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
+
+./pg2.o: ./pg2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
 ./pg.c: ../pg.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
 	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "pg.mod" -o "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/cells/IT2/x86_64")
