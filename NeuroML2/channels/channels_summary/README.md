@@ -17,7 +17,7 @@
 
 </details>
 
-## Full-size Channel Characteristic Plots
+## Full-size Graphs
 
 ### cal
 **Tau**  
