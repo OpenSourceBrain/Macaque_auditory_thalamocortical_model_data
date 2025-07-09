@@ -1,0 +1,26 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd" id="network_of_IT2">
+    <include href="IT2_reduced_cell.nml"/>
+    <pulseGenerator id="input_min0_05nA" delay="200ms" duration="900.0ms" amplitude="-0.05nA"/>
+    <pulseGenerator id="input_min0_060000000000000005nA" delay="200ms" duration="900.0ms" amplitude="-0.060000000000000005nA"/>
+    <pulseGenerator id="input_min0_07nA" delay="200ms" duration="900.0ms" amplitude="-0.07nA"/>
+    <pulseGenerator id="input_min0_08000000000000002nA" delay="200ms" duration="900.0ms" amplitude="-0.08000000000000002nA"/>
+    <pulseGenerator id="input_min0_09000000000000001nA" delay="200ms" duration="900.0ms" amplitude="-0.09000000000000001nA"/>
+    <network id="network_of_IT2" type="networkWithTemperature" temperature="34degC">
+        <population id="population_of_IT2" component="IT2" size="5"/>
+        <inputList id="input_min0_05nA" population="population_of_IT2" component="input_min0_05nA">
+            <input id="0" target="../population_of_IT2[0]" destination="synapses"/>
+        </inputList>
+        <inputList id="input_min0_060000000000000005nA" population="population_of_IT2" component="input_min0_060000000000000005nA">
+            <input id="0" target="../population_of_IT2[1]" destination="synapses"/>
+        </inputList>
+        <inputList id="input_min0_07nA" population="population_of_IT2" component="input_min0_07nA">
+            <input id="0" target="../population_of_IT2[2]" destination="synapses"/>
+        </inputList>
+        <inputList id="input_min0_08000000000000002nA" population="population_of_IT2" component="input_min0_08000000000000002nA">
+            <input id="0" target="../population_of_IT2[3]" destination="synapses"/>
+        </inputList>
+        <inputList id="input_min0_09000000000000001nA" population="population_of_IT2" component="input_min0_09000000000000001nA">
+            <input id="0" target="../population_of_IT2[4]" destination="synapses"/>
+        </inputList>
+    </network>
+</neuroml>
