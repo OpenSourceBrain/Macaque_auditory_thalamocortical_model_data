@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="cat">
+
+    <ionChannel id="cat" conductance="10pS" type="ionChannelHH" species="ca">
+
+        <gate id="m" type="gateHHratesTau" instances="2">
+            <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="25degC"/>
+            <forwardRate type="HHExpLinearRate" rate="2per_ms" scale="10mV" midpoint="19.26mV"/>
+            <reverseRate type="HHExpRate" rate="0.009per_ms" scale="-22.03mV" midpoint="0mV"/>
+            <timeCourse type="cat_m_tau"/>
+        </gate>
+
+        <gate id="h" type="gateHHratesTau" instances="1">
+            <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="25degC"/>
+            <forwardRate type="HHExpRate" rate="1e-06per_ms" scale="-16.26mV" midpoint="0mV"/>
+            <reverseRate type="HHSigmoidRate" rate="1per_ms" scale="10mV" midpoint="29.79mV"/>
+            <timeCourse type="cat_h_tau"/>
+        </gate>
+                            
+    </ionChannel>
+
+    <ComponentType name="cat_m_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="mmin" dimension="time" value="0.2 ms"/>
+        <Constant name="a0m" dimension="none" value="0.04"/> 
+        <Constant name="zetam" dimension="none" value="2"/> 
+        <Constant name="gmm" dimension="none" value="0.1"/>
+        <Constant name="vhalfm" dimension="none" value="-28"/>
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="exp(0.0378 * zetam * gmm * (V - vhalfm)) / (a0m * (1 + exp(0.0378 * zetam * (V - vhalfm)))) * TIME_SCALE .lt. mmin" value="mmin"/>
+                <Case value="exp(0.0378 * zetam * gmm * (V - vhalfm)) / (a0m * (1 + exp(0.0378 * zetam * (V - vhalfm)))) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+    
+    </ComponentType>
+
+    <ComponentType name="cat_h_tau" extends="baseVoltageDepTime">
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>   
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="hmin" dimension="time" value="10 ms"/>
+        <Constant name="a0h" dimension="none" value="0.015"/> 
+        <Constant name="zetah" dimension="none" value="3.5"/> 
+        <Constant name="gmh" dimension="none" value="0.6"/>
+        <Constant name="vhalfh" dimension="none" value="-75"/>
+
+
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
+
+            <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
+                <Case condition="exp(0.0378 * zetah * gmh * (V - vhalfh)) / (a0h * (1 + exp(0.0378 * zetah * (V - vhalfh)))) * TIME_SCALE .lt. hmin" value="hmin"/>
+                <Case value="exp(0.0378 * zetah * gmh * (V - vhalfh)) / (a0h * (1 + exp(0.0378 * zetah * (V - vhalfh)))) * TIME_SCALE"/>
+            </ConditionalDerivedVariable>
+
+        </Dynamics>
+
+    </ComponentType>
+
+</neuroml>

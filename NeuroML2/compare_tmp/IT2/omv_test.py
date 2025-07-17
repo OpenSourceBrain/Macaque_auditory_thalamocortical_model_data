@@ -31,8 +31,8 @@ def step_current_omv():
     # read the cell file, modify it, write a new one
     netdoc = read_neuroml2_file("IT2_reduced_cell.nml")
     IT2_reduced_cell = netdoc.cells[0]
-    net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", temperature="34 degC", validate=False)
-    pop = net.add(neuroml.Population, id="IT2_reduced_cellpop", component=IT2_reduced_cell.id, size=1)
+    net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
+    pop = net.add(neuroml.Population, id="IT2_reduced_cell_pop", component=IT2_reduced_cell.id, size=1)
 
     # should be same as test_kc.py
     pg = netdoc.add(
@@ -61,7 +61,7 @@ def step_current_omv():
         target=net.id,
         neuroml_file="IT2_reduced_cell.net.nml",
         duration="1500ms",
-        dt="0.025ms",
+        dt="0.01ms",
         lems_file_name="LEMS_IT2_reduced_cell_step_test.xml",
         nml_doc=netdoc,
         gen_spike_saves_for_all_somas=True,

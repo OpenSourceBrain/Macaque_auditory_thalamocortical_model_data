@@ -1,0 +1,50 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.3.15 (libNeuroML v0.6.5)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="iv_IT2"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="IT2_reduced_cell.nml"/>
+    <Include file="cadad.channel.nml"/>
+    <Include file="can_mig.channel.nml"/>
+    <Include file="cat_mig.channel.nml"/>
+    <Include file="cal_mig.channel.nml"/>
+    <Include file="h_kole.channel.nml"/>
+    <Include file="kap_BS.channel.nml"/>
+    <Include file="pas.channel.nml"/>
+    <Include file="kBK.channel.nml"/>
+    <Include file="kdr_BS.channel.nml"/>
+    <Include file="kdr_BS_soma.channel.nml"/>
+    <Include file="nax_BS.channel.nml"/>
+    <Include file="iv_IT2.net.nml"/>
+
+    <Simulation id="iv_IT2" length="1400.0ms" step="0.05ms" target="network_of_IT2" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="Voltage_display" title="Voltages" timeScale="1ms" xmin="-140.0" xmax="1540.0000000000002" ymin="-90" ymax="50">
+            <Line id="v_cell0" quantity="population_of_IT2[0]/v" scale="1mV" color="#f19bf1" timeScale="1ms"/>
+            <Line id="v_cell1" quantity="population_of_IT2[1]/v" scale="1mV" color="#0e3d8c" timeScale="1ms"/>
+            <Line id="v_cell2" quantity="population_of_IT2[2]/v" scale="1mV" color="#91cc23" timeScale="1ms"/>
+            <Line id="v_cell3" quantity="population_of_IT2[3]/v" scale="1mV" color="#47b75f" timeScale="1ms"/>
+            <Line id="v_cell4" quantity="population_of_IT2[4]/v" scale="1mV" color="#c72e06" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Volts_file" fileName="iv_IT2.v.dat">
+            <OutputColumn id="v_cell0" quantity="population_of_IT2[0]/v"/>
+            <OutputColumn id="v_cell1" quantity="population_of_IT2[1]/v"/>
+            <OutputColumn id="v_cell2" quantity="population_of_IT2[2]/v"/>
+            <OutputColumn id="v_cell3" quantity="population_of_IT2[3]/v"/>
+            <OutputColumn id="v_cell4" quantity="population_of_IT2[4]/v"/>
+        </OutputFile>
+
+    </Simulation>
+
+</Lems>

@@ -1,0 +1,13 @@
+*.dat
+x86_64/
+*.gv
+*_nrn.py
+/NeuroML2/*.hoc
+*code.gen.c
+*code.gen.so
+*_netpyne.py
+/NeuroML2/*spikes
+*_eden.py
+
+.mypy_cache/
+__pycache__/

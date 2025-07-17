@@ -24,6 +24,8 @@ from pyneuroml.annotations import create_annotation
 from neuroml.utils import component_factory
 from textwrap import indent
 
+from pyneuroml.analysis import generate_current_vs_frequency_curve
+
 random.seed(1412)
 
 def step_current_omv():
@@ -34,18 +36,25 @@ def step_current_omv():
     net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
     pop = net.add(neuroml.Population, id="IT2_reduced_cellpop", component=IT2_reduced_cell.id, size=1)
 
-    pg = netdoc.add(
+    pg1 = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg", delay="200ms", duration="1600ms",
+            id="pg1", delay="200ms", duration="300ms",
+            amplitude="300pA"
+        )
+    )
+    pg2 = netdoc.add(
+        neuroml.PulseGenerator(
+            id="pg2", delay="1000ms", duration="300ms",
             amplitude="300pA"
         )
     )
 
+
     # Add these to cells
-    input_list = net.add(
-        neuroml.InputList(id="input_list", component=pg.id, populations=pop.id)
+    input_list1 = net.add(
+        neuroml.InputList(id="input1_list", component=pg1.id, populations=pop.id)
     )
-    aninput = input_list.add(
+    aninput1 = input_list1.add(
         neuroml.Input(
             id="0",
             target="../%s[0]" % (pop.id),
@@ -53,6 +62,20 @@ def step_current_omv():
             segment_id="0",
         )
     )
+
+    # Add these to cells
+    input_list2 = net.add(
+        neuroml.InputList(id="input2_list", component=pg2.id, populations=pop.id)
+    )
+    aninput2 = input_list2.add(
+        neuroml.Input(
+            id="0",
+            target="../%s[0]" % (pop.id),
+            destination="synapses",
+            segment_id="0",
+        )
+    )
+
     write_neuroml2_file(netdoc, "IT2_reduced_cell.net.nml")
 
     generate_lems_file_for_neuroml(
