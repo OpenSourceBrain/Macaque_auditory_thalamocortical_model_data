@@ -14,10 +14,10 @@
             <q10Settings type="q10ExpTemp" q10Factor="2" experimentalTemp="24degC"/>
             <forwardRate type="nax_h_alpha_rate"/>
             <reverseRate type="nax_h_beta_rate"/>
-            <steadyState type="HHSigmoidVariable" rate="1" scale="-4.0mV" midpoint="-50mV"/>
             <timeCourse type="nax_h_tau"/>
+            <steadyState type="HHSigmoidVariable" rate="1" scale="-4.0mV" midpoint="-50mV"/>
         </gate>
-                            
+
     </ionChannel>
 
 
@@ -38,7 +38,7 @@
                 <Case condition="(V - (tha + sh)) .lt. 1.e-06 .and. (V - (tha + sh)) .gt. -1.e-06" value="Ra * qa  / TIME_SCALE"/>
                 <Case value="Ra * (V - (tha + sh)) / (1 - exp(-(V - (tha + sh))/qa))  / TIME_SCALE"/>
             </ConditionalDerivedVariable>
-            
+
         </Dynamics>
 
     </ComponentType>
@@ -105,7 +105,7 @@
                 <Case condition="(V - (thi1 + sh)) .lt. 1.e-06 .and. (V - (thi1 + sh)) .gt. -1.e-06" value="Rd * qd  / TIME_SCALE"/>
                 <Case value="Rd * (V - (thi1 + sh)) / (1 - exp(-(V - (thi1 + sh))/qd)) / TIME_SCALE"/>
             </ConditionalDerivedVariable>
-        
+
         </Dynamics>
 
     </ComponentType>

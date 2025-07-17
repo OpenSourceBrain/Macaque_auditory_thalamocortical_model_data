@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd"
          id="cadyn">
 
-    <concentrationModel id="cadyn_" ion="ca" type="cadyn" cainf="5e-5 mM" taur="200 ms" depth="0.1 um"/>  
+    <concentrationModel id="cadyn_" ion="ca" type="cadyn" cainf="5e-5 mM" taur="200 ms" depth="0.1 um"/>
 
     <ComponentType name="cadyn" extends="concentrationModel">
 
         <Parameter name="cainf" dimension="concentration"/>
         <Parameter name="taur" dimension="time"/>
         <Parameter name="depth" dimension="length"/>
-       
+
 
         <Constant name="Faraday" dimension="charge_per_mole" value="96485.3C_per_mol"/>
         <Constant name="AREA_SCALE" dimension="area" value="1m2"/>
@@ -27,7 +27,7 @@
             <StateVariable name="extConcentration" exposure="extConcentration" dimension="concentration"/>
 
             <DerivedVariable name="currDensCa" dimension="currentDensity" value="iCa / surfaceArea"/>
-            
+
 
             <TimeDerivative variable="concentration" value="(currDensCa/(2*Faraday*depth)) / 18 - ((concentration - cainf) / taur * 11)"/>
 

@@ -2,11 +2,11 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="iar">
 
     <ionChannel id="iar" conductance="10pS" type="ionChannelHH" species="other">
-        
+
         <gate id="h" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="36degC"/>
-            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-73mV" scale="-7.4mV"/>
             <timeCourse type="iar_h_tau"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-73mV" scale="-7.4mV"/>
         </gate>
 
     </ionChannel>
@@ -25,5 +25,5 @@
         </Dynamics>
 
     </ComponentType>
-    
+
 </neuroml>

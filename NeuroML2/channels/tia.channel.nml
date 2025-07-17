@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="ia">
-    
+
     <ionChannel id="ia" conductance="10pS" type="ionChannelHH" species="k">
-        
+
         <gate id="m" type="gateHHtauInf" instances="4">
             <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="23.5degC"/>
-            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-60mV" scale="8.5mV"/>
             <timeCourse type="ia_m_tau"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-60mV" scale="8.5mV"/>
         </gate>
 
         <gate id="h" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="23.5degC"/>
-            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-78mV" scale="-6mV"/>
             <timeCourse type="ia_h_tau"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-78mV" scale="-6mV"/>
         </gate>
     </ionChannel>
 

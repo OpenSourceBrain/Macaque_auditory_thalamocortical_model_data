@@ -4,10 +4,10 @@
     <ionChannel id="hin" conductance="10pS" type="ionChannelHH" species="hi">
 
         <gate id="n" type="gateHHtauInf" instances="1">
-            <steadyState type="hin_n_inf"/>
             <timeCourse type="hin_n_tau"/>
+            <steadyState type="hin_n_inf"/>
         </gate>
-                            
+
     </ionChannel>
 
 

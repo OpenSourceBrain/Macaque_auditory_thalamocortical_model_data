@@ -2,10 +2,10 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="kBK">
 
     <ionChannel id="kBK" conductance="10pS" type="ionChannelHH" species="k">
-        
+
         <gate id="p" type="gateHHtauInf" instances="1">
-            <steadyState type="kBK_p_inf"/>
             <timeCourse type="fixedTimeCourse" tau="1 ms"/>
+            <steadyState type="kBK_p_inf"/>
         </gate>
 
     </ionChannel>
@@ -30,7 +30,7 @@
                 <Case condition="ca_conc .lt. 1e-18" value="0"/>
                 <Case value="(1 / ( 1 + caPh / (100 * ca_conc))) / (1 + exp(((caVhmin + ( (caVhmax - caVhmin ) / ( 1 + ((caVhh/(100 * ca_conc))^caVhk)) )) - V)/17))"/>
             </ConditionalDerivedVariable>
-           
+
         </Dynamics>
 
     </ComponentType>

@@ -16,7 +16,7 @@
             <reverseRate type="naf2_h_beta_rate"/>
             <timeCourse type="naf2_h_tau"/>
         </gate>
-                            
+
     </ionChannel>
 
 
@@ -35,7 +35,7 @@
 
 
         <Dynamics>
-            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="r" exposure="r" dimension="per_time" value="mbaserate * exp((V - (mvhalf+vrest)) * mvalence * mgamma * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
         </Dynamics>
 
@@ -54,7 +54,7 @@
         <Constant name="Celsius" dimension="none" value="36"/>
 
         <Dynamics>
-            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="r" exposure="r" dimension="per_time" value="mbaserate * exp((-V + (mvhalf+vrest)) * mvalence * (1 - mgamma) * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
         </Dynamics>
 
@@ -63,14 +63,14 @@
     <ComponentType name="naf2_m_tau" extends="baseVoltageDepTime">
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="mbasetau" dimension="none" value="0.02"/>
         <Requirement name="alpha" dimension="per_time"/>
         <Requirement name="beta" dimension="per_time"/>
-        <Constant name="mbasetau" dimension="none" value="0.02"/>
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
-            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>      
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
                 <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
@@ -97,7 +97,7 @@
 
 
         <Dynamics>
-            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="r" exposure="r" dimension="per_time" value="hbaserate * exp((v - (hvhalf+vrest)) * hvalence * hgamma * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
         </Dynamics>
 
@@ -118,7 +118,7 @@
 
 
         <Dynamics>
-            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>        
+            <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="r" exposure="r" dimension="per_time" value="hbaserate * exp((-v + (hvhalf+vrest)) * hvalence * (1 - hgamma) * (96489.0 * 0.001 / 8.31441 / (Celsius + 273.15))) / TIME_SCALE"/>
         </Dynamics>
 
@@ -128,14 +128,14 @@
     <ComponentType name="naf2_h_tau" extends="baseVoltageDepTime">
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="hbasetau" dimension="none" value="0.25"/>
         <Requirement name="alpha" dimension="per_time"/>
         <Requirement name="beta" dimension="per_time"/>
-        <Constant name="hbasetau" dimension="none" value="0.25"/>
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="ALPHA" dimension="none" value="alpha * TIME_SCALE"/>
-            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>      
+            <DerivedVariable name="BETA" dimension="none" value="beta * TIME_SCALE"/>
 
             <ConditionalDerivedVariable name="t" exposure="t" dimension="time">
                 <Case condition="(ALPHA + BETA) .eq. 0" value="( 0 ) * TIME_SCALE"/>
