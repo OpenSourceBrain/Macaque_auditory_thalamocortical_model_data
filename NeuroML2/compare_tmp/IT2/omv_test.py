@@ -32,7 +32,7 @@ def step_current_omv():
     netdoc = read_neuroml2_file("IT2_reduced_cell.nml")
     IT2_reduced_cell = netdoc.cells[0]
     net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
-    pop = net.add(neuroml.Population, id="IT2_reduced_cellpop", component=IT2_reduced_cell.id, size=1)
+    pop = net.add(neuroml.Population, id="IT2_reduced_cell_pop", component=IT2_reduced_cell.id, size=1)
 
     # should be same as test_kc.py
     pg = netdoc.add(
