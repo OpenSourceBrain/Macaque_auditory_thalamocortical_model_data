@@ -9,10 +9,8 @@
           Yale University and UCL 
   </notes>
 
-  <include href="cal_mig.channel.nml"></include>
   <include href="cadad.channel.nml"></include>
-  <include href="pas.channel.nml"></include>
-  <include href="h_kole.channel.nml"></include>
+  <include href="kap_BS.channel.nml"></include>
 
   <cell id="IT2_reduced_cell_0_0">
     <notes>Cell: IT2_reduced_cell_0_0 exported from NEURON ModelView</notes>
@@ -174,6 +172,14 @@
         <include segmentGroup = "soma"/>
       </segmentGroup>
 
+      <segmentGroup id="kap_group"> 
+        <include segmentGroup = "Bdend"/>
+        <include segmentGroup = "Adend1"/>
+        <include segmentGroup = "Adend2"/>
+        <include segmentGroup = "Adend3"/>
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
       <segmentGroup id="somatic"> 
         <include segmentGroup = "soma"/>
       </segmentGroup>
@@ -191,16 +197,8 @@
 
     <biophysicalProperties id="biophys">
         <membraneProperties>
-
-            <channelDensityNernst id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" segmentGroup="cal_group" ion="ca"/>
-
-            <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.3176340367e-05 S_per_cm2"/>
-            
-            <channelDensity ionChannel="pas" id="pas_apic" segmentGroup="apic" ion="non_specific"  erev="-87.1335623948 mV" condDensity="7.199592136286027e-05 S_per_cm2"/>
-            <channelDensity ionChannel="pas" id="pas_Bdend" segmentGroup="proximal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00014147647761414165 S_per_cm2"/>
-            <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00035435694659685776 S_per_cm2"/>
-            <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
-            
+            <channelDensity ionChannel="kap" id="kap_dend_soma" segmentGroup="kap_group" ion="k"  erev="-104 mV" condDensity="0.0240195239098 S_per_cm2"/>
+            <channelDensity ionChannel="kap" id="kap_axon" segmentGroup="axonal" ion="k"  erev="-104 mV" condDensity="0.120097619549 S_per_cm2"/>
 
           <spikeThresh value="5mV"/>
           <specificCapacitance segmentGroup="apic" value="2.74242941886 uF_per_cm2"/>
