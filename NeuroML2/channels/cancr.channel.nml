@@ -3,7 +3,7 @@
 
     <ionChannel id="cancr" conductance="10pS" type="ionChannelHH" species="ca">
 
-        <ConductanceScalingCaDependent type="canin_scale"/>
+        <ConductanceScalingCaDependent type="cancr_scale"/>
 
         <gate id="m" type="gateHHtauInf" instances="2">
             <timeCourse type="fixedTimeCourse" tau="1.5 ms"/>
