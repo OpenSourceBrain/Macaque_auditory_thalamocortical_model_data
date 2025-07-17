@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="hd">
-    
+
     <ionChannel id="hd" conductance="10pS" type="ionChannelHH" species="non_specific">
-        
+
         <gate id="l" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="4.5" experimentalTemp="33degC"/>
-            <steadyState type="hd_inf"/>
             <timeCourse type="hd_tau"/>
+            <steadyState type="hd_inf"/>
         </gate>
 
     </ionChannel>
@@ -14,12 +14,12 @@
     <ComponentType name="hd_tau" extends="baseVoltageDepTime">
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
-        <Constant name="qtl" dimension="none" value="1"/> 
-        <Constant name="a0t" dimension="none" value="0.0046"/> 
-        <Constant name="zetat" dimension="none" value="2.2"/> 
-        <Constant name="gmt" dimension="none" value=".4"/> 
+        <Constant name="qtl" dimension="none" value="1"/>
+        <Constant name="a0t" dimension="none" value="0.0046"/>
+        <Constant name="zetat" dimension="none" value="2.2"/>
+        <Constant name="gmt" dimension="none" value=".4"/>
 
-        <Constant name="vhalft" dimension="none" value="-75"/> 
+        <Constant name="vhalft" dimension="none" value="-75"/>
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
@@ -31,8 +31,8 @@
 
     <ComponentType name="hd_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
-        <Constant name="zetal" dimension="none" value="4"/> 
-        <Constant name="vhalfl" dimension="none" value="-90"/> 
+        <Constant name="zetal" dimension="none" value="4"/>
+        <Constant name="vhalfl" dimension="none" value="-90"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="x" exposure="x" dimension="none" value="1/(1+ exp(0.0378*zetal*(V-vhalfl)))"/>
@@ -41,4 +41,4 @@
     </ComponentType>
 
 </neuroml>
-                            
+

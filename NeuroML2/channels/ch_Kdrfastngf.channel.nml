@@ -7,7 +7,7 @@
             <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="34degC"/>
             <forwardRate type="ch_Kdrfastngf_alpha_rate"/>
             <reverseRate type="ch_Kdrfastngf_beta_rate"/>
-        </gate>                            
+        </gate>
     </ionChannel>
 
     <ComponentType name="ch_Kdrfastngf_beta_rate" extends="baseVoltageDepRate">
@@ -18,7 +18,7 @@
 
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
-            
+
             <DerivedVariable name="r" exposure="r" dimension="per_time" value="(slope6/exp((V+65-22-offset6)/40)) / TIME_SCALE"/>
         </Dynamics>
 

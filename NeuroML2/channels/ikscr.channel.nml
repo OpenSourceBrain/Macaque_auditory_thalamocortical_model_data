@@ -4,15 +4,15 @@
     <ionChannel id="IKscr" conductance="10pS" type="ionChannelHH" species="k">
 
         <gate id="a" type="gateHHtauInf" instances="1">
-            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-34mV" scale="6.5mV"/>
             <timeCourse type="fixedTimeCourse" tau="10 ms"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-34mV" scale="6.5mV"/>
         </gate>
 
         <gate id="b" type="gateHHtauInf" instances="1">
-            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-65mV" scale="-6.6mV"/>
             <timeCourse type="IKscr_b_tau"/>
+            <steadyState type="HHSigmoidVariable" rate="1" midpoint="-65mV" scale="-6.6mV"/>
         </gate>
-                            
+
     </ionChannel>
 
     <ComponentType name="IKscr_b_tau" extends="baseVoltageDepTime">

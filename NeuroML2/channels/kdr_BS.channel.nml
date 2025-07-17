@@ -5,17 +5,17 @@
 
         <gate id="n" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="1" experimentalTemp="24degC"/>
-            <steadyState type="kdr_n_inf"/>
             <timeCourse type="kdr_n_tau"/>
+            <steadyState type="kdr_n_inf"/>
         </gate>
-                            
+
     </ionChannel>
 
 
     <ComponentType name="kdr_n_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="Celsius" dimension="none" value="24"/>
-        
+
         <Constant name="zetan" dimension="none" value="-3"/>
         <Constant name="sh" dimension="none" value="0"/>
         <Constant name="vhalfn" dimension="none" value="13"/>
@@ -36,7 +36,7 @@
         <Constant name="nmax" dimension="time" value="20 ms"/>
 
         <Constant name="Celsius" dimension="none" value="24"/>
-        
+
         <Constant name="zetan" dimension="none" value="-3"/>
         <Constant name="sh" dimension="none" value="0"/>
         <Constant name="gmn" dimension="none" value="0.7"/>

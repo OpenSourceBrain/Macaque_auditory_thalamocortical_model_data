@@ -5,23 +5,23 @@
 
         <gate id="n" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="24degC"/>
-            <steadyState type="kapcb_n_inf"/>
             <timeCourse type="kapcb_n_tau"/>
+            <steadyState type="kapcb_n_inf"/>
         </gate>
 
         <gate id="l" type="gateHHtauInf" instances="1">
             <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="24degC"/>
-            <steadyState type="kapcb_l_inf"/>
             <timeCourse type="fixedTimeCourse" tau="12 ms"/>
+            <steadyState type="kapcb_l_inf"/>
         </gate>
-                            
+
     </ionChannel>
 
 
     <ComponentType name="kapcb_n_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="Celsius" dimension="none" value="24"/>
-        
+
         <Constant name="zetan" dimension="none" value="-1.5"/>
         <Constant name="pw" dimension="none" value="-1"/>
         <Constant name="tq" dimension="none" value="-40"/>
@@ -47,7 +47,7 @@
         <Constant name="nmin" dimension="time" value="0.1 ms"/>
 
         <Constant name="Celsius" dimension="none" value="24"/>
-        
+
         <Constant name="zetan" dimension="none" value="-1.5"/>
         <Constant name="pw" dimension="none" value="-1"/>
         <Constant name="tq" dimension="none" value="-40"/>
@@ -78,7 +78,7 @@
     <ComponentType name="kapcb_l_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="Celsius" dimension="none" value="24"/>
-        
+
         <Constant name="zetal" dimension="none" value="3"/>
         <Constant name="sh" dimension="none" value="0"/>
         <Constant name="vhalfl" dimension="none" value="-56"/>

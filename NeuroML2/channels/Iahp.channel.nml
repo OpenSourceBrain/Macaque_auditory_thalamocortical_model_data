@@ -2,11 +2,11 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="iahp">
 
     <ionChannel id="iahp" conductance="10pS" type="ionChannelHH" species="k2">
-        
+
         <gate id="m" type="gateHHtauInf" instances="2">
             <q10Settings type="q10ExpTemp" q10Factor="3" experimentalTemp="22degC"/>
-            <steadyState type="iahp_m_inf"/>
             <timeCourse type="iahp_m_tau"/>
+            <steadyState type="iahp_m_inf"/>
         </gate>
 
     </ionChannel>
@@ -18,7 +18,7 @@
         <Dynamics>
             <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
             <DerivedVariable name="x" exposure="x" dimension="none" value="car / ( 1 + car )"/>
-           
+
         </Dynamics>
 
     </ComponentType>
@@ -42,5 +42,5 @@
         </Dynamics>
 
     </ComponentType>
-    
+
 </neuroml>

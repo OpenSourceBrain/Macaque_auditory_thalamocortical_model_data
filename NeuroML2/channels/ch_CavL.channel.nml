@@ -3,19 +3,20 @@
     <notes> GHK!!!</notes>
     <ionChannel id="ch_CavL" conductance="10pS" type="ionChannelHH" species="ca">
         <ConductanceScalingCaDependent type="ch_CavL_scale"/>
+
         <gate id="m" type="gateHHrates" instances="2">
             <forwardRate type="HHExpLinearRate" rate="156.9per_ms" scale="10mV" midpoint="81.5mV"/>
             <reverseRate type="HHExpRate" rate="0.29per_ms" scale="-10.86mV" midpoint="0mV"/>
-        </gate>   
+        </gate>
 
     </ionChannel>
 
 
     <ComponentType name="ch_CavL_scale" extends="baseConductanceScaling">
-        <Requirement name="caConc" dimension="concentration"/>
         <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
         <Constant name="ki" dimension="none" value="0.001"/>
-        
+        <Requirement name="caConc" dimension="concentration"/>
+
         <Dynamics>
             <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
             <DerivedVariable name="factor" exposure="factor" dimension="none" value="ki / (ki + ca_conc)"/>

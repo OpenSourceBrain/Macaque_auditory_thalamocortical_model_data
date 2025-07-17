@@ -1,4 +1,5 @@
 # Script for running automated tests on OSB, see https://github.com/OpenSourceBrain/osb-model-validation
-# exclude a few that use new component types and are so not valid against the schema
-target: "*.channel.nml"
+# - exclude a few that use new component types and are so not valid against the schema
+# - exclude new concentration models
+target: "ch_CavN.channel.nml; ch_KCaS.channel.nml; ch_Kdrfastngf.channel.nml; ch_KvAngf.channel.nml; ch_KvCaB.channel.nml; ch_Navngf.channel.nml; k*.channel.nml; hin.channel.nml; h_kole.channel.nml; h_migliore.channel.nml; I*channel.nml; i*channel.nml; n*channel.nml; N*channel.nml; p*channel.nml; t*channel.nml"
 engine: jNeuroML_validate
