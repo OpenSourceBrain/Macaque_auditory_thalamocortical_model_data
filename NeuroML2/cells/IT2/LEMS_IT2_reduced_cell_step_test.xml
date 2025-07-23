@@ -28,16 +28,16 @@
     <Include file="nax_BS.channel.nml"/>
 
     <Simulation id="IT2_reduced_cell_step_test" length="2000.0ms" step="0.01ms" target="IT2_reduced_cell_net" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
-        <Display id="DispPop__IT2_reduced_cellpop" title="Membrane potentials of cells in IT2_reduced_cellpop" timeScale="1ms" xmin="-200.0" xmax="2200.0" ymin="-90" ymax="50">
-            <Line id="IT2_reduced_cellpop[0]: v" quantity="IT2_reduced_cellpop[0]/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+        <Display id="DispPop__IT2_reduced_cell_pop" title="Membrane potentials of cells in IT2_reduced_cell_pop" timeScale="1ms" xmin="-200.0" xmax="2200.0" ymin="-90" ymax="50">
+            <Line id="IT2_reduced_cell_pop[0]: v" quantity="IT2_reduced_cell_pop[0]/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
         </Display>
 
-        <OutputFile id="Volts_file__IT2_reduced_cellpop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat">
-            <OutputColumn id="v_IT2_reduced_cellpop_0__v" quantity="IT2_reduced_cellpop[0]/v"/>
+        <OutputFile id="Volts_file__IT2_reduced_cell_pop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat">
+            <OutputColumn id="v_IT2_reduced_cell_pop_0__v" quantity="IT2_reduced_cell_pop[0]/v"/>
         </OutputFile>
 
-        <EventOutputFile id="Spikes_file__IT2_reduced_cellpop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes" format="ID_TIME">
-            <EventSelection id="0" select="IT2_reduced_cellpop[0]" eventPort="spike"/>
+        <EventOutputFile id="Spikes_file__IT2_reduced_cell_pop" fileName="IT2_reduced_cell_step_test.IT2_reduced_cell_pop.spikes" format="ID_TIME">
+            <EventSelection id="0" select="IT2_reduced_cell_pop[0]" eventPort="spike"/>
         </EventOutputFile>
 
     </Simulation>

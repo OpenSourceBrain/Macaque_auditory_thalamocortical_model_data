@@ -1,0 +1,15 @@
+target: LEMS_IT2_reduced_cell_step_test.xml
+engine: jNeuroML_NEURON
+mep: .test.IT2_reduced_cell.mep
+experiments:
+  stepIT2_reduced_cell:
+    observables:
+      spike times:
+        file:
+          path: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat
+          columns: [0,1]
+          scaling: [1000,1000]
+        spike detection:
+          method: threshold
+          threshold: -10.
+        tolerance: 0.03

@@ -186,15 +186,11 @@
             </intracellularProperties>
         </biophysicalProperties>
     </cell>
-    <pulseGenerator id="pg1" delay="200ms" duration="300ms" amplitude="300pA"/>
-    <pulseGenerator id="pg2" delay="1000ms" duration="300ms" amplitude="300pA"/>
+    <pulseGenerator id="pg1" delay="200ms" duration="1600ms" amplitude="300pA"/>
     <network id="IT2_reduced_cell_net" type="networkWithTemperature" temperature="34 degC">
-        <population id="IT2_reduced_cellpop" component="IT2_reduced_cell_0_0" size="1"/>
-        <inputList id="input1_list" population="IT2_reduced_cellpop" component="pg1">
-            <input id="0" target="../IT2_reduced_cellpop[0]" destination="synapses" segmentId="0"/>
-        </inputList>
-        <inputList id="input2_list" population="IT2_reduced_cellpop" component="pg2">
-            <input id="0" target="../IT2_reduced_cellpop[0]" destination="synapses" segmentId="0"/>
+        <population id="IT2_reduced_cell_pop" component="IT2_reduced_cell_0_0" size="1"/>
+        <inputList id="input1_list" population="IT2_reduced_cell_pop" component="pg1">
+            <input id="0" target="../IT2_reduced_cell_pop[0]" destination="synapses" segmentId="0"/>
         </inputList>
     </network>
 </neuroml>

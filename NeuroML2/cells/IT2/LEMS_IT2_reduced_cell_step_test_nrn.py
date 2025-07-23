@@ -21,8 +21,7 @@ Components:
     kdr_soma (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     nax (Type: ionChannelHH:  conductance=1.0E-11 (SI conductance))
     IT2_reduced_cell_0_0 (Type: cell)
-    pg1 (Type: pulseGenerator:  delay=0.2 (SI time) duration=0.3 (SI time) amplitude=3.0E-10 (SI current))
-    pg2 (Type: pulseGenerator:  delay=1.0 (SI time) duration=0.3 (SI time) amplitude=3.0E-10 (SI current))
+    pg1 (Type: pulseGenerator:  delay=0.2 (SI time) duration=1.6 (SI time) amplitude=3.0E-10 (SI current))
     IT2_reduced_cell_net (Type: networkWithTemperature:  temperature=307.15 (SI temperature))
     IT2_reduced_cell_step_test (Type: Simulation:  length=2.0 (SI time) step=1.0E-5 (SI time))
 
@@ -42,7 +41,9 @@ import sys
 
 import hashlib
 h = neuron.h
-h.load_file("nrngui.hoc")
+h.load_file("stdlib.hoc")
+
+h.load_file("stdgui.hoc")
 
 h("objref p")
 h("p = new PythonObject()")
@@ -70,8 +71,8 @@ class NeuronSimulation():
         # Temperature used for network: 307.15 K
         h.celsius = 307.15 - 273.15
 
-        # ######################   Population: IT2_reduced_cellpop
-        print("Population IT2_reduced_cellpop contains 1 instance(s) of component: IT2_reduced_cell_0_0 of type: cell")
+        # ######################   Population: IT2_reduced_cell_pop
+        print("Population IT2_reduced_cell_pop contains 1 instance(s) of component: IT2_reduced_cell_0_0 of type: cell")
 
         print("Setting the default initial concentrations for ca (used in IT2_reduced_cell_0_0) to 5.0E-5 mM (internal), 2.0 mM (external)")
         h("cai0_ca_ion = 5.0E-5")
@@ -82,37 +83,32 @@ class NeuronSimulation():
         h("cao0_ca_ion = 2.0")
 
         h.load_file("IT2_reduced_cell_0_0.hoc")
-        a_IT2_reduced_cellpop = []
-        h("{ n_IT2_reduced_cellpop = 1 }")
-        h("objectvar a_IT2_reduced_cellpop[n_IT2_reduced_cellpop]")
-        for i in range(int(h.n_IT2_reduced_cellpop)):
-            h("a_IT2_reduced_cellpop[%i] = new IT2_reduced_cell_0_0()"%i)
-            h("access a_IT2_reduced_cellpop[%i].soma"%i)
+        a_IT2_reduced_cell_pop = []
+        h("{ n_IT2_reduced_cell_pop = 1 }")
+        h("objectvar a_IT2_reduced_cell_pop[n_IT2_reduced_cell_pop]")
+        for i in range(int(h.n_IT2_reduced_cell_pop)):
+            h("a_IT2_reduced_cell_pop[%i] = new IT2_reduced_cell_0_0()"%i)
+            h("access a_IT2_reduced_cell_pop[%i].soma"%i)
 
             self.next_global_id+=1
 
 
-        h("proc initialiseV_IT2_reduced_cellpop() { for i = 0, n_IT2_reduced_cellpop-1 { a_IT2_reduced_cellpop[i].set_initial_v() } }")
-        h("objref fih_IT2_reduced_cellpop")
-        h('{fih_IT2_reduced_cellpop = new FInitializeHandler(0, "initialiseV_IT2_reduced_cellpop()")}')
+        h("proc initialiseV_IT2_reduced_cell_pop() { for i = 0, n_IT2_reduced_cell_pop-1 { a_IT2_reduced_cell_pop[i].set_initial_v() } }")
+        h("objref fih_IT2_reduced_cell_pop")
+        h('{fih_IT2_reduced_cell_pop = new FInitializeHandler(0, "initialiseV_IT2_reduced_cell_pop()")}')
 
-        h("proc initialiseIons_IT2_reduced_cellpop() { for i = 0, n_IT2_reduced_cellpop-1 { a_IT2_reduced_cellpop[i].set_initial_ion_properties() } }")
-        h("objref fih_ion_IT2_reduced_cellpop")
-        h('{fih_ion_IT2_reduced_cellpop = new FInitializeHandler(1, "initialiseIons_IT2_reduced_cellpop()")}')
+        h("proc initialiseIons_IT2_reduced_cell_pop() { for i = 0, n_IT2_reduced_cell_pop-1 { a_IT2_reduced_cell_pop[i].set_initial_ion_properties() } }")
+        h("objref fih_ion_IT2_reduced_cell_pop")
+        h('{fih_ion_IT2_reduced_cell_pop = new FInitializeHandler(1, "initialiseIons_IT2_reduced_cell_pop()")}')
 
-        print("Processing 2 input lists")
+        print("Processing 1 input lists")
 
         # ######################   Input List: input1_list
         # Adding single input: Component(id=0 type=input)
         h("objref input1_list_0")
-        h("a_IT2_reduced_cellpop[0].soma { input1_list_0 = new pg1(0.5) } ")
+        h("a_IT2_reduced_cell_pop[0].soma { input1_list_0 = new pg1(0.5) } ")
 
-        # ######################   Input List: input2_list
-        # Adding single input: Component(id=0 type=input)
-        h("objref input2_list_0")
-        h("a_IT2_reduced_cellpop[0].soma { input2_list_0 = new pg2(0.5) } ")
-
-        print("Finished processing 2 input lists")
+        print("Finished processing 1 input lists")
 
         trec = h.Vector()
         trec.record(h._ref_t)
@@ -128,24 +124,25 @@ class NeuronSimulation():
             h.dt = dt
             h.steps_per_ms = 1/h.dt
 
-        # ######################   Display: self.display_DispPop__IT2_reduced_cellpop
-        self.display_DispPop__IT2_reduced_cellpop = h.Graph(0)
-        self.display_DispPop__IT2_reduced_cellpop.size(0,h.tstop,-80.0,50.0)
-        self.display_DispPop__IT2_reduced_cellpop.view(0, -80.0, h.tstop, 130.0, 80, 330, 330, 250)
-        h.graphList[0].append(self.display_DispPop__IT2_reduced_cellpop)
-        # Line, plotting: IT2_reduced_cellpop[0]/v
-        self.display_DispPop__IT2_reduced_cellpop.addexpr("a_IT2_reduced_cellpop[0].soma.v(0.5)", "a_IT2_reduced_cellpop[0].soma.v(0.5)", 1, 1, 0.8, 0.9, 2)
 
 
-
-        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat (Volts_file__IT2_reduced_cellpop)
-        # Column: IT2_reduced_cellpop[0]/v
-        h(' objectvar v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop ')
-        h(' { v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop = new Vector() } ')
-        h(' { v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop.record(&a_IT2_reduced_cellpop[0].soma.v(0.5)) } ')
+        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat (Volts_file__IT2_reduced_cell_pop)
+        # Column: IT2_reduced_cell_pop[0]/v
+        h(' objectvar v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop ')
+        h(' { v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop = new Vector() } ')
+        h(' { v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop.record(&a_IT2_reduced_cell_pop[0].soma.v(0.5)) } ')
         if self.abs_tol is None or self.rel_tol is None:
 
-            h.v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop.resize((h.tstop * h.steps_per_ms) + 1)
+            h.v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop.resize((h.tstop * h.steps_per_ms) + 1)
+
+        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.spikes (Spikes_file__IT2_reduced_cell_pop)
+        h(' objectvar spiketimes_Spikes_file__IT2_reduced_cell_pop, t_spiketimes_Spikes_file__IT2_reduced_cell_pop ')
+        h(' { spiketimes_Spikes_file__IT2_reduced_cell_pop = new Vector() } ')
+        h(' { t_spiketimes_Spikes_file__IT2_reduced_cell_pop = new Vector() } ')
+        h(' objref netConnSpike_Spikes_file__IT2_reduced_cell_pop, nil ')
+        # Column: IT2_reduced_cell_pop[0] (0) a_IT2_reduced_cell_pop[0].soma
+        h(' a_IT2_reduced_cell_pop[0].soma { netConnSpike_Spikes_file__IT2_reduced_cell_pop = new NetCon(&v(0.5), nil, 5.0, 0, 1) } ')
+        h(' { netConnSpike_Spikes_file__IT2_reduced_cell_pop.record(t_spiketimes_Spikes_file__IT2_reduced_cell_pop, spiketimes_Spikes_file__IT2_reduced_cell_pop, 0) } ')
 
         # ######################   File to save: time.dat (time)
         # Column: time
@@ -156,15 +153,6 @@ class NeuronSimulation():
 
             h.v_time.resize((h.tstop * h.steps_per_ms) + 1)
 
-        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes (Spikes_file__IT2_reduced_cellpop)
-        h(' objectvar spiketimes_Spikes_file__IT2_reduced_cellpop, t_spiketimes_Spikes_file__IT2_reduced_cellpop ')
-        h(' { spiketimes_Spikes_file__IT2_reduced_cellpop = new Vector() } ')
-        h(' { t_spiketimes_Spikes_file__IT2_reduced_cellpop = new Vector() } ')
-        h(' objref netConnSpike_Spikes_file__IT2_reduced_cellpop, nil ')
-        # Column: IT2_reduced_cellpop[0] (0) a_IT2_reduced_cellpop[0].soma
-        h(' a_IT2_reduced_cellpop[0].soma { netConnSpike_Spikes_file__IT2_reduced_cellpop = new NetCon(&v(0.5), nil, 5.0, 0, 1) } ')
-        h(' { netConnSpike_Spikes_file__IT2_reduced_cellpop.record(t_spiketimes_Spikes_file__IT2_reduced_cellpop, spiketimes_Spikes_file__IT2_reduced_cellpop, 0) } ')
-
         self.initialized = False
 
         self.sim_end = -1 # will be overwritten
@@ -172,9 +160,6 @@ class NeuronSimulation():
         setup_end = time.time()
         self.setup_time = setup_end - self.setup_start
         print("Setting up the network to simulate took %f seconds"%(self.setup_time))
-
-        h.nrncontrolmenu()
-
 
     def run(self):
 
@@ -189,7 +174,7 @@ class NeuronSimulation():
             h.run()
         except Exception as e:
             print("Exception running NEURON: %s" % (e))
-            return
+            quit()
 
 
         self.sim_end = time.time()
@@ -200,7 +185,7 @@ class NeuronSimulation():
             self.save_results()
         except Exception as e:
             print("Exception saving results of NEURON simulation: %s" % (e))
-            return
+            quit()
 
 
     def advance(self):
@@ -235,7 +220,6 @@ class NeuronSimulation():
 
         if self.sim_end < 0: self.sim_end = time.time()
 
-        self.display_DispPop__IT2_reduced_cellpop.exec_menu("View = plot")
 
         # ######################   File to save: time.dat (time). Note, saving in SI units
         py_v_time = [ t/1000 for t in h.v_time.to_python() ]  # Convert to Python list for speed...
@@ -248,34 +232,37 @@ class NeuronSimulation():
         f_time_f2.close()
         print("Saved data to: time.dat")
 
-        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat (Volts_file__IT2_reduced_cellpop). Note, saving in SI units
-        py_v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop = [ float(x  / 1000.0) for x in h.v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop.to_python() ]  # Convert to Python list for speed, variable has dim: voltage
+        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat (Volts_file__IT2_reduced_cell_pop). Note, saving in SI units
+        py_v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop = [ float(x  / 1000.0) for x in h.v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop.to_python() ]  # Convert to Python list for speed, variable has dim: voltage
 
-        f_Volts_file__IT2_reduced_cellpop_f2 = open('IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat', 'w')
+        f_Volts_file__IT2_reduced_cell_pop_f2 = open('IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat', 'w')
         num_points = len(py_v_time)  # Simulation may have been stopped before tstop...
 
         for i in range(num_points):
-            f_Volts_file__IT2_reduced_cellpop_f2.write('%e\t%e\t\n' % (py_v_time[i], py_v_v_IT2_reduced_cellpop_0__v_Volts_file__IT2_reduced_cellpop[i], ))
-        f_Volts_file__IT2_reduced_cellpop_f2.close()
-        print("Saved data to: IT2_reduced_cell_step_test.IT2_reduced_cellpop.v.dat")
+            f_Volts_file__IT2_reduced_cell_pop_f2.write('%e\t%e\t\n' % (py_v_time[i], py_v_v_IT2_reduced_cell_pop_0__v_Volts_file__IT2_reduced_cell_pop[i], ))
+        f_Volts_file__IT2_reduced_cell_pop_f2.close()
+        print("Saved data to: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat")
 
-        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes (Spikes_file__IT2_reduced_cellpop). Note, saving in SI units
+        # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.spikes (Spikes_file__IT2_reduced_cell_pop). Note, saving in SI units
 
-        f_Spikes_file__IT2_reduced_cellpop_f2 = open('IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes', 'w')
-        h(' objref netConnSpike_Spikes_file__IT2_reduced_cellpop ')
-        spike_ids = h.spiketimes_Spikes_file__IT2_reduced_cellpop.to_python()  
-        spike_times = h.t_spiketimes_Spikes_file__IT2_reduced_cellpop.to_python()
+        f_Spikes_file__IT2_reduced_cell_pop_f2 = open('IT2_reduced_cell_step_test.IT2_reduced_cell_pop.spikes', 'w')
+        h(' objref netConnSpike_Spikes_file__IT2_reduced_cell_pop ')
+        spike_ids = h.spiketimes_Spikes_file__IT2_reduced_cell_pop.to_python()  
+        spike_times = h.t_spiketimes_Spikes_file__IT2_reduced_cell_pop.to_python()
         for i, id in enumerate(spike_ids):
             # Saving in format: ID_TIME
-            f_Spikes_file__IT2_reduced_cellpop_f2.write("%i\t%s\n"%(id,spike_times[i]/1000.0))
-        f_Spikes_file__IT2_reduced_cellpop_f2.close()
-        print("Saved data to: IT2_reduced_cell_step_test.IT2_reduced_cellpop.spikes")
+            f_Spikes_file__IT2_reduced_cell_pop_f2.write("%i\t%s\n"%(id,spike_times[i]/1000.0))
+        f_Spikes_file__IT2_reduced_cell_pop_f2.close()
+        print("Saved data to: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.spikes")
 
         save_end = time.time()
         save_time = save_end - self.sim_end
         print("Finished saving results in %f seconds"%(save_time))
 
         print("Done")
+
+        quit()
+
 
 if __name__ == '__main__':
 
