@@ -1,59 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="can">
 
-    <notes>NeuroML file containing a single Channel description</notes>
-
     <ionChannel id="can" conductance="10pS" type="ionChannelHH" species="ca">
-
-        <notes>n-calcium channel
-: n-type calcium channel
-: MODELDB 126814 CA3 by Safiulina et al - http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=126814
-: by Michele Migliore
-        </notes>
-
-        <annotation>
-
-           <rdf:RDF
-              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-              xmlns:foaf="http://xmlns.com/foaf/0.1/"
-              xmlns:dc="http://purl.org/dc/elements/1.1/"
-              xmlns:dcterms="http://purl.org/dc/terms/"
-            >
-              <rdf:Description rdf:about="can">
-                <dc:title>NeuroML conversion of can channel from Macaque_auditory_thalamocortical_model</dc:title>
-                <dc:description>n-calcium channel</dc:description>
-                <dc:source>
-                  <rdf:Bag>
-                    <rdf:li rdf:resource="http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=126814"/>
-                  </rdf:Bag>
-                </dc:source>
-                <dc:creator>
-                  <rdf:Bag>
-                    <rdf:li rdf:resource="#Safiulina_et_al"/>
-                  </rdf:Bag>
-                </dc:creator>
-                <dc:contributor>
-                  <rdf:Bag>
-                    <rdf:li rdf:resource="#Hengye_Zhu"/>
-                  </rdf:Bag>
-                </dc:contributor>
-                <dcterms:created>
-                  <rdf:Description>
-                    <dcterms:W3CDTF>2025-07-24</dcterms:W3CDTF>
-                  </rdf:Description>
-                </dcterms:created>
-              </rdf:Description>
-              <rdf:Description rdf:about="#Hengye_Zhu">
-                <foaf:name>Hengye Zhu</foaf:name>
-                <dc:identifier>gluciferd at gmail.com</dc:identifier>
-              </rdf:Description>
-              <rdf:Description rdf:about="#Safiulina_et_al">
-                <foaf:name>Safiulina et al</foaf:name>
-              </rdf:Description>
-            </rdf:RDF>
-            
-        </annotation>
-
+        
         <ConductanceScalingCaDependent type="can_scale"/>
 
         <gate id="m" type="gateHHratesTau" instances="2">
@@ -69,15 +18,15 @@
             <reverseRate type="HHSigmoidRate" rate="1per_ms" scale="10mV" midpoint="39mV"/>
             <timeCourse type="can_h_tau"/>
         </gate>
-
+                            
     </ionChannel>
 
     <ComponentType name="can_m_tau" extends="baseVoltageDepTime">
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="mmin" dimension="time" value="0.2 ms"/>
-        <Constant name="a0m" dimension="none" value="0.03"/>
-        <Constant name="zetam" dimension="none" value="2"/>
+        <Constant name="a0m" dimension="none" value="0.03"/> 
+        <Constant name="zetam" dimension="none" value="2"/> 
         <Constant name="gmm" dimension="none" value="0.1"/>
         <Constant name="vhalfm" dimension="none" value="-14"/>
 
@@ -90,7 +39,7 @@
             </ConditionalDerivedVariable>
 
         </Dynamics>
-
+    
     </ComponentType>
 
     <ComponentType name="can_h_tau" extends="baseVoltageDepTime">
@@ -101,10 +50,9 @@
 
     </ComponentType>
 
-    <ComponentType name="can_scale" extends="baseConductanceScaling">
+    <ComponentType name="can_scale" extends="baseConductanceScalingCaDependent">
         <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
         <Constant name="ki" dimension="none" value="0.001"/>
-        <Requirement name="caConc" dimension="concentration"/>
         <Dynamics>
             <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
             <DerivedVariable name="factor" exposure="factor" dimension="none" value="ki / (ki + ca_conc)"/>
