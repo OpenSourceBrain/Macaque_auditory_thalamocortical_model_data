@@ -107,6 +107,7 @@
                 "parentSec": "soma",
                 "parentX": 1.0
             },
+            "threshold": 5,
             "vinit": -85.7
         },
         "Adend2": {
@@ -211,6 +212,7 @@
                 "parentSec": "Adend1",
                 "parentX": 1.0
             },
+            "threshold": 5,
             "vinit": -85.7
         },
         "Adend3": {
@@ -315,6 +317,7 @@
                 "parentSec": "Adend2",
                 "parentX": 1.0
             },
+            "threshold": 5,
             "vinit": -85.7
         },
         "Bdend": {
@@ -419,6 +422,7 @@
                 "parentSec": "soma",
                 "parentX": 0.5
             },
+            "threshold": 5,
             "vinit": -85.7
         },
         "axon": {
@@ -482,6 +486,7 @@
                 "parentSec": "soma",
                 "parentX": 0.0
             },
+            "threshold": 5,
             "vinit": -85.7
         },
         "soma": {
@@ -582,6 +587,7 @@
                 }
             },
             "topol": {},
+            "threshold": 5,
             "vinit": -85.7
         }
     }
