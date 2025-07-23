@@ -25,7 +25,7 @@ UNITS {
 
 PARAMETER {
   v (mV)
-  erev=-37  		(mV) 	:ih-reversal potential			       
+  erev=-37 		(mV) 	:ih-reversal potential			       
   gbar=0.00015 	(S/cm2)	:default Ih conductance; exponential distribution is set in Ri18init.hoc 
   q10 = 2.2
   ascale = 0.00643

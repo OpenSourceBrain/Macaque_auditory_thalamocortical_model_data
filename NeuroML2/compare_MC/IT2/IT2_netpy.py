@@ -3,7 +3,7 @@ import pprint
 
 netParams = specs.NetParams() 
 ## IT2 cell properties
-soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7}  # soma properties
+soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7, 'threshold': 5.0}  # soma properties
 soma['geom'] = {'diam': 28.2149102762, 'L': 48.4123467666, 'Ra': 70.0015514222, 'cm': 2.4998269977, 'nseg': 1, 'pt3d': []}
 soma['geom']['pt3d'].append((0, 0, 0, 28.2149102762))
 soma['geom']['pt3d'].append((0, 48.4123467666, 0, 28.2149102762))
