@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd"
+    id = "NeuroML2_file_exported_from_NEURON">
+
+  <notes> NeuroML 2 file generated from ModelView by: NEURON -- VERSION 8.2.6+ HEAD (078a34a9d+) 2024-07-24
+          Authors: Michael Hines, Sushil Kambampati and Padraig Gleeson,
+          Yale University and UCL 
+  </notes>
+
+  <cell id="HTC_reduced_cell_0_0">
+    <notes>Cell: HTC_reduced_cell_0_0 exported from NEURON ModelView</notes>
+    <morphology id="morphology">
+<!-- Section: HTC_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+      <segment id="0" name = "Seg0_soma">
+        <proximal x="0" y="0" z="0" diameter="96"/>
+        <distal x="0" y="96" z="0" diameter="96"/>
+      </segment>
+
+<!-- Section: HTC_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+
+      <segmentGroup id = "soma"  neuroLexId="sao864921383">
+         <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+        <member segment = "0"/>
+      </segmentGroup>
+
+      <segmentGroup id="all"> <!-- Replacing subset name ModelViewParmSubset_0 with all, as it contains all sections -->
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+      <segmentGroup id="OneSecGrp_SectionRef_1"> <!-- Creating a group containing a single section: soma... -->
+        <include segmentGroup = "soma"/>
+      </segmentGroup>
+
+    </morphology>
+
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+          
+            <channelDensityNernst id="cal_all" ionChannel="cal" condDensity="0.001 S_per_cm2" segmentGroup="all" ion="ca"/>
+
+            <channelDensity ionChannel="ia" id="ia_all" segmentGroup="all" ion="k" erev="-95.0 mV" condDensity="0.007 S_per_cm2"/>
+
+TODO:       <channelDensity ionChannel="ittc" id="ittc_all" segmentGroup="all" ion="ca"  erev="-104 mV" condDensity="0.002 S_per_cm2"/>
+TODO: htc
+TODO: hh2ad
+
+            <channelDensity ionChannel="kl" id="kl_all" segmentGroup="all" ion="k"  erev="-95.0 mV" condDensity="2.3e-05 S_per_cm2"/>
+            <channelDensity ionChannel="pas" id="pas_all" segmentGroup="all" ion="non_specific"  erev="-50 mV" condDensity="1.8e-05 S_per_cm2"/>
+
+            
+
+          <spikeThresh value="5mV"/>
+          <specificCapacitance segmentGroup="all" value="1.0 uF_per_cm2"/>
+          <initMembPotential segmentGroup="all" value="-70 mV"/>
+        </membraneProperties>
+          <intracellularProperties>
+              <species segmentGroup="all" ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_HTC_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
+              <resistivity value="100 ohm_cm"/>
+          </intracellularProperties>
+    </biophysicalProperties>
+
+  </cell> 
+</neuroml>
