@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="cal">
 
+    <notes>NeuroML file containing a single Channel description</notes>
+
     <ionChannel id="cal" conductance="10pS" type="ionChannelHH" species="ca">
+
+        <notes>L-calcium channel
+: L-type calcium channel with [Ca]i inactivation
+: from Jaffe, D. B., Ross, W. N., Lisman, J. E., Laser-Ross, N., Miyakawa, H., and Johnston, D. A. A model for dendritic Ca2
+: accumulation in hippocampal pyramidal neurons based on fluorescence imaging measurements. J. Neurophysiol. 71:1O65-1077 1994.
+: conduction density estimate of 50-200 pS/mu2; 0.0025 S/cm2 (5-20 channels of 10 each)
+: M. Migliore, E. Cook, D.B. Jaffe, D.A. Turner and D. Johnston, Computer simulations of morphologically reconstructed CA3
+: hippocampal neurons, J. Neurophysiol. 73, 1157-1168 (1995). 
+: adapted from http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=3263&file=\ca3_db\cal2.mod
+: this version from https://senselab.med.yale.edu/ModelDB/ShowModel.asp?model=148094&file=\kv72-R213QW-mutations\cal2.mod
+: Miceli F, Soldovieri MV, Ambrosino P, Barrese V, Migliore M, Cilio MR, Taglialatela M (2013) Genotype-phenotype
+: correlations in neonatal epilepsies caused by mutations in the voltage sensor of Kv7.2 potassium channel subunits. PNAS 110:4386-4391
+        </notes>
+
+        <annotation>
+
+            <rdf:RDF
+              xmlns:dcterms="http://purl.org/dc/terms/"
+              xmlns:dc="http://purl.org/dc/elements/1.1/"
+              xmlns:foaf="http://xmlns.com/foaf/0.1/"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+            >
+              <rdf:Description rdf:about="cal">
+                <dc:title>NeuroML conversion of cal channel from Macaque_auditory_thalamocortical_model</dc:title>
+                <dc:description>L-type calcium channel with [Ca]i inactivation</dc:description>
+                <dc:source>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://senselab.med.yale.edu/ModelDB/ShowModel.asp?model=148094&amp;file=\kv72-R213QW-mutations\cal2.mod"/>
+                  </rdf:Bag>
+                </dc:source>
+                <bqmodel:isDerivedFrom>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=3263&amp;file=\ca3_db\cal2.mod"/>
+                  </rdf:Bag>
+                </bqmodel:isDerivedFrom>
+                <bqmodel:isDescribedBy>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://www.pnas.org/doi/10.1073/pnas.1216867110"/>
+                  </rdf:Bag>
+                </bqmodel:isDescribedBy>
+                <dc:contributor>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="#Hengye_Zhu"/>
+                  </rdf:Bag>
+                </dc:contributor>
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2025-07-24</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+              <rdf:Description rdf:about="#Hengye_Zhu">
+                <foaf:name>Hengye Zhu</foaf:name>
+                <dc:identifier>gluciferd at gmail.com</dc:identifier>
+              </rdf:Description>
+            </rdf:RDF>
+
+        </annotation>
 
         <ConductanceScalingCaDependent type="cal_scale"/>
 
