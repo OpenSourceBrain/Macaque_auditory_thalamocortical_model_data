@@ -1,2 +1,5 @@
 pyNeuroML[netpyne]
+pyNeuroML[vispy]
+pyNeuroML[annotations]
 osbmodelvalidation
+numpy<2.3.0
