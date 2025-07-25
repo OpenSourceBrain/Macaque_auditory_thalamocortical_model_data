@@ -14,7 +14,6 @@ import shutil
 import neuroml
 import numpy
 import subprocess
-from neuroml.utils import component_factory
 from pyneuroml.io import write_neuroml2_file, read_neuroml2_file
 from pyneuroml.lems import generate_lems_file_for_neuroml
 from pyneuroml.runners import run_lems_with_jneuroml
@@ -163,7 +162,7 @@ def test_channel_mod(channel=None, ion=None, erev=None, gbar_var=None, gbar=None
         show_plot_already=True,
         xaxis="time (ms)",
         yaxis="v (mV)",
-        ylim=[-200, 200],
+        ylim=[-100, 0],
         save_figure_to=f"{timestamp}_test_{channel}_NEURON.png",
         title_above_plot="NEURON",
         legend_position="outer right"
@@ -354,7 +353,7 @@ def test_channel_nml(
         show_plot_already=True,
         xaxis="time (ms)",
         yaxis="v (mV)",
-        ylim=[-200, 200],
+        ylim=[-100, 0],
         save_figure_to=f"{timestamp}_test_{channel.lower()}_NML.png",
         title_above_plot="NML",
         legend_position="outer right"
