@@ -1,0 +1,32 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd" id="testcell">
+    <include href="cadad.channel.nml"/>
+    <include href="cal_mig.channel.nml"/>
+    <include href="pas.channel.nml"/>
+    <include href="CaClamp.nml"/>
+    <cell id="testcell">
+        <notes>A single compartment HH cell</notes>
+        <morphology id="morphology">
+            <segment id="0" name="soma">
+                <proximal x="0.0" y="0.0" z="0.0" diameter="5.0"/>
+                <distal x="10.0" y="0.0" z="0.0" diameter="5.0"/>
+            </segment>
+        </morphology>
+        <biophysicalProperties id="biophys">
+            <membraneProperties>
+                <channelDensity id="pas_soma" ionChannel="pas" condDensity="0.0001 S_per_cm2" erev="-86.0 mV" ion="non_specific"/>
+                <channelDensityGHK2 id="cal_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" ion="ca"/>
+                <spikeThresh value="5mV"/>
+                <specificCapacitance value="2.5 uF_per_cm2"/>
+                <initMembPotential value="-85.7mV"/>
+            </membraneProperties>
+            <intracellularProperties>
+                <resistivity value="70 ohm_cm"/>
+            </intracellularProperties>
+        </biophysicalProperties>
+    </cell>
+    <pulseGenerator id="pulseGen_0" delay="500ms" duration="1000ms" amplitude="0.0005 nA"/>
+    <network id="testnet" type="networkWithTemperature" temperature="34 degC">
+        <population id="testpop" component="testcell" size="1"/>
+        <explicitInput target="testpop[0]" input="pulseGen_0"/>
+    </network>
+</neuroml>
