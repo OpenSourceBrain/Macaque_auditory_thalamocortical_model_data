@@ -22,7 +22,7 @@ UNITS {
 PARAMETER {
   v (mV)
   celsius 	(degC)
-  gcalbar=.003 (mho/cm2)
+  gcalbar= 2.39132864454e-06 (mho/cm2)
   ki=.001 (mM)
   cai = 50.e-6 (mM)
   cao = 2 (mM)
