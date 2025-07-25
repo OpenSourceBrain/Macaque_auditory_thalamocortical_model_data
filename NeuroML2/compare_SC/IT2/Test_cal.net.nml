@@ -20,6 +20,7 @@
                 <initMembPotential value="-85.7mV"/>
             </membraneProperties>
             <intracellularProperties>
+                <species id="ca" concentrationModel="CaClamp" ion="ca" initialConcentration="5.0E-11 mol_per_cm3" initialExtConcentration="2.0E-6 mol_per_cm3"/>
                 <resistivity value="70 ohm_cm"/>
             </intracellularProperties>
         </biophysicalProperties>
