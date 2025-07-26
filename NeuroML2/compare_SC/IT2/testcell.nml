@@ -5,7 +5,7 @@
     id = "testcell">
 
     <include href="cadad.channel.nml"></include>
-    <include href="cal_mig.channel.nml"></include>
+    <include href="can_mig.channel.nml"></include>
     <include href="pas.channel.nml"></include>
     
     <include href="CaClamp.nml"/>
@@ -21,7 +21,7 @@
         <biophysicalProperties id="biophys">
             <membraneProperties>
 
-                <channelDensityGHK2 id="cal_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" ion="ca"/>
+                <channelDensityGHK2 id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" ion="ca"/>
 
                 <channelDensity ionChannel="pas" id="pas_soma" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
 

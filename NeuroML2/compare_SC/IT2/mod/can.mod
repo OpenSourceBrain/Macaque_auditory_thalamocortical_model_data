@@ -16,7 +16,7 @@ UNITS {
 PARAMETER {
 	v (mV)
 	celsius 		(degC)
-	gcanbar=.0003 (mho/cm2)
+	gcanbar=8.13137955053e-07 (mho/cm2)
 	ki=.001 (mM)
 	cai=50.e-6 (mM)
 	cao = 2  (mM)

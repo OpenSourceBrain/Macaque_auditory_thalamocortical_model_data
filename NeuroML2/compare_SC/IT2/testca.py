@@ -280,11 +280,11 @@ def test_channel_nml(
         for gate in gates:
             recorder_dict[f"{timestamp}_{gate}_nml.dat"] = []
             recorder_dict[f"{timestamp}_{gate}_nml.dat"].append(
-                f"{newpop.id}[0]/biophys/membraneProperties/cal_soma/{channel}/{gate}/q"
+                f"{newpop.id}[0]/biophys/membraneProperties/can_dend_soma/{channel}/{gate}/q"
             )
     if ca is True:
         recorder_dict[f"{timestamp}_ca_nml.dat"] = [f"{newpop.id}[0]/caConc"]
-        recorder_dict[f"{timestamp}_ca_i_nml.dat"] = [f"{newpop.id}[0]/biophys/membraneProperties/cal_soma/iDensity"]
+        recorder_dict[f"{timestamp}_ca_i_nml.dat"] = [f"{newpop.id}[0]/biophys/membraneProperties/can_dend_soma/iDensity"]
 
     generate_lems_file_for_neuroml(
         sim_id=f"testsim_{channel}",
@@ -330,7 +330,7 @@ def test_channel_nml(
             legend_position="outer right"
         )
 
-        recorded_ca_i = numpy.array(data.get(f"{newpop.id}[0]/biophys/membraneProperties/cal_soma/iDensity"))
+        recorded_ca_i = numpy.array(data.get(f"{newpop.id}[0]/biophys/membraneProperties/can_dend_soma/iDensity"))
         # match direction to NEURON
         generate_plot(
             xvalues=[recorded_time],
@@ -392,7 +392,7 @@ def test_channel_nml(
 
 if __name__ == "__main__":
     # cal
-    nrn_data = test_channel_mod(channel="cal", ion="ca", erev=None,
+    nrn_data = test_channel_mod(channel="can", ion="ca", erev=None,
                                 gbar_var=None, gbar=None, amplitude=0.0005,
                                 ca=True, ca_clamp=True)
 
@@ -401,7 +401,7 @@ if __name__ == "__main__":
     nrn_cai = nrn_data.get("ica", None)
 
     x2, data = test_channel_nml(
-        channel="cal",
+        channel="can",
         ion="ca",
         erev=None,
         gbar=None,
