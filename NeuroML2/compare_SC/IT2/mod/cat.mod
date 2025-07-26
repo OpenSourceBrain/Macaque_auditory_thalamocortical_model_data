@@ -18,7 +18,7 @@ UNITS {
 PARAMETER {
 	v (mV)
 	celsius = 25	(degC)
-	gcatbar=.003 (mho/cm2)
+	gcatbar=9.29455717585e-07 (mho/cm2)
 	cai = 50.e-6 (mM)
 	cao = 2 (mM)
 	q10 = 5
