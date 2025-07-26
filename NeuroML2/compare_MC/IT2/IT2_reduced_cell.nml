@@ -213,8 +213,8 @@
             <channelDensity ionChannel="pas" id="pas_Bdend" segmentGroup="proximal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00014147647761414165 S_per_cm2"/>
             <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00035435694659685776 S_per_cm2"/>
             <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
-            
-            <channelDensity ionChannel="ih" id="ih_dend_soma" segmentGroup="ih_group" ion="hcn" erev="-37.0 mV" condDensity="3.3176340367e-05 S_per_cm2"/>
+
+            <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.45651933019e-05 S_per_cm2"/>
                     
           <spikeThresh value="5mV"/>
           <specificCapacitance segmentGroup="apic" value="2.74242941886 uF_per_cm2"/>
