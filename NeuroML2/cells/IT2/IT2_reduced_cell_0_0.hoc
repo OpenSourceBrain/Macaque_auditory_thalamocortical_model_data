@@ -210,21 +210,21 @@
     "ion" : "ca",
     "group" : "can_group",
     "condDens" : "8.131379E-7",
-    "erev" : "calculated_by_Nernst_equation"
+    "erev" : "calculated_by_GHK2_equation"
   }, {
     "id" : "cat_dend_soma",
     "ionChannel" : "cat",
     "ion" : "ca",
     "group" : "cat_group",
     "condDens" : "9.294557E-7",
-    "erev" : "calculated_by_Nernst_equation"
+    "erev" : "calculated_by_GHK2_equation"
   }, {
     "id" : "cal_dend_soma",
     "ionChannel" : "cal",
     "ion" : "ca",
     "group" : "cal_group",
     "condDens" : "2.3913285E-6",
-    "erev" : "calculated_by_Nernst_equation"
+    "erev" : "calculated_by_GHK2_equation"
   } ],
   "species" : [ {
     "id" : "ca",
@@ -552,17 +552,17 @@ proc biophys() {
     forsec can_group {
         insert can
         gmax_can = 8.131379E-7  // units: S cm-2
-        // erev is calculated by Nernst equation
+        // erev is calculated by GHK2 equation
     }
     forsec cat_group {
         insert cat
         gmax_cat = 9.294557E-7  // units: S cm-2
-        // erev is calculated by Nernst equation
+        // erev is calculated by GHK2 equation
     }
     forsec cal_group {
         insert cal
         gmax_cal = 2.3913285E-6  // units: S cm-2
-        // erev is calculated by Nernst equation
+        // erev is calculated by GHK2 equation
     }
 
     // Concentration models for species

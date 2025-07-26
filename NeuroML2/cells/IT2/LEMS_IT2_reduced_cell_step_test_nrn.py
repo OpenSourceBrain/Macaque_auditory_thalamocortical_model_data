@@ -41,9 +41,7 @@ import sys
 
 import hashlib
 h = neuron.h
-h.load_file("stdlib.hoc")
-
-h.load_file("stdgui.hoc")
+h.load_file("nrngui.hoc")
 
 h("objref p")
 h("p = new PythonObject()")
@@ -124,6 +122,14 @@ class NeuronSimulation():
             h.dt = dt
             h.steps_per_ms = 1/h.dt
 
+        # ######################   Display: self.display_DispPop__IT2_reduced_cell_pop
+        self.display_DispPop__IT2_reduced_cell_pop = h.Graph(0)
+        self.display_DispPop__IT2_reduced_cell_pop.size(0,h.tstop,-80.0,50.0)
+        self.display_DispPop__IT2_reduced_cell_pop.view(0, -80.0, h.tstop, 130.0, 80, 330, 330, 250)
+        h.graphList[0].append(self.display_DispPop__IT2_reduced_cell_pop)
+        # Line, plotting: IT2_reduced_cell_pop[0]/v
+        self.display_DispPop__IT2_reduced_cell_pop.addexpr("a_IT2_reduced_cell_pop[0].soma.v(0.5)", "a_IT2_reduced_cell_pop[0].soma.v(0.5)", 1, 1, 0.8, 0.9, 2)
+
 
 
         # ######################   File to save: IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat (Volts_file__IT2_reduced_cell_pop)
@@ -161,6 +167,9 @@ class NeuronSimulation():
         self.setup_time = setup_end - self.setup_start
         print("Setting up the network to simulate took %f seconds"%(self.setup_time))
 
+        h.nrncontrolmenu()
+
+
     def run(self):
 
         self.initialized = True
@@ -174,7 +183,7 @@ class NeuronSimulation():
             h.run()
         except Exception as e:
             print("Exception running NEURON: %s" % (e))
-            quit()
+            return
 
 
         self.sim_end = time.time()
@@ -185,7 +194,7 @@ class NeuronSimulation():
             self.save_results()
         except Exception as e:
             print("Exception saving results of NEURON simulation: %s" % (e))
-            quit()
+            return
 
 
     def advance(self):
@@ -220,6 +229,7 @@ class NeuronSimulation():
 
         if self.sim_end < 0: self.sim_end = time.time()
 
+        self.display_DispPop__IT2_reduced_cell_pop.exec_menu("View = plot")
 
         # ######################   File to save: time.dat (time). Note, saving in SI units
         py_v_time = [ t/1000 for t in h.v_time.to_python() ]  # Convert to Python list for speed...
@@ -260,9 +270,6 @@ class NeuronSimulation():
         print("Finished saving results in %f seconds"%(save_time))
 
         print("Done")
-
-        quit()
-
 
 if __name__ == '__main__':
 

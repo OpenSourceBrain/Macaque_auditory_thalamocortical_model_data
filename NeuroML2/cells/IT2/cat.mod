@@ -11,14 +11,19 @@ ENDCOMMENT
 
 NEURON {
     SUFFIX cat
-    USEION ca READ eca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
+    USEION ca READ cai, cao WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
     
     RANGE gion
     RANGE i__cat : a copy of the variable for current which makes it easier to access from outside the mod file
     RANGE gmax                              : Will be changed when ion channel mechanism placed on cell!
+    
+    RANGE cai
+    RANGE cao
     RANGE conductance                       : parameter
     RANGE g                                 : exposure
     RANGE fopen                             : exposure
+    RANGE ConductanceScalingCaDependent_CONC_SCALE: parameter
+    RANGE ConductanceScalingCaDependent_factor: exposure
     RANGE m_instances                       : parameter
     RANGE m_alpha                           : exposure
     RANGE m_beta                            : exposure
@@ -73,6 +78,7 @@ NEURON {
     RANGE h_q10Settings_experimentalTemp    : parameter
     RANGE h_q10Settings_TENDEGREES          : parameter
     RANGE h_q10Settings_q10                 : exposure
+    RANGE ConductanceScalingCaDependent_ca_conc: derived variable
     RANGE m_forwardRate_x                   : derived variable
     RANGE m_timeCourse_V                    : derived variable
     RANGE m_tauUnscaled                     : derived variable
@@ -100,6 +106,9 @@ UNITS {
     (umol) = (micromole)
     (pC) = (picocoulomb)
     (S) = (siemens)
+    : bypass nrn default faraday const
+    FARADAY = 96485.3 (coulomb)
+    R = (k-mole) (joule/degC)
     
 }
 
@@ -107,7 +116,10 @@ PARAMETER {
     
     gmax = 0  (S/cm2)                       : Will be changed when ion channel mechanism placed on cell!
     
+    ki=.001 (mM)
+    
     conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)
+    ConductanceScalingCaDependent_CONC_SCALE = 1 (mM): was: 1.0 (concentration)
     m_instances = 2                        : was: 2.0 (none)
     m_forwardRate_rate = 2 (kHz)           : was: 2000.0 (per_time)
     m_forwardRate_midpoint = 19.26 (mV)    : was: 0.019260000000000003 (voltage)
@@ -154,6 +166,12 @@ ASSIGNED {
     ica (mA/cm2)
     i__cat (mA/cm2)
     
+    cai (mM)
+    
+    cao (mM)
+    
+    ConductanceScalingCaDependent_ca_conc   : derived variable
+    ConductanceScalingCaDependent_factor    : derived variable
     m_forwardRate_x                         : derived variable
     
     m_forwardRate_r (kHz)                   : conditional derived var...
@@ -213,10 +231,9 @@ BREAKPOINT {
     
     SOLVE states METHOD cnexp
     
-    ? DerivedVariable is based on path: conductanceScaling[*]/factor, on: Component(id=cat type=ionChannelHH), from conductanceScaling; null
-    ? Path not present in component, using factor: 1
-    
-    conductanceScale = 1 
+    ? DerivedVariable is based on path: conductanceScaling[*]/factor, on: Component(id=cat type=ionChannelHH), from conductanceScaling; Component(id=null type=cat_scale)
+    ? multiply applied to all instances of factor in: <conductanceScaling> ([Component(id=null type=cat_scale)]))
+    conductanceScale = ConductanceScalingCaDependent_factor ? path based, prefix = 
     
     ? DerivedVariable is based on path: gates[*]/fcond, on: Component(id=cat type=ionChannelHH), from gates; Component(id=m type=gateHHratesTau)
     ? multiply applied to all instances of fcond in: <gates> ([Component(id=m type=gateHHratesTau), Component(id=h type=gateHHratesTau)]))
@@ -224,9 +241,9 @@ BREAKPOINT {
     
     fopen = conductanceScale  *  fopen0 ? evaluable
     g = conductance  *  fopen ? evaluable
-    gion = gmax * fopen 
+    gion = gmax * fopen
     
-    ica = gion * (v - eca)
+    ica = gion * ghk2(v, cai, cao)
     i__cat =  -1 * ica : set this variable to the current also - note -1 as channel current convention for LEMS used!
     
 }
@@ -239,7 +256,12 @@ DERIVATIVE states {
 }
 
 PROCEDURE rates() {
+    LOCAL caConc
     
+    caConc = cai
+    
+    ConductanceScalingCaDependent_ca_conc = caConc /  ConductanceScalingCaDependent_CONC_SCALE ? evaluable
+    ConductanceScalingCaDependent_factor = 1 ? evaluable
     m_forwardRate_x = (v -  m_forwardRate_midpoint ) /  m_forwardRate_scale ? evaluable
     if (m_forwardRate_x  != 0)  { 
         m_forwardRate_r = m_forwardRate_rate  *  m_forwardRate_x  / (1 - exp(0 -  m_forwardRate_x )) ? evaluable cdv
@@ -300,6 +322,8 @@ PROCEDURE rates() {
     h_tau = h_tauUnscaled  /  h_rateScale ? evaluable
     
      
+    
+     
     rate_m_q = ( m_inf  -  m_q ) /  m_tau ? Note units of all quantities used here need to be consistent!
     
      
@@ -325,3 +349,23 @@ PROCEDURE rates() {
     
 }
 
+
+FUNCTION ghk2(v(mV), ci(mM), co(mM)) (mV) {
+        LOCAL nu,f
+
+        f = KTF(celsius)/2
+        nu = v/f
+        ghk2=-f*(1. - (ci/co)*exp(nu))*efun(nu)
+}
+
+FUNCTION KTF(celsius (DegC)) (mV) {
+        KTF = ((25./293.15)*(celsius + 273.15))
+}
+
+FUNCTION efun(z) {
+	if (fabs(z) < 1e-4) {
+		efun = 1 - z/2
+	}else{
+		efun = z/(exp(z) - 1)
+	}
+}

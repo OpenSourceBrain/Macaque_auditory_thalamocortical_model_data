@@ -2,7 +2,7 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="cat">
 
     <ionChannel id="cat" conductance="10pS" type="ionChannelHH" species="ca">
-
+        <ConductanceScalingCaDependent type="cat_scale"/>
         <gate id="m" type="gateHHratesTau" instances="2">
             <q10Settings type="q10ExpTemp" q10Factor="5" experimentalTemp="25degC"/>
             <forwardRate type="HHExpLinearRate" rate="2per_ms" scale="10mV" midpoint="19.26mV"/>
@@ -61,5 +61,15 @@
         </Dynamics>
 
     </ComponentType>
+
+    <ComponentType name="cat_scale" extends="baseConductanceScalingCaDependent">
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+        <Dynamics>
+            <DerivedVariable name="ca_conc" dimension="none" value="caConc / CONC_SCALE"/>
+            <DerivedVariable name="factor" exposure="factor" dimension="none" value="1"/>
+        </Dynamics>
+
+    </ComponentType>
+
 
 </neuroml>

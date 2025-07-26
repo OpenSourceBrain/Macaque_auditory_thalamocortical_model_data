@@ -11,11 +11,14 @@ ENDCOMMENT
 
 NEURON {
     SUFFIX cal
-    USEION ca READ eca WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
+    USEION ca READ cai, cao WRITE ica VALENCE 2 ? Assuming valence = 2 (Ca ion); TODO check this!!
     
     RANGE gion
     RANGE i__cal : a copy of the variable for current which makes it easier to access from outside the mod file
     RANGE gmax                              : Will be changed when ion channel mechanism placed on cell!
+    
+    RANGE cai
+    RANGE cao
     RANGE conductance                       : parameter
     RANGE g                                 : exposure
     RANGE fopen                             : exposure
@@ -75,12 +78,17 @@ UNITS {
     (umol) = (micromole)
     (pC) = (picocoulomb)
     (S) = (siemens)
+    : bypass nrn default faraday const
+    FARADAY = 96485.3 (coulomb)
+    R = (k-mole) (joule/degC)
     
 }
 
 PARAMETER {
     
     gmax = 0  (S/cm2)                       : Will be changed when ion channel mechanism placed on cell!
+    
+    ki=.001 (mM)
     
     conductance = 1.0E-5 (uS)              : was: 1.0E-11 (conductance)
     ConductanceScalingCaDependent_CONC_SCALE = 1 (mM): was: 1.0 (concentration)
@@ -172,9 +180,9 @@ BREAKPOINT {
     
     fopen = conductanceScale  *  fopen0 ? evaluable
     g = conductance  *  fopen ? evaluable
-    gion = gmax * fopen 
+    gion = gmax * fopen
     
-    ica = gion * (v - eca)
+    ica = gion * ghk2(v, cai, cao)
     i__cal =  -1 * ica : set this variable to the current also - note -1 as channel current convention for LEMS used!
     
 }
@@ -242,3 +250,23 @@ PROCEDURE rates() {
     
 }
 
+
+FUNCTION ghk2(v(mV), ci(mM), co(mM)) (mV) {
+        LOCAL nu,f
+
+        f = KTF(celsius)/2
+        nu = v/f
+        ghk2=-f*(1. - (ci/co)*exp(nu))*efun(nu)
+}
+
+FUNCTION KTF(celsius (DegC)) (mV) {
+        KTF = ((25./293.15)*(celsius + 273.15))
+}
+
+FUNCTION efun(z) {
+	if (fabs(z) < 1e-4) {
+		efun = 1 - z/2
+	}else{
+		efun = z/(exp(z) - 1)
+	}
+}
