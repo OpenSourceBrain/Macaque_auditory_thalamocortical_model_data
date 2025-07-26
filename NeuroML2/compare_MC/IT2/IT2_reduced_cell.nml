@@ -10,10 +10,17 @@
   </notes>
 
   <include href="cadad.channel.nml"></include>
-  <include href="pas.channel.nml"></include>
+  <include href="can_mig.channel.nml"></include>
+  <include href="cat_mig.channel.nml"></include>
+  <include href="cal_mig.channel.nml"></include>
   <include href="h_kole.channel.nml"></include>
   <include href="kap_BS.channel.nml"></include>
-  <include href="cal_mig.channel.nml"></include>
+  <include href="pas.channel.nml"></include>
+  <include href="kBK.channel.nml"></include>
+  <include href="kdr_BS.channel.nml"></include>
+  <include href="kdr_BS_soma.channel.nml"></include>
+  <include href="nax_BS.channel.nml"></include>
+
 
 
   <cell id="IT2_reduced_cell_0_0">
@@ -205,7 +212,9 @@
             <channelDensity ionChannel="pas" id="pas_apic" segmentGroup="apic" ion="non_specific"  erev="-87.1335623948 mV" condDensity="7.199592136286027e-05 S_per_cm2"/>
             <channelDensity ionChannel="pas" id="pas_Bdend" segmentGroup="proximal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00014147647761414165 S_per_cm2"/>
             <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00035435694659685776 S_per_cm2"/>
-            <channelDensityGHK2 id="cal_dend_soma" ionChannel="cal" condDensity="2.39132864454e-06 S_per_cm2" segmentGroup="cal_group" ion="ca"/>
+            <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
+
+            <channelDensityGHK2 id="can_dend_soma" ionChannel="can" condDensity="8.13137955053e-07 S_per_cm2" segmentGroup="can_group" ion="ca"/>
                     
           <spikeThresh value="5mV"/>
           <specificCapacitance segmentGroup="apic" value="2.74242941886 uF_per_cm2"/>
