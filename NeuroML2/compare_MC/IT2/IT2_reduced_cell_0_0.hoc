@@ -107,19 +107,40 @@
     "value" : "70.00155"
   } ],
   "channelDensity" : [ {
-    "id" : "kap_dend_soma",
-    "ionChannel" : "kap",
-    "ion" : "k",
-    "group" : "kap_group",
-    "condDens" : "0.024019523",
-    "erev" : "-104.0"
+    "id" : "pas_apic",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
+    "group" : "apic",
+    "condDens" : "7.199592E-5",
+    "erev" : "-87.13357"
   }, {
-    "id" : "kap_axon",
-    "ionChannel" : "kap",
-    "ion" : "k",
+    "id" : "pas_Bdend",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
+    "group" : "proximal",
+    "condDens" : "1.4147647E-4",
+    "erev" : "-87.13357"
+  }, {
+    "id" : "pas_axon",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
     "group" : "axonal",
-    "condDens" : "0.120097615",
-    "erev" : "-104.0"
+    "condDens" : "3.5435695E-4",
+    "erev" : "-87.13357"
+  }, {
+    "id" : "pas_soma",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
+    "group" : "somatic",
+    "condDens" : "1.0E-4",
+    "erev" : "-86.0"
+  }, {
+    "id" : "ih_dend_soma",
+    "ionChannel" : "ih",
+    "ion" : "hcn",
+    "group" : "ih_group",
+    "condDens" : "3.317634E-5",
+    "erev" : "-37.0"
   } ],
   "species" : [ {
     "id" : "ca",
@@ -374,15 +395,30 @@ proc biophys() {
     forsec all Ra = 70.00155  // units: ohm cm
 
     // Channel densities
-    forsec kap_group {
-        insert kap
-        gmax_kap = 0.024019523  // units: S cm-2
-        ek = -104.0  // units: mV
+    forsec apic {
+        insert pas_nml2
+        gmax_pas_nml2 = 7.199592E-5  // units: S cm-2
+        e_pas_nml2 = -87.13357  // units: mV
+    }
+    forsec proximal {
+        insert pas_nml2
+        gmax_pas_nml2 = 1.4147647E-4  // units: S cm-2
+        e_pas_nml2 = -87.13357  // units: mV
     }
     forsec axonal {
-        insert kap
-        gmax_kap = 0.120097615  // units: S cm-2
-        ek = -104.0  // units: mV
+        insert pas_nml2
+        gmax_pas_nml2 = 3.5435695E-4  // units: S cm-2
+        e_pas_nml2 = -87.13357  // units: mV
+    }
+    forsec somatic {
+        insert pas_nml2
+        gmax_pas_nml2 = 1.0E-4  // units: S cm-2
+        e_pas_nml2 = -86.0  // units: mV
+    }
+    forsec ih_group {
+        insert ih
+        gmax_ih = 3.317634E-5  // units: S cm-2
+        ehcn = -37.0  // units: mV
     }
 
     // Concentration models for species

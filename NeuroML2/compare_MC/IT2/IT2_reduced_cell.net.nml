@@ -4,7 +4,8 @@
           Yale University and UCL 
   </notes>
     <include href="cadad.channel.nml"/>
-    <include href="kap_BS.channel.nml"/>
+    <include href="pas.channel.nml"/>
+    <include href="h_kole.channel.nml"/>
     <cell id="IT2_reduced_cell_0_0">
         <notes>Cell: IT2_reduced_cell_0_0 exported from NEURON ModelView</notes>
         <morphology id="morphology">
@@ -146,8 +147,11 @@
         </morphology>
         <biophysicalProperties id="biophys">
             <membraneProperties>
-                <channelDensity id="kap_dend_soma" ionChannel="kap" condDensity="0.0240195239098 S_per_cm2" erev="-104 mV" segmentGroup="kap_group" ion="k"/>
-                <channelDensity id="kap_axon" ionChannel="kap" condDensity="0.120097619549 S_per_cm2" erev="-104 mV" segmentGroup="axonal" ion="k"/>
+                <channelDensity id="pas_apic" ionChannel="pas" condDensity="7.199592136286027e-05 S_per_cm2" erev="-87.1335623948 mV" segmentGroup="apic" ion="non_specific"/>
+                <channelDensity id="pas_Bdend" ionChannel="pas" condDensity="0.00014147647761414165 S_per_cm2" erev="-87.1335623948 mV" segmentGroup="proximal" ion="non_specific"/>
+                <channelDensity id="pas_axon" ionChannel="pas" condDensity="0.00035435694659685776 S_per_cm2" erev="-87.1335623948 mV" segmentGroup="axonal" ion="non_specific"/>
+                <channelDensity id="pas_soma" ionChannel="pas" condDensity="0.0001 S_per_cm2" erev="-86.0 mV" segmentGroup="somatic" ion="non_specific"/>
+                <channelDensity id="ih_dend_soma" ionChannel="ih" condDensity="3.3176340367e-05 S_per_cm2" erev="-37.0 mV" segmentGroup="ih_group" ion="hcn"/>
                 <spikeThresh value="5mV"/>
                 <specificCapacitance value="2.74242941886 uF_per_cm2" segmentGroup="apic"/>
                 <specificCapacitance value="2.74086279376 uF_per_cm2" segmentGroup="proximal"/>

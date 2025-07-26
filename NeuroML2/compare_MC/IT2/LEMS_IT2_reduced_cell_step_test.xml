@@ -16,7 +16,8 @@
 
     <Include file="IT2_reduced_cell.net.nml"/>
     <Include file="cadad.channel.nml"/>
-    <Include file="kap_BS.channel.nml"/>
+    <Include file="pas.channel.nml"/>
+    <Include file="h_kole.channel.nml"/>
 
     <Simulation id="IT2_reduced_cell_step_test" length="1500.0ms" step="0.01ms" target="IT2_reduced_cell_net" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
         <Display id="DispPop__IT2_reduced_cell_pop" title="Membrane potentials of cells in IT2_reduced_cell_pop" timeScale="1ms" xmin="-150.0" xmax="1650.0000000000002" ymin="-90" ymax="50">
