@@ -3,7 +3,7 @@ import pprint
 
 netParams = specs.NetParams() 
 ## IT2 cell properties
-soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7, 'threshold': 5.0}  # soma properties
+soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7, 'threshold': 5.0} 
 soma['geom'] = {'diam': 28.2149102762, 'L': 48.4123467666, 'Ra': 70.0015514222, 'cm': 2.4998269977, 'nseg': 1, 'pt3d': []}
 soma['geom']['pt3d'].append((0, 0, 0, 28.2149102762))
 soma['geom']['pt3d'].append((0, 48.4123467666, 0, 28.2149102762))
@@ -17,13 +17,10 @@ soma['mechs']['cal'] = {'gcalbar': 2.39132864454e-06}
 soma['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 soma['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 soma['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-
 soma['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
-
-
 soma['mechs']['kdr'] = {"gbar": 0.017,"sh": 0.0,"vhalfn": 8}
-
 soma['mechs']['nax'] = {"gbar": 0.043,"sh": 0.0}
+
 
 
 Adend1 = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7}  
@@ -44,6 +41,11 @@ Adend1['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.71495264
 Adend1['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
 Adend1['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
 Adend1['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
+Adend1['topol'] = {
+                "childX": 0.0,
+                "parentSec": "soma",
+                "parentX": 1.0}
+
 
 
 Adend2 = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7} 
@@ -64,7 +66,10 @@ Adend2['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.71495264
 Adend2['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
 Adend2['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
 Adend2['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
-
+Adend2['topol'] = {
+                "childX": 0.0,
+                "parentSec": "Adend1",
+                "parentX": 1.0}
 
 
 
@@ -87,6 +92,11 @@ Adend3['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.71495264
 Adend3['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
 Adend3['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
 Adend3['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
+Adend3['topol'] = {
+                "childX": 0.0,
+                "parentSec": "Adend2",
+                "parentX": 1.0}
+
 
 
 Bdend = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7}  
@@ -107,7 +117,7 @@ Bdend['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.714952648
 Bdend['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
 Bdend['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
 Bdend['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
-
+Bdend['topol'] = {"childX": 0.0,"parentSec": "soma","parentX": 0.5}
 
 
 axon = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7}  
@@ -121,6 +131,10 @@ axon['topol'] = {'parentSec': 'soma', 'parentX': 0, 'childX': 0}
 axon['mechs']['kap'] = {'gbar': 0.120097619549, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 axon['mechs']['kdr'] = {"gbar": 0.0416883317404,"sh": 0.0,"vhalfn": 11.6427471384}
 axon['mechs']['nax'] = {"gbar": 0.384126851097,"sh": 0.0}
+axon['topol'] = {
+                "childX": 0.0,
+                "parentSec": "soma",
+                "parentX": 0.0}
 
 IT2_HH_reduced_dict = {'secs': {'soma': soma, 'Adend1': Adend1, 'Adend2': Adend2, 'Adend3': Adend3, 'Bdend': Bdend, 'axon': axon}}
 netParams.cellParams['IT2_HH_reduced'] = IT2_HH_reduced_dict  # add rule dict to list of cell property rules
@@ -132,14 +146,15 @@ netParams.popParams['IT2'] = {'cellType': 'IT2_HH_reduced', 'numCells': 1}
 
 netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.3}
 netParams.stimTargetParams['Input->IT2'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'IT2_HH_reduced'}}
-
+netParams.defaultThreshold = 5.0
 # Simulation options
 simConfig = specs.SimConfig()       # object of class SimConfig to store simulation configuration
 
 simConfig.recordCells = ['all']
 simConfig.hParams['celsius'] = 34
 simConfig.duration = 2000           # Duration of the simulation, in ms
-simConfig.dt = 0.01                 # Internal integration timestep to use
+simConfig.dt = 0.01       
+          # Internal integration timestep to use
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
