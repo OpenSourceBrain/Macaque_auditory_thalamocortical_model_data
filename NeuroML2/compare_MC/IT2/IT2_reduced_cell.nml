@@ -214,7 +214,9 @@
             <channelDensity ionChannel="pas" id="pas_axon" segmentGroup="axonal" ion="non_specific"  erev="-87.1335623948 mV" condDensity="0.00035435694659685776 S_per_cm2"/>
             <channelDensity ionChannel="pas" id="pas_soma" segmentGroup="somatic" ion="non_specific"  erev="-86.0 mV" condDensity="0.0001 S_per_cm2"/>
 
-            <channelDensity ionChannel="kBK" id="kBK_dend_soma" segmentGroup="kBK_group" ion="k"  erev="-104 mV" condDensity="4.45651933019e-05 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_dend_all" segmentGroup="dend_all" ion="na"  erev="42.0 mV" condDensity="0.0768253702194 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_axon" segmentGroup="axonal" ion="na"  erev="42.0 mV" condDensity="0.384126851097 S_per_cm2"/>
+            <channelDensity ionChannel="nax" id="nax_soma" segmentGroup="somatic" ion="na"  erev="42.0 mV" condDensity="0.043 S_per_cm2"/>
                     
           <spikeThresh value="5mV"/>
           <specificCapacitance segmentGroup="apic" value="2.74242941886 uF_per_cm2"/>

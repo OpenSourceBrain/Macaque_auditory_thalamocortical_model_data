@@ -17,21 +17,13 @@ soma['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0, 
 # soma['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # soma['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 # soma['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-soma['mechs']['kBK'] = {
-                    "caPh": 0.002,
-                    "caPk": 1.0,
-                    "caPmax": 1.0,
-                    "caPmin": 0.0,
-                    "caVhh": 0.002,
-                    "caVhmax": 155.67,
-                    "caVhmin": 43.919142291200004,
-                    "gpeak": 4.45651933019e-05,
-                    "k": 17.0,
-                    "tau": 1.0
-                }
+
+# soma['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
 
 
+# soma['mechs']['kdr'] = {"gbar": 0.017,"sh": 0.0,"vhalfn": 8}
 
+soma['mechs']['nax'] = {"gbar": 0.043,"sh": 0.0}
 
 
 Adend1 = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7}  
@@ -49,21 +41,9 @@ Adend1['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0
 # Adend1['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend1['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 # Adend1['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-Adend1['mechs']['kBK'] = {
-                    "caPh": 0.002,
-                    "caPk": 1.0,
-                    "caPmax": 1.0,
-                    "caPmin": 0.0,
-                    "caVhh": 0.002,
-                    "caVhmax": 155.67,
-                    "caVhmin": 43.919142291200004,
-                    "gpeak": 4.45651933019e-05,
-                    "k": 17.0,
-                    "tau": 1.0
-                }
-
-
-
+# Adend1['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
+# Adend1['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
+Adend1['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
 
 
 Adend2 = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7} 
@@ -81,20 +61,9 @@ Adend2['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0
 # Adend2['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend2['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 # Adend2['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-Adend2['mechs']['kBK'] = {
-                    "caPh": 0.002,
-                    "caPk": 1.0,
-                    "caPmax": 1.0,
-                    "caPmin": 0.0,
-                    "caVhh": 0.002,
-                    "caVhmax": 155.67,
-                    "caVhmin": 43.919142291200004,
-                    "gpeak": 4.45651933019e-05,
-                    "k": 17.0,
-                    "tau": 1.0
-                }
-
-
+# Adend2['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
+# Adend2['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
+Adend2['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
 
 
 
@@ -115,20 +84,9 @@ Adend3['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0
 # Adend3['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend3['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 # Adend3['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-Adend3['mechs']['kBK'] = {
-                    "caPh": 0.002,
-                    "caPk": 1.0,
-                    "caPmax": 1.0,
-                    "caPmin": 0.0,
-                    "caVhh": 0.002,
-                    "caVhmax": 155.67,
-                    "caVhmin": 43.919142291200004,
-                    "gpeak": 4.45651933019e-05,
-                    "k": 17.0,
-                    "tau": 1.0
-                }
-
-
+# Adend3['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
+# Adend3['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
+Adend3['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
 
 
 Bdend = {'geom': {},'ions': {}, 'topol': {}, 'mechs': {}, 'vinit': -85.7}  
@@ -146,18 +104,9 @@ Bdend['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0,
 # Bdend['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Bdend['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
 # Bdend['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-Bdend['mechs']['kBK'] = {
-                    "caPh": 0.002,
-                    "caPk": 1.0,
-                    "caPmax": 1.0,
-                    "caPmin": 0.0,
-                    "caVhh": 0.002,
-                    "caVhmax": 155.67,
-                    "caVhmin": 43.919142291200004,
-                    "gpeak": 4.45651933019e-05,
-                    "k": 17.0,
-                    "tau": 1.0
-                }
+# Bdend['mechs']['kBK'] = {"caPh": 0.002,"caPk": 1.0,"caPmax": 1.0,"caPmin": 0.0,"caVhh": 0.002,"caVhmax": 155.67,"caVhmin": 43.919142291200004,"gpeak": 4.45651933019e-05,"k": 17.0,"tau": 1.0}
+# Bdend['mechs']['kdr'] = {"gbar": 0.00833766634808,"sh": 0.0,"vhalfn": 11.6427471384}
+Bdend['mechs']['nax'] = {"gbar": 0.0768253702194,"sh": 0.0}
 
 
 
@@ -170,8 +119,8 @@ axon['ions']['na'] = {'e': 42.0, 'i': 10.0, 'o': 140.0}
 axon['mechs']['pas'] = {'g': 0.00035435694659685776, 'e': -87.1335623948}
 axon['topol'] = {'parentSec': 'soma', 'parentX': 0, 'childX': 0}
 # axon['mechs']['kap'] = {'gbar': 0.120097619549, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
-
-
+# axon['mechs']['kdr'] = {"gbar": 0.0416883317404,"sh": 0.0,"vhalfn": 11.6427471384}
+axon['mechs']['nax'] = {"gbar": 0.384126851097,"sh": 0.0}
 
 IT2_HH_reduced_dict = {'secs': {'soma': soma, 'Adend1': Adend1, 'Adend2': Adend2, 'Adend3': Adend3, 'Bdend': Bdend, 'axon': axon}}
 netParams.cellParams['IT2_HH_reduced'] = IT2_HH_reduced_dict  # add rule dict to list of cell property rules
@@ -197,7 +146,7 @@ simConfig.hParams['celsius'] = 34
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
-simConfig.filename = 'IT2_reduced_pas_kBK'         # Set file output name
+simConfig.filename = 'IT2_reduced_pas_nax'         # Set file output name
 simConfig.savePickle = False        # Save params, network and sim output to pickle file
 simConfig.saveDataInclude = ['simData']  
 simConfig.saveJson = True 
