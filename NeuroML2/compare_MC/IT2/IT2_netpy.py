@@ -35,7 +35,7 @@ Adend1['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0
 # Adend1['mechs']['cal'] = {'gcalbar': 2.39132864454e-06}
 # Adend1['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend1['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
-Adend1['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
+#Adend1['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 
 
 
@@ -49,13 +49,13 @@ Adend2['ions']['ca'] = {'e': 132.4579341637009, 'i': 5e-05, 'o': 2.0}
 Adend2['ions']['k'] = {'e': -104.0, 'i': 54.4, 'o': 2.5}
 Adend2['ions']['na'] = {'e': 42.0, 'i': 10.0, 'o': 140.0}
 Adend2['mechs']['pas'] = {'g': 7.199592136286027e-05, 'e': -87.1335623948}
-Adend2['topol'] = {'parentSec': 'soma', 'parentX': 1.0, 'childX': 0}
+Adend2['topol'] = {'parentSec': 'Adend1', 'parentX': 1.0, 'childX': 0}
 # Adend2['mechs']['ih'] = {'ascale': 0.00320887293027, 'ashift': 119.696272155, 'aslope': 7.09800576233, 'bscale': 0.285307415701, 'bslope': 23.2995848558, 'gbar': 3.3176340367e-05, 'e': -37.0}
 Adend2['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0, 'kt': 0.0, 'taur': 99.1146852282}
 # Adend2['mechs']['cal'] = {'gcalbar': 2.39132864454e-06}
 # Adend2['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend2['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
-Adend2['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
+#Adend2['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 
 
 
@@ -71,13 +71,13 @@ Adend3['ions']['ca'] = {'e': 132.4579341637009, 'i': 5e-05, 'o': 2.0}
 Adend3['ions']['k'] = {'e': -104.0, 'i': 54.4, 'o': 2.5}
 Adend3['ions']['na'] = {'e': 42.0, 'i': 10.0, 'o': 140.0}
 Adend3['mechs']['pas'] = {'g': 7.199592136286027e-05, 'e': -87.1335623948}
-Adend3['topol'] = {'parentSec': 'soma', 'parentX': 1.0, 'childX': 0}
+Adend3['topol'] = {'parentSec': 'Adend2', 'parentX': 1.0, 'childX': 0}
 # Adend3['mechs']['ih'] = {'ascale': 0.00320887293027, 'ashift': 119.696272155, 'aslope': 7.09800576233, 'bscale': 0.285307415701, 'bslope': 23.2995848558, 'gbar': 3.3176340367e-05, 'e': -37.0}
 Adend3['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0, 'kt': 0.0, 'taur': 99.1146852282}
 # Adend3['mechs']['cal'] = {'gcalbar': 2.39132864454e-06}
 # Adend3['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Adend3['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
-Adend3['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
+#Adend3['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 
 
 
@@ -96,7 +96,7 @@ Bdend['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 0.119408607923, 'kd': 0.0,
 # Bdend['mechs']['cal'] = {'gcalbar': 2.39132864454e-06}
 # Bdend['mechs']['can'] = {'gcanbar': 8.13137955053e-07}
 # Bdend['mechs']['cat'] = {'gcatbar': 9.29455717585e-07}
-Bdend['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
+#Bdend['mechs']['kap'] = {'gbar': 0.0240195239098, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 
 
 
@@ -109,7 +109,7 @@ axon['ions']['k'] = {'e': -104.0, 'i': 54.4, 'o': 2.5}
 axon['ions']['na'] = {'e': 42.0, 'i': 10.0, 'o': 140.0}
 axon['mechs']['pas'] = {'g': 0.00035435694659685776, 'e': -87.1335623948}
 axon['topol'] = {'parentSec': 'soma', 'parentX': 0, 'childX': 0}
-axon['mechs']['kap'] = {'gbar': 0.120097619549, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
+#axon['mechs']['kap'] = {'gbar': 0.120097619549, 'sh': 0.0, 'tq': -49.7149526489, 'vhalfl': -36.7754836348, 'vhalfn': 32.179925527}
 
 
 IT2_HH_reduced_dict = {'secs': {'soma': soma, 'Adend1': Adend1, 'Adend2': Adend2, 'Adend3': Adend3, 'Bdend': Bdend, 'axon': axon}}
@@ -136,7 +136,7 @@ simConfig.hParams['celsius'] = 34
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
-simConfig.filename = 'IT2_reduced_pas_kap'         # Set file output name
+simConfig.filename = 'IT2_reduced_pas'         # Set file output name
 simConfig.savePickle = False        # Save params, network and sim output to pickle file
 simConfig.saveDataInclude = ['simData']  
 simConfig.saveJson = True 
