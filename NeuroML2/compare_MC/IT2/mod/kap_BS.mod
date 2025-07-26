@@ -20,7 +20,7 @@ UNITS {
 
 PARAMETER {
     v                   (mV)
-    celsius = 34        (degC)
+    celsius =           (degC)
     ek
 
     sh      = 0

@@ -1,8 +1,4 @@
 {
-  "conds": {
-        "cellModel": "HH_reduced",
-        "cellType": "IT"
-    },
     "globals": {
         "celsius": 34.0,
         "erev_ih": -37.0,
