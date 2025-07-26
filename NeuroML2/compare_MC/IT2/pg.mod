@@ -1,4 +1,4 @@
-TITLE Mod file for component: Component(id=input_min0_08000000000000002nA type=pulseGenerator)
+TITLE Mod file for component: Component(id=pg type=pulseGenerator)
 
 COMMENT
 
@@ -10,7 +10,7 @@ COMMENT
 ENDCOMMENT
 
 NEURON {
-    POINT_PROCESS input_min0_08000000000000002nA
+    POINT_PROCESS pg
     ELECTRODE_CURRENT i
     RANGE weight                            : property
     RANGE delay                             : parameter
@@ -43,8 +43,8 @@ PARAMETER {
     
     weight = 1
     delay = 200 (ms)                       : was: 0.2 (time)
-    duration = 900 (ms)                    : was: 0.9 (time)
-    amplitude = -0.08 (nA)                 : was: -8.000000000000002E-11 (current)
+    duration = 1000 (ms)                   : was: 1.0 (time)
+    amplitude = 0.3 (nA)                   : was: 3.0E-10 (current)
 }
 
 STATE {

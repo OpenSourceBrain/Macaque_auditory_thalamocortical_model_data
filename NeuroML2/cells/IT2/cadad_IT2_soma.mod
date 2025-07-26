@@ -94,6 +94,10 @@ BREAKPOINT {
     
     SOLVE states METHOD cnexp
     
+    if (concentration  < 0) {
+        concentration = 0 ? standard OnCondition
+    }
+    
     
 }
 

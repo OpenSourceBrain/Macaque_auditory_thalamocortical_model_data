@@ -69,7 +69,7 @@ PARAMETER {
     m_forwardRate_rate = 0.0227766 (kHz)   : was: 22.77659855 (per_time)
     m_forwardRate_midpoint = -119.69627 (mV): was: -0.119696272155 (voltage)
     m_forwardRate_scale = -7.098006 (mV)   : was: -0.00709800576233 (voltage)
-    m_reverseRate_rate = 6.647545 (kHz)    : was: 6647.544342 (per_time)
+    m_reverseRate_rate = 0.2853074 (kHz)   : was: 285.30741570099997 (per_time)
     m_reverseRate_midpoint = 0 (mV)        : was: 0.0 (voltage)
     m_reverseRate_scale = 23.299583 (mV)   : was: 0.0232995848558 (voltage)
 }
