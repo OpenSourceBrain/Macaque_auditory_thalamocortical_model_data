@@ -1,4 +1,5 @@
-{    "conds": {
+{
+  "conds": {
         "cellModel": "HH_reduced",
         "cellType": "IT"
     },
