@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
          id="cadad">
 
-    <concentrationModel id="cadad_IT2_dend_all" ion="ca" type="cadad" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
-    <concentrationModel id="cadad_IT2_soma" ion="ca" type="cadad" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
+    <cadad id="cadad_IT2_dend_all" ion="ca" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
+    <cadad id="cadad_IT2_soma" ion="ca" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
 
     <ComponentType name="cadad" extends="concentrationModel">
 
@@ -37,6 +37,10 @@
                 <StateAssignment variable="extConcentration" value="initialExtConcentration"/>
             </OnStart>
 
+            <OnCondition test="concentration .lt. 0">
+                <StateAssignment variable="concentration" value="0"/>
+            </OnCondition>
+            
         </Dynamics>
 
     </ComponentType>
