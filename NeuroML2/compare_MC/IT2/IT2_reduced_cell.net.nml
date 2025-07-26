@@ -1,0 +1,172 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd" id="NeuroML2_file_exported_from_NEURON">
+    <notes> NeuroML 2 file generated from ModelView by: NEURON -- VERSION 8.2.6+ HEAD (078a34a9d+) 2024-07-24
+          Authors: Michael Hines, Sushil Kambampati and Padraig Gleeson,
+          Yale University and UCL 
+  </notes>
+    <include href="cadad.channel.nml"/>
+    <include href="kap_BS.channel.nml"/>
+    <cell id="IT2_reduced_cell_0_0">
+        <notes>Cell: IT2_reduced_cell_0_0 exported from NEURON ModelView</notes>
+        <morphology id="morphology">
+            <segment id="0" name="Seg0_soma">
+                <proximal x="0.0" y="0.0" z="0.0" diameter="28.2149"/>
+                <distal x="0.0" y="48.4123" z="0.0" diameter="28.2149"/>
+            </segment>
+            <segment id="6" name="Seg0_axon">
+                <parent segment="0" fractionAlong="0.0"/>
+                <proximal x="0.0" y="0.0" z="0.0" diameter="1.40966"/>
+                <distal x="0.0" y="-594.293" z="0.0" diameter="1.40966"/>
+            </segment>
+            <segment id="5" name="Seg0_Bdend">
+                <parent segment="0" fractionAlong="0.5"/>
+                <proximal x="0.0" y="48.4123" z="0.0" diameter="2.27992"/>
+                <distal x="68.4023" y="-116.815" z="0.0" diameter="2.27992"/>
+            </segment>
+            <segment id="2" name="Seg0_Adend1">
+                <parent segment="0"/>
+                <proximal x="0.0" y="48.4123" z="0.0" diameter="1.58319"/>
+                <distal x="0.0" y="58.9416" z="0.0" diameter="1.58319"/>
+            </segment>
+            <segment id="3" name="Seg0_Adend2">
+                <parent segment="2"/>
+                <proximal x="0.0" y="58.9416" z="0.0" diameter="1.58319"/>
+                <distal x="0.0" y="69.4708" z="0.0" diameter="1.58319"/>
+            </segment>
+            <segment id="4" name="Seg0_Adend3">
+                <parent segment="3"/>
+                <proximal x="0.0" y="69.4708" z="0.0" diameter="1.58319"/>
+                <distal x="0.0" y="80.0" z="0.0" diameter="1.58319"/>
+            </segment>
+            <segmentGroup id="soma" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="0"/>
+            </segmentGroup>
+            <segmentGroup id="axon" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="6"/>
+            </segmentGroup>
+            <segmentGroup id="Bdend" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="5"/>
+            </segmentGroup>
+            <segmentGroup id="Adend1" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="2"/>
+            </segmentGroup>
+            <segmentGroup id="Adend2" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="3"/>
+            </segmentGroup>
+            <segmentGroup id="Adend3" neuroLexId="sao864921383">
+                <notes>This group contains an unbranched set of segments, and all of the segmentGroups marked with
+             neuroLexId = sao864921383 form a non-overlapping set of all of the segments.
+             These segmentGroups correspond to the 'cables' of NeuroML v1.8.1, and map to/from NEURON sections.</notes>
+                <member segment="4"/>
+            </segmentGroup>
+            <segmentGroup id="all">
+                <include segmentGroup="soma"/>
+                <include segmentGroup="axon"/>
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+            </segmentGroup>
+            <segmentGroup id="dend_all">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+            </segmentGroup>
+            <segmentGroup id="apic">
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+            </segmentGroup>
+            <segmentGroup id="cal_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="can_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="cat_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="ih_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="kBK_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="kap_group">
+                <include segmentGroup="Bdend"/>
+                <include segmentGroup="Adend1"/>
+                <include segmentGroup="Adend2"/>
+                <include segmentGroup="Adend3"/>
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="somatic">
+                <include segmentGroup="soma"/>
+            </segmentGroup>
+            <segmentGroup id="axonal">
+                <include segmentGroup="axon"/>
+            </segmentGroup>
+            <segmentGroup id="proximal">
+                <include segmentGroup="Bdend"/>
+            </segmentGroup>
+        </morphology>
+        <biophysicalProperties id="biophys">
+            <membraneProperties>
+                <channelDensity id="kap_dend_soma" ionChannel="kap" condDensity="0.0240195239098 S_per_cm2" erev="-104 mV" segmentGroup="kap_group" ion="k"/>
+                <channelDensity id="kap_axon" ionChannel="kap" condDensity="0.120097619549 S_per_cm2" erev="-104 mV" segmentGroup="axonal" ion="k"/>
+                <spikeThresh value="5mV"/>
+                <specificCapacitance value="2.74242941886 uF_per_cm2" segmentGroup="apic"/>
+                <specificCapacitance value="2.74086279376 uF_per_cm2" segmentGroup="proximal"/>
+                <specificCapacitance value="2.4630760526 uF_per_cm2" segmentGroup="axonal"/>
+                <specificCapacitance value="2.4998269977 uF_per_cm2" segmentGroup="somatic"/>
+                <initMembPotential value="-85.7 mV"/>
+            </membraneProperties>
+            <intracellularProperties>
+                <species id="ca" concentrationModel="cadad_IT2_dend_all" ion="ca" initialConcentration="5.0E-11 mol_per_cm3" initialExtConcentration="2.0E-6 mol_per_cm3" segmentGroup="dend_all"/>
+                <species id="ca" concentrationModel="cadad_IT2_soma" ion="ca" initialConcentration="5.0E-11 mol_per_cm3" initialExtConcentration="2.0E-6 mol_per_cm3" segmentGroup="somatic"/>
+                <resistivity value="70.0015514222 ohm_cm"/>
+            </intracellularProperties>
+        </biophysicalProperties>
+    </cell>
+    <pulseGenerator id="pg" delay="200ms" duration="1000ms" amplitude="300pA"/>
+    <network id="IT2_reduced_cell_net" type="networkWithTemperature" temperature="34 degC">
+        <population id="IT2_reduced_cell_pop" component="IT2_reduced_cell_0_0" size="1"/>
+        <inputList id="input_list" population="IT2_reduced_cell_pop" component="pg">
+            <input id="0" target="../IT2_reduced_cell_pop[0]" destination="synapses" segmentId="0"/>
+        </inputList>
+    </network>
+</neuroml>

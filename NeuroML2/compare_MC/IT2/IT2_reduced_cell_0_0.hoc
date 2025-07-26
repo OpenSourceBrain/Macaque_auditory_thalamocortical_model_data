@@ -1,0 +1,426 @@
+// Cell: IT2_reduced_cell_0_0
+/*
+{
+  "id" : "IT2_reduced_cell_0_0",
+  "sections" : [ {
+    "name" : "soma",
+    "id" : "soma",
+    "points3d" : [ "0.0, 0.0, 0.0, 28.2149", "0.0, 48.4123, 0.0, 28.2149" ]
+  }, {
+    "name" : "axon",
+    "id" : "axon",
+    "points3d" : [ "0.0, 0.0, 0.0, 1.40966", "0.0, -594.293, 0.0, 1.40966" ],
+    "parent" : "soma",
+    "fractionAlong" : 0.0
+  }, {
+    "name" : "Bdend",
+    "id" : "Bdend",
+    "points3d" : [ "0.0, 48.4123, 0.0, 2.27992", "68.4023, -116.815, 0.0, 2.27992" ],
+    "parent" : "soma",
+    "fractionAlong" : 0.5
+  }, {
+    "name" : "Adend1",
+    "id" : "Adend1",
+    "points3d" : [ "0.0, 48.4123, 0.0, 1.58319", "0.0, 58.9416, 0.0, 1.58319" ],
+    "parent" : "soma",
+    "fractionAlong" : 1.0
+  }, {
+    "name" : "Adend2",
+    "id" : "Adend2",
+    "points3d" : [ "0.0, 58.9416, 0.0, 1.58319", "0.0, 69.4708, 0.0, 1.58319" ],
+    "parent" : "Adend1",
+    "fractionAlong" : 1.0
+  }, {
+    "name" : "Adend3",
+    "id" : "Adend3",
+    "points3d" : [ "0.0, 69.4708, 0.0, 1.58319", "0.0, 80.0, 0.0, 1.58319" ],
+    "parent" : "Adend2",
+    "fractionAlong" : 1.0
+  } ],
+  "groups" : [ {
+    "name" : "dend_all",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3" ]
+  }, {
+    "name" : "apic",
+    "groups" : [ ],
+    "sections" : [ "Adend1", "Adend2", "Adend3" ]
+  }, {
+    "name" : "cal_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "can_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "cat_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "ih_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "kBK_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "kap_group",
+    "groups" : [ ],
+    "sections" : [ "Bdend", "Adend1", "Adend2", "Adend3", "soma" ]
+  }, {
+    "name" : "somatic",
+    "groups" : [ ],
+    "sections" : [ "soma" ]
+  }, {
+    "name" : "axonal",
+    "groups" : [ ],
+    "sections" : [ "axon" ]
+  }, {
+    "name" : "proximal",
+    "groups" : [ ],
+    "sections" : [ "Bdend" ]
+  }, {
+    "name" : "all",
+    "sections" : [ "soma", "axon", "Bdend", "Adend1", "Adend2", "Adend3" ]
+  } ],
+  "specificCapacitance" : [ {
+    "group" : "apic",
+    "value" : "2.7424295"
+  }, {
+    "group" : "proximal",
+    "value" : "2.7408628"
+  }, {
+    "group" : "axonal",
+    "value" : "2.463076"
+  }, {
+    "group" : "somatic",
+    "value" : "2.499827"
+  } ],
+  "initMembPotential" : [ {
+    "group" : "all",
+    "value" : "-85.7"
+  } ],
+  "resistivity" : [ {
+    "group" : "all",
+    "value" : "70.00155"
+  } ],
+  "channelDensity" : [ {
+    "id" : "kap_dend_soma",
+    "ionChannel" : "kap",
+    "ion" : "k",
+    "group" : "kap_group",
+    "condDens" : "0.024019523",
+    "erev" : "-104.0"
+  }, {
+    "id" : "kap_axon",
+    "ionChannel" : "kap",
+    "ion" : "k",
+    "group" : "axonal",
+    "condDens" : "0.120097615",
+    "erev" : "-104.0"
+  } ],
+  "species" : [ {
+    "id" : "ca",
+    "ion" : "ca",
+    "concentrationModel" : "cadad_IT2_dend_all",
+    "group" : "dend_all",
+    "initialConcentration" : "5.0E-5",
+    "initialExtConcentration" : "2.0"
+  }, {
+    "id" : "ca",
+    "ion" : "ca",
+    "concentrationModel" : "cadad_IT2_soma",
+    "group" : "somatic",
+    "initialConcentration" : "5.0E-5",
+    "initialExtConcentration" : "2.0"
+  } ]
+}
+*/
+
+load_file("subiter.hoc")
+
+begintemplate IT2_reduced_cell_0_0
+
+public init, topol, basic_shape, subsets, geom, memb
+public x, y, z, position
+
+
+//  Some methods for referencing the cells
+
+public toString, netInfo, set_initial_v, set_initial_ion_properties, synlist
+
+
+// Section: soma, id: soma, parent: $s.parent
+create soma
+public soma
+// Section: axon, id: axon, parent: soma
+create axon
+public axon
+// Section: Bdend, id: Bdend, parent: soma
+create Bdend
+public Bdend
+// Section: Adend1, id: Adend1, parent: soma
+create Adend1
+public Adend1
+// Section: Adend2, id: Adend2, parent: Adend1
+create Adend2
+public Adend2
+// Section: Adend3, id: Adend3, parent: Adend2
+create Adend3
+public Adend3
+
+// Group: {name=dend_all, groups=[], sections=[Bdend, Adend1, Adend2, Adend3]}
+objref dend_all
+// Group: {name=apic, groups=[], sections=[Adend1, Adend2, Adend3]}
+objref apic
+// Group: {name=cal_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref cal_group
+// Group: {name=can_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref can_group
+// Group: {name=cat_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref cat_group
+// Group: {name=ih_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref ih_group
+// Group: {name=kBK_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref kBK_group
+// Group: {name=kap_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+objref kap_group
+// Group: {name=somatic, groups=[], sections=[soma]}
+objref somatic
+// Group: {name=axonal, groups=[], sections=[axon]}
+objref axonal
+// Group: {name=proximal, groups=[], sections=[Bdend]}
+objref proximal
+// Group: {name=all, sections=[soma, axon, Bdend, Adend1, Adend2, Adend3]}
+objref all
+
+objref synlist
+
+proc init() {
+    topol()
+    geom_nseg()
+    subsets()
+    subsets_inhomogeneous()
+    biophys()
+    biophys_inhomogeneous()
+    synlist = new List()
+    x = y = z = 0
+
+}
+
+proc set_initial_v() {
+    // Taken from the initMembPotential value
+    forsec all v = -85.7  // units: mV
+}
+
+
+proc set_initial_ion_properties() {
+    // From species
+    // Ion: ca on group: dend_all, with concentration model: cadad_IT2_dend_all
+    forsec dend_all {
+        cai = 5.0E-5  // units: mM
+        cao = 2.0  // units: mM
+    }
+    // Ion: ca on group: somatic, with concentration model: cadad_IT2_soma
+    forsec somatic {
+        cai = 5.0E-5  // units: mM
+        cao = 2.0  // units: mM
+    }
+}
+
+
+proc topol() {
+    basic_shape()
+    connect axon(0), soma(0.0)
+    connect Bdend(0), soma(0.5)
+    connect Adend1(0), soma(1.0)
+    connect Adend2(0), Adend1(1.0)
+    connect Adend3(0), Adend2(1.0)
+
+}
+
+
+proc basic_shape() {
+
+    // Section: soma, id: soma, parent: $s.parent (entry count 0/100)
+    soma { pt3dclear() }
+    soma { pt3dadd( 0.0, 0.0, 0.0, 28.2149 ) }
+    soma { pt3dadd( 0.0, 48.4123, 0.0, 28.2149 ) }
+    // Section: axon, id: axon, parent: soma (entry count 2/100)
+    axon { pt3dclear() }
+    axon { pt3dadd( 0.0, 0.0, 0.0, 1.40966 ) }
+    axon { pt3dadd( 0.0, -594.293, 0.0, 1.40966 ) }
+    // Section: Bdend, id: Bdend, parent: soma (entry count 4/100)
+    Bdend { pt3dclear() }
+    Bdend { pt3dadd( 0.0, 48.4123, 0.0, 2.27992 ) }
+    Bdend { pt3dadd( 68.4023, -116.815, 0.0, 2.27992 ) }
+    // Section: Adend1, id: Adend1, parent: soma (entry count 6/100)
+    Adend1 { pt3dclear() }
+    Adend1 { pt3dadd( 0.0, 48.4123, 0.0, 1.58319 ) }
+    Adend1 { pt3dadd( 0.0, 58.9416, 0.0, 1.58319 ) }
+    // Section: Adend2, id: Adend2, parent: Adend1 (entry count 8/100)
+    Adend2 { pt3dclear() }
+    Adend2 { pt3dadd( 0.0, 58.9416, 0.0, 1.58319 ) }
+    Adend2 { pt3dadd( 0.0, 69.4708, 0.0, 1.58319 ) }
+    // Section: Adend3, id: Adend3, parent: Adend2 (entry count 10/100)
+    Adend3 { pt3dclear() }
+    Adend3 { pt3dadd( 0.0, 69.4708, 0.0, 1.58319 ) }
+    Adend3 { pt3dadd( 0.0, 80.0, 0.0, 1.58319 ) }
+
+}
+
+
+proc subsets() { local i
+
+    // Group: {name=dend_all, groups=[], sections=[Bdend, Adend1, Adend2, Adend3]}
+    dend_all = new SectionList()
+    Bdend dend_all.append()
+    Adend1 dend_all.append()
+    Adend2 dend_all.append()
+    Adend3 dend_all.append()
+
+    // Group: {name=apic, groups=[], sections=[Adend1, Adend2, Adend3]}
+    apic = new SectionList()
+    Adend1 apic.append()
+    Adend2 apic.append()
+    Adend3 apic.append()
+
+    // Group: {name=cal_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    cal_group = new SectionList()
+    Bdend cal_group.append()
+    Adend1 cal_group.append()
+    Adend2 cal_group.append()
+    Adend3 cal_group.append()
+    soma cal_group.append()
+
+    // Group: {name=can_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    can_group = new SectionList()
+    Bdend can_group.append()
+    Adend1 can_group.append()
+    Adend2 can_group.append()
+    Adend3 can_group.append()
+    soma can_group.append()
+
+    // Group: {name=cat_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    cat_group = new SectionList()
+    Bdend cat_group.append()
+    Adend1 cat_group.append()
+    Adend2 cat_group.append()
+    Adend3 cat_group.append()
+    soma cat_group.append()
+
+    // Group: {name=ih_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    ih_group = new SectionList()
+    Bdend ih_group.append()
+    Adend1 ih_group.append()
+    Adend2 ih_group.append()
+    Adend3 ih_group.append()
+    soma ih_group.append()
+
+    // Group: {name=kBK_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    kBK_group = new SectionList()
+    Bdend kBK_group.append()
+    Adend1 kBK_group.append()
+    Adend2 kBK_group.append()
+    Adend3 kBK_group.append()
+    soma kBK_group.append()
+
+    // Group: {name=kap_group, groups=[], sections=[Bdend, Adend1, Adend2, Adend3, soma]}
+    kap_group = new SectionList()
+    Bdend kap_group.append()
+    Adend1 kap_group.append()
+    Adend2 kap_group.append()
+    Adend3 kap_group.append()
+    soma kap_group.append()
+
+    // Group: {name=somatic, groups=[], sections=[soma]}
+    somatic = new SectionList()
+    soma somatic.append()
+
+    // Group: {name=axonal, groups=[], sections=[axon]}
+    axonal = new SectionList()
+    axon axonal.append()
+
+    // Group: {name=proximal, groups=[], sections=[Bdend]}
+    proximal = new SectionList()
+    Bdend proximal.append()
+
+    // Group: {name=all, sections=[soma, axon, Bdend, Adend1, Adend2, Adend3]}
+    all = new SectionList()
+    soma all.append()
+    axon all.append()
+    Bdend all.append()
+    Adend1 all.append()
+    Adend2 all.append()
+    Adend3 all.append()
+
+}
+
+
+proc subsets_inhomogeneous() {
+}
+
+proc biophys() {
+
+    // Specific capacitance
+    forsec apic cm = 2.7424295  // units: uF/cm2
+    forsec proximal cm = 2.7408628  // units: uF/cm2
+    forsec axonal cm = 2.463076  // units: uF/cm2
+    forsec somatic cm = 2.499827  // units: uF/cm2
+
+    // Specific axial resistance/resistivity
+    forsec all Ra = 70.00155  // units: ohm cm
+
+    // Channel densities
+    forsec kap_group {
+        insert kap
+        gmax_kap = 0.024019523  // units: S cm-2
+        ek = -104.0  // units: mV
+    }
+    forsec axonal {
+        insert kap
+        gmax_kap = 0.120097615  // units: S cm-2
+        ek = -104.0  // units: mV
+    }
+
+    // Concentration models for species
+    // Ion: ca on group: dend_all, with concentration model: cadad_IT2_dend_all
+    forsec dend_all {
+        insert cadad_IT2_dend_all
+    }
+    // Ion: ca on group: somatic, with concentration model: cadad_IT2_soma
+    forsec somatic {
+        insert cadad_IT2_soma
+    }
+
+}
+
+func H() { // Heaviside function
+    if ($1>=0) return 1
+    if ($1==0) return 0.5
+    return 0
+}
+
+proc biophys_inhomogeneous() {
+}
+
+proc geom_nseg() {
+    // All sections not mentioned here have nseg = 1
+}
+
+
+proc position() { local i
+    forsec all {
+        for i = 0, n3d()-1 {
+            pt3dchange(i, $1+x3d(i), $2+y3d(i), $3+z3d(i), diam3d(i))
+        }
+    }
+    x = $1  y = $2  z = $3
+}
+
+
+endtemplate IT2_reduced_cell_0_0
+
+
