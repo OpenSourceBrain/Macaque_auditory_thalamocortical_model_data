@@ -24,6 +24,8 @@ from pyneuroml.annotations import create_annotation
 from neuroml.utils import component_factory
 from textwrap import indent
 
+from pyneuroml.analysis import generate_current_vs_frequency_curve
+
 random.seed(1412)
 
 def step_current_omv():
@@ -34,19 +36,19 @@ def step_current_omv():
     net = netdoc.add(neuroml.Network, id="IT2_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
     pop = net.add(neuroml.Population, id="IT2_reduced_cell_pop", component=IT2_reduced_cell.id, size=1)
 
-    # should be same as test_kc.py
-    pg = netdoc.add(
+    pg1 = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg", delay="200ms", duration="1000ms",
+            id="pg1", delay="200ms", duration="1600ms",
             amplitude="300pA"
         )
     )
 
+
     # Add these to cells
-    input_list = net.add(
-        neuroml.InputList(id="input_list", component=pg.id, populations=pop.id)
+    input_list1 = net.add(
+        neuroml.InputList(id="input1_list", component=pg1.id, populations=pop.id)
     )
-    aninput = input_list.add(
+    aninput1 = input_list1.add(
         neuroml.Input(
             id="0",
             target="../%s[0]" % (pop.id),
@@ -54,13 +56,16 @@ def step_current_omv():
             segment_id="0",
         )
     )
+
+
+
     write_neuroml2_file(netdoc, "IT2_reduced_cell.net.nml")
 
     generate_lems_file_for_neuroml(
         sim_id="IT2_reduced_cell_step_test",
         target=net.id,
         neuroml_file="IT2_reduced_cell.net.nml",
-        duration="1500ms",
+        duration="2000ms",
         dt="0.01ms",
         lems_file_name="LEMS_IT2_reduced_cell_step_test.xml",
         nml_doc=netdoc,
@@ -84,5 +89,3 @@ def step_current_omv():
 
 if __name__ == "__main__":
     step_current_omv()
-
-

@@ -26,13 +26,13 @@ UNITS {
 PARAMETER {
   v (mV)
   erev=-37  		(mV) 	:ih-reversal potential			       
-  gbar=0.00015 	(S/cm2)	:default Ih conductance; exponential distribution is set in Ri18init.hoc 
+  gbar=3.3176340367e-05	(S/cm2)	:default Ih conductance; exponential distribution is set in Ri18init.hoc 
   q10 = 2.2
-  ascale = 0.00643
-  bscale = 0.193
-  ashift = 154.9
-  aslope = 11.9
-  bslope = 33.1
+  ascale = 0.00320887293027
+  bscale = 0.285307415701
+  ashift = 119.696272155
+  aslope = 7.09800576233
+  bslope = 23.2995848558
 }
 
 NEURON {

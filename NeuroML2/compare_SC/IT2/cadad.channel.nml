@@ -4,7 +4,8 @@
          xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
          id="cadad">
 
-    <cadad id="cadad_IT2_dend_all" ion="ca" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
+    <concentrationModel id="cadad_IT2_dend_all" ion="ca" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
+    <concentrationModel id="cadad_IT2_soma" ion="ca" cainf="2.4e-4 mM" taur="99.1146852282 ms" depth="0.119408607923 um"/>  
 
     <ComponentType name="cadad" extends="concentrationModel">
 
@@ -13,13 +14,11 @@
         <Parameter name="depth" dimension="length"/>
        
 
-        <Constant name="Faraday" dimension="charge_per_mole" value="96485.3C_per_mol"/>
-        <Constant name="AREA_SCALE" dimension="area" value="1m2"/>
-        <Constant name="LENGTH_SCALE" dimension="length" value="1m"/>
+        <Constant name="Faraday" dimension="charge_per_mole" value="96489C_per_mol"/>
 
         <Requirement name="iCa" dimension="current"/>
 
-        <Text name="ion"/>
+        <Text name="species"/>
 
         <Dynamics>
 
