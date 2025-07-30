@@ -25,7 +25,7 @@ pprint.pprint(netParams.cellParams['RE_HH_reduced'])
 
 netParams.popParams['RE'] = {'cellType': 'RE_HH_reduced', 'numCells': 1}
 
-netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.18}
+netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 0, 'amp': -.3}
 netParams.stimTargetParams['Input->RE'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'RE_HH_reduced'}}
 netParams.defaultThreshold = 5.0
 # Simulation options
@@ -39,7 +39,7 @@ simConfig.dt = 0.01
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
-simConfig.filename = 'RE_reduced_itre'         # Set file output name
+simConfig.filename = 'RE_reduced_itre_lowcurrent'         # Set file output name
 simConfig.savePickle = False        # Save params, network and sim output to pickle file
 simConfig.saveDataInclude = ['simData']  
 simConfig.saveJson = True 
