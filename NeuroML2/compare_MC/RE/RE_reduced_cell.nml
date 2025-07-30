@@ -31,7 +31,7 @@
 
 
             <channelDensity ionChannel="pas" id="pas_soma" ion="non_specific"  erev="-77.0 mV" condDensity="5e-5 S_per_cm2"/>
-
+            <channelDensity ionChannel="kl" id="kl_soma" ion="k"  erev="-95.0 mV" condDensity="3e-06 S_per_cm2"/>
 
 
             <spikeThresh value="5mV"/>
