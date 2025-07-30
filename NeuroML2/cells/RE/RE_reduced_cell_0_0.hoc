@@ -33,7 +33,7 @@
   }, {
     "id" : "kl_soma",
     "ionChannel" : "kl",
-    "ion" : "non_speceifc",
+    "ion" : "k",
     "group" : "all",
     "condDens" : "2.9999999E-6",
     "erev" : "-95.0"
@@ -165,7 +165,7 @@ proc biophys() {
     forsec all {
         insert kl
         gmax_kl = 2.9999999E-6  // units: S cm-2
-        enon_speceifc = -95.0  // units: mV
+        ek = -95.0  // units: mV
     }
     forsec all {
         insert hh2_k

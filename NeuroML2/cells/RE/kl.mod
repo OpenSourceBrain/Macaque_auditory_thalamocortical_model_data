@@ -11,8 +11,7 @@ ENDCOMMENT
 
 NEURON {
     SUFFIX kl
-    NONSPECIFIC_CURRENT i
-    RANGE e
+    USEION k WRITE ik VALENCE 1 ? Assuming valence = 1; TODO check this!!
     
     RANGE gion
     RANGE i__kl : a copy of the variable for current which makes it easier to access from outside the mod file
@@ -56,8 +55,8 @@ ASSIGNED {
     v (mV)
     celsius (degC)
     temperature (K)
-    e (mV)
-    i (mA/cm2)
+    ek (mV)
+    ik (mA/cm2)
     i__kl (mA/cm2)
     
     fopen                                   : derived variable
@@ -70,6 +69,8 @@ STATE {
 }
 
 INITIAL {
+    ek = -95.0
+    
     temperature = celsius + 273.15
     
     rates()
@@ -84,8 +85,8 @@ BREAKPOINT {
     g = conductance ? evaluable
     gion = gmax * fopen 
     
-    i = gion * (v - e)
-    i__kl = -1 * i  : set this variable to the current also - note -1 as channel current convention for LEMS used!
+    ik = gion * (v - ek)
+    i__kl =  -1 * ik : set this variable to the current also - note -1 as channel current convention for LEMS used!
     
 }
 

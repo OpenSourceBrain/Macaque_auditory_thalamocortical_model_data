@@ -44,7 +44,7 @@ PARAMETER {
     weight = 1
     delay = 200 (ms)                       : was: 0.2 (time)
     duration = 1600 (ms)                   : was: 1.6 (time)
-    amplitude = 0.18 (nA)                  : was: 1.8E-10 (current)
+    amplitude = 0.25 (nA)                  : was: 2.5E-10 (current)
 }
 
 STATE {
