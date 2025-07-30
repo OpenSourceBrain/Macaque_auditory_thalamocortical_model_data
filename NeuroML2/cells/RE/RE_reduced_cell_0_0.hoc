@@ -1,0 +1,220 @@
+// Cell: RE_reduced_cell_0_0
+/*
+{
+  "id" : "RE_reduced_cell_0_0",
+  "sections" : [ {
+    "name" : "Seg0_soma",
+    "id" : "0",
+    "points3d" : [ "0.0, 64.86, 0.0, 70.0", "0.0, 0.0, 0.0, 70.0" ]
+  } ],
+  "groups" : [ {
+    "name" : "all",
+    "sections" : [ "Seg0_soma" ]
+  } ],
+  "specificCapacitance" : [ {
+    "group" : "all",
+    "value" : "1.0"
+  } ],
+  "initMembPotential" : [ {
+    "group" : "all",
+    "value" : "-85.7"
+  } ],
+  "resistivity" : [ {
+    "group" : "all",
+    "value" : "100.0"
+  } ],
+  "channelDensity" : [ {
+    "id" : "pas_soma",
+    "ionChannel" : "pas_nml2",
+    "ion" : "non_specific",
+    "group" : "all",
+    "condDens" : "5.0E-5",
+    "erev" : "-77.0"
+  }, {
+    "id" : "kl_soma",
+    "ionChannel" : "kl",
+    "ion" : "non_speceifc",
+    "group" : "all",
+    "condDens" : "2.9999999E-6",
+    "erev" : "-95.0"
+  }, {
+    "id" : "hh2_k_soma",
+    "ionChannel" : "hh2_k",
+    "ion" : "k",
+    "group" : "all",
+    "condDens" : "0.01",
+    "erev" : "-95.0"
+  }, {
+    "id" : "hh2_na_soma",
+    "ionChannel" : "hh2_na",
+    "ion" : "na",
+    "group" : "all",
+    "condDens" : "0.089999996",
+    "erev" : "50.0"
+  }, {
+    "id" : "itre_soma",
+    "ionChannel" : "itre",
+    "ion" : "ca",
+    "group" : "all",
+    "condDens" : "0.0019999999",
+    "erev" : "calculated_by_Nernst_equation"
+  } ],
+  "species" : [ {
+    "id" : "ca",
+    "ion" : "ca",
+    "concentrationModel" : "cadad_RE_soma",
+    "group" : "all",
+    "initialConcentration" : "50.0",
+    "initialExtConcentration" : "2.0"
+  } ]
+}
+*/
+
+load_file("subiter.hoc")
+
+begintemplate RE_reduced_cell_0_0
+
+public init, topol, basic_shape, subsets, geom, memb
+public x, y, z, position
+
+
+//  Some methods for referencing the cells
+
+public toString, netInfo, set_initial_v, set_initial_ion_properties, synlist
+
+
+// Section: Seg0_soma, id: 0, parent: $s.parent
+create Seg0_soma
+public Seg0_soma
+
+// Group: {name=all, sections=[Seg0_soma]}
+objref all
+
+objref synlist
+
+proc init() {
+    topol()
+    geom_nseg()
+    subsets()
+    subsets_inhomogeneous()
+    biophys()
+    biophys_inhomogeneous()
+    synlist = new List()
+    x = y = z = 0
+
+}
+
+proc set_initial_v() {
+    // Taken from the initMembPotential value
+    forsec all v = -85.7  // units: mV
+}
+
+
+proc set_initial_ion_properties() {
+    // From species
+    // Ion: ca on group: all, with concentration model: cadad_RE_soma
+    forsec all {
+        cai = 50.0  // units: mM
+        cao = 2.0  // units: mM
+    }
+}
+
+
+proc topol() {
+    basic_shape()
+
+}
+
+
+proc basic_shape() {
+
+    // Section: Seg0_soma, id: 0, parent: $s.parent (entry count 0/100)
+    Seg0_soma { pt3dclear() }
+    Seg0_soma { pt3dadd( 0.0, 64.86, 0.0, 70.0 ) }
+    Seg0_soma { pt3dadd( 0.0, 0.0, 0.0, 70.0 ) }
+
+}
+
+
+proc subsets() { local i
+
+    // Group: {name=all, sections=[Seg0_soma]}
+    all = new SectionList()
+    Seg0_soma all.append()
+
+}
+
+
+proc subsets_inhomogeneous() {
+}
+
+proc biophys() {
+
+    // Specific capacitance
+    forsec all cm = 1.0  // units: uF/cm2
+
+    // Specific axial resistance/resistivity
+    forsec all Ra = 100.0  // units: ohm cm
+
+    // Channel densities
+    forsec all {
+        insert pas_nml2
+        gmax_pas_nml2 = 5.0E-5  // units: S cm-2
+        e_pas_nml2 = -77.0  // units: mV
+    }
+    forsec all {
+        insert kl
+        gmax_kl = 2.9999999E-6  // units: S cm-2
+        enon_speceifc = -95.0  // units: mV
+    }
+    forsec all {
+        insert hh2_k
+        gmax_hh2_k = 0.01  // units: S cm-2
+        ek = -95.0  // units: mV
+    }
+    forsec all {
+        insert hh2_na
+        gmax_hh2_na = 0.089999996  // units: S cm-2
+        ena = 50.0  // units: mV
+    }
+    forsec all {
+        insert itre
+        gmax_itre = 0.0019999999  // units: S cm-2
+        // erev is calculated by Nernst equation
+    }
+
+    // Concentration models for species
+    // Ion: ca on group: all, with concentration model: cadad_RE_soma
+    forsec all {
+        insert cadad_RE_soma
+    }
+
+}
+
+func H() { // Heaviside function
+    if ($1>=0) return 1
+    if ($1==0) return 0.5
+    return 0
+}
+
+proc biophys_inhomogeneous() {
+}
+
+proc geom_nseg() {
+    // All sections not mentioned here have nseg = 1
+}
+
+
+proc position() { local i
+    forsec all {
+        for i = 0, n3d()-1 {
+            pt3dchange(i, $1+x3d(i), $2+y3d(i), $3+z3d(i), diam3d(i))
+        }
+    }
+    x = $1  y = $2  z = $3
+}
+
+
+endtemplate RE_reduced_cell_0_0
+
+
