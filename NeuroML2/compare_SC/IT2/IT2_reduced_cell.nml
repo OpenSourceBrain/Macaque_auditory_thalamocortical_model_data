@@ -57,7 +57,7 @@
           <initMembPotential value="-85.7 mV"/>
         </membraneProperties>
           <intracellularProperties>
-              <species ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT2_soma" id="ca" initialConcentration="5.0E-5 mol_per_cm3"/>
+              <species ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_IT2_soma" id="ca" initialConcentration="5.0E-11 mol_per_cm3"/>
               <resistivity value="70.0015514222 ohm_cm"/>
           </intracellularProperties>
     </biophysicalProperties>

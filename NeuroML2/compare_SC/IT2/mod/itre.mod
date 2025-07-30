@@ -49,7 +49,7 @@ PARAMETER {
 	gmax	= .003	(mho/cm2)
 	shift	= 2 	(mV)
 	q10m	= 2.5
-	q10h	= 2.5
+	q10h	= 3
         exptemp = 24
         cao
         cai

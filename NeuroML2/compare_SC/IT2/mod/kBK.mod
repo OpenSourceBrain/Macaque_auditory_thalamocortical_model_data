@@ -24,7 +24,7 @@ UNITS {
 
 PARAMETER {
 		:maximum conductance (Benhassine 05)
-	gpeak   = 268e-4	(mho/cm2) <0, 1e9>
+	gpeak   = 4.45651933019e-05	(mho/cm2) <0, 1e9>
 	
 	                                    : Calcium dependence of opening probability (Gong 2001)
 	caPh    = 2e-3     (mM)             : conc. with half maximum open probaility
@@ -36,7 +36,7 @@ PARAMETER {
 	caVhh   = 2e-3    (mM)              : Conc. for half of the Vh shift
 	caVhk   = -0.94208                  : Steepness of the Vh-calcium dependence curve
 	caVhmax = 155.67 (mV)               : max and
-	caVhmin = -46.08 (mV)               : min Vh
+	caVhmin = 43.919142291200004 (mV)               : min Vh
 	
 	                                    : Voltage dependence of open probability (Gong 2001)
 	                                    : must not be zero
