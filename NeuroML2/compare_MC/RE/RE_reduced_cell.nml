@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd"
+    id = "NeuroML2_file_exported_from_NEURON">
+
+  <notes> NeuroML 2 file generated from ModelView by: NEURON -- VERSION 8.2.6+ HEAD (078a34a9d+) 2024-07-24
+          Authors: Michael Hines, Sushil Kambampati and Padraig Gleeson,
+          Yale University and UCL 
+  </notes>
+
+  <include href="cadad.channel.nml"></include>
+  <include href="hh2_k.channel.nml"></include>
+  <include href="hh2_na.channel.nml"></include>
+  <include href="IT2.channel.nml"></include>
+  <include href="kl.channel.nml"></include>
+  <include href="pas.channel.nml"></include>
+
+
+  <cell id="RE_reduced_cell_0_0">
+    <notes>Cell: RE_reduced_cell_0_0 exported from NEURON ModelView</notes>
+    <morphology id="morphology">
+<!-- Section: RE_reduced_cell[0].soma (segmentGroup: soma) which has 2 3D points, so 1 segment(s)-->
+      <segment id="0" name = "Seg0_soma">
+        <proximal x="0" y="0" z="0" diameter="70"/>
+        <distal x="0" y="64.86" z="0" diameter="70"/>
+      </segment>
+    </morphology>
+    <biophysicalProperties id="biophys">
+        <membraneProperties>
+
+
+            <channelDensity ionChannel="pas" id="pas_soma" ion="non_specific"  erev="-77.0 mV" condDensity="5e-5 S_per_cm2"/>
+
+
+
+            <spikeThresh value="5mV"/>
+            <specificCapacitance value="1 uF_per_cm2"/>
+            <initMembPotential value="-85.7mV"/>
+        </membraneProperties>
+            
+        <intracellularProperties>
+            <species ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_RE_soma" id="ca" initialConcentration="5.0E-5 mol_per_cm3"/>
+            <resistivity value="100 ohm_cm"/>
+        </intracellularProperties>
+    </biophysicalProperties>
+  </cell> 
+
+</neuroml>

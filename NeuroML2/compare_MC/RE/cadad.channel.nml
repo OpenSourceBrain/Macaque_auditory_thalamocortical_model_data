@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
+         id="cadad">
+
+    <concentrationModel id="cadad_RE_soma" ion="ca" cainf="2.4e-4 mM" taur="5 ms" depth="1 um"/>  
+
+    <ComponentType name="cadad" extends="concentrationModel">
+
+        <Parameter name="cainf" dimension="concentration"/>
+        <Parameter name="taur" dimension="time"/>
+        <Parameter name="depth" dimension="length"/>
+       
+
+        <Constant name="Faraday" dimension="charge_per_mole" value="96489C_per_mol"/>
+
+        <Requirement name="iCa" dimension="current"/>
+
+        <Text name="species"/>
+
+        <Dynamics>
+
+            <StateVariable name="concentration" exposure="concentration" dimension="concentration"/>
+            <StateVariable name="extConcentration" exposure="extConcentration" dimension="concentration"/>
+
+            <DerivedVariable name="currDensCa" dimension="currentDensity" value="iCa / surfaceArea"/>
+            
+
+            <TimeDerivative variable="concentration" value="(currDensCa/(2*Faraday*depth)) - ((concentration - cainf) / taur)"/>
+
+            <OnStart>
+                <StateAssignment variable="concentration" value="initialConcentration"/>
+                <StateAssignment variable="extConcentration" value="initialExtConcentration"/>
+            </OnStart>
+
+            <OnCondition test="concentration .lt. 0">
+                <StateAssignment variable="concentration" value="0"/>
+            </OnCondition>
+            
+        </Dynamics>
+
+    </ComponentType>
+
+
+</neuroml>
