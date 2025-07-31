@@ -2,9 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-dat_file = "cells/IT2/IT2_reduced_cell_step_test.IT2_reduced_cell_pop.v.dat"
-json_file = "compare_MC/IT2/IT2_reduced_json_data.json"
-
+dat_file = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/compare_MC/RE/RE_reduced_cell_step_test.RE_reduced_cell_pop.v.dat"
+json_file = "/home/gluciferd/Macaque_auditory_thalamocortical_model_data/NeuroML2/compare_MC/RE/RE_reduced_itre_lowcurrent_data.json"
 dat_data = np.loadtxt(dat_file)
 time_dat = dat_data[:, 0] 
 voltage_dat = dat_data[:, 1] * 1000
