@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
          id="cadad">
 
-    <concentrationModel id="cadad_RE_soma" ion="ca" cainf="2.4e-4 mM" taur="5 ms" depth="1 um"/>  
+    <concentrationModel id="cadad_RE_soma" type="cadad" ion="ca" cainf="2.4e-4 mM" taur="5 ms" depth="1 um"/>  
 
     <ComponentType name="cadad" extends="concentrationModel">
 

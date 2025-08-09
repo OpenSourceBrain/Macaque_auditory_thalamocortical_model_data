@@ -3,7 +3,7 @@ import pprint
 
 netParams = specs.NetParams() 
 ## RE cell properties
-soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7, 'threshold': 5.0} 
+soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -70, 'threshold': 5.0} 
 soma['geom'] = {'diam': 70, 'L': 64.86, 'Ra': 100, 'cm': 1, 'nseg': 1, 'pt3d': []}
 soma['geom']['pt3d'].append((0, 0, 0, 70))
 soma['geom']['pt3d'].append((0, 64.86, 0, 70))
@@ -12,9 +12,9 @@ soma['ions']['k'] = {'e': -95.0, 'i': 54.4, 'o': 2.5}
 soma['ions']['na'] = {'e': 50.0, 'i': 10.0, 'o': 140.0}
 soma['mechs']['pas'] = {'g': 5e-5, 'e': -77}
 soma['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 1, 'kd': 0.0, 'kt': 0.0, 'taur': 5}
-# soma['mechs']['kl'] = {'gmax': 3e-06}
+soma['mechs']['kl'] = {'gmax': 3e-06}
 soma['mechs']['itre'] = {"gmax": 0.002,"shift": 2.0}
-# soma['mechs']['hh2ad'] = {"gkbar": 0.01,"gnabar": 0.09,"vtraub": -50.0}
+soma['mechs']['hh2ad'] = {"gkbar": 0.01,"gnabar": 0.09,"vtraub": -50.0}
 
 
 RE_HH_reduced_dict = {'secs': {'soma': soma}}
@@ -25,7 +25,7 @@ pprint.pprint(netParams.cellParams['RE_HH_reduced'])
 
 netParams.popParams['RE'] = {'cellType': 'RE_HH_reduced', 'numCells': 1}
 
-netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 0, 'amp': -.3}
+netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.01}
 netParams.stimTargetParams['Input->RE'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'RE_HH_reduced'}}
 netParams.defaultThreshold = 5.0
 # Simulation options
@@ -36,10 +36,10 @@ simConfig.hParams['celsius'] = 34
 simConfig.duration = 2000           # Duration of the simulation, in ms
 simConfig.dt = 0.01       
           # Internal integration timestep to use
-simConfig.verbose = False           # Show detailed messages
+simConfig.verbose = True           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
-simConfig.filename = 'RE_reduced_itre_lowcurrent'         # Set file output name
+simConfig.filename = 'RE_reduced_all'         # Set file output name
 simConfig.savePickle = False        # Save params, network and sim output to pickle file
 simConfig.saveDataInclude = ['simData']  
 simConfig.saveJson = True 

@@ -38,8 +38,8 @@ def step_current_omv():
 
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg1", delay="0ms", duration="1600ms",
-            amplitude="-300pA"
+            id="pg1", delay="200ms", duration="1600ms",
+            amplitude="10pA"
         )
     )
 
@@ -56,8 +56,6 @@ def step_current_omv():
             segment_id="0",
         )
     )
-
-
 
     write_neuroml2_file(netdoc, "RE_reduced_cell.net.nml")
 
@@ -89,5 +87,3 @@ def step_current_omv():
 
 if __name__ == "__main__":
     step_current_omv()
-
-

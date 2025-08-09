@@ -20,7 +20,6 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="shift" dimension="none" value="2"/>
-        <Constant name="phim" dimension="none" value="2"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="v / VOLT_SCALE"/>
             <DerivedVariable name="t" exposure="t" dimension="time" value="( 1 + 0.33 / ( exp((V+shift+25)/10) + exp(-(V+shift+100)/15) ) ) * TIME_SCALE"/>
