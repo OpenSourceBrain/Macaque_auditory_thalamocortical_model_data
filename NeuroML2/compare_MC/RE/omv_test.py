@@ -39,7 +39,7 @@ def step_current_omv():
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
             id="pg1", delay="200ms", duration="1600ms",
-            amplitude="10pA"
+            amplitude="200pA"
         )
     )
 
