@@ -29,16 +29,23 @@ for d in directories:
     mod_source = f"[{channel}.mod](../mod/{channel}.mod)"
     nml_source = f"[{channel}.channel.nml](../{channel}.channel.nml)"
     np_data = list(d.glob("netpyne*json"))[0]
-    np_plot = np_data.name.replace(".json", ".png")
+    try:
+        np_plot = list(d.glob("netpyne*png"))[0].name
+    except IndexError:
+        np_plot = None
+
     nml_data = list(d.glob("nml*dat"))[0]
-    nml_plot = f"nml_{channel}.png"
+    try:
+        nml_plot = list(d.glob("nml*png"))[0].name
+    except IndexError:
+        nml_plot = None
+
     combined_plot = f"{d.name}/Figure_1.png"
 
     if channel == "all":
         mod_source = "-"
         nml_source = "-"
 
-    md_text += f"| {channel} | {mod_source} | {nml_source} | ![{channel} NetPyNE]({channel}/{np_plot}) | ![{channel} NML]({channel}/{nml_plot}) | ![{channel} combined]({combined_plot})\n"
 
     combined_figure = Path(d) / Path("Figure_1.png")
 
@@ -61,6 +68,15 @@ for d in directories:
                 time_json = np.arange(len(voltage_json)) * dt
 
             generate_plot([time_dat, time_json], [voltage_dat, voltage_json], title="Comparison of Voltage from nml and netpyne", labels=["NML", "NetPyNE"], colors=["b", "r"], linestyles=["-", "--"], xaxis="Time (s)", yaxis="Voltage (mV)", show_plot_already=False, title_above_plot=True, save_figure_to="Figure_1.png", close_plot=True, xlim=[min(time_dat[0], time_json[0]), max(time_dat[-1], time_json[-1])], font_size=12)
+
+            if not nml_plot:
+                nml_plot = f"{nml_data.name.replace('.v.dat', '.png')}"
+                generate_plot([time_dat], [voltage_dat], title="NML", labels=["NML"], colors=["b"], linestyles=["-"], xaxis="Time (s)", yaxis="Voltage (mV)", show_plot_already=False, title_above_plot=True, save_figure_to=nml_plot, close_plot=True, xlim=[time_dat[0], time_dat[-1]], font_size=12)
+            if not np_plot:
+                np_plot = f"{np_data.name.replace('data.json', 'traces.png')}"
+                generate_plot([time_json], [voltage_json], title="Netpyne", labels=["NetPyNE"], colors=["r"], linestyles=["--"], xaxis="Time (s)", yaxis="Voltage (mV)", show_plot_already=False, title_above_plot=True, save_figure_to=np_plot, close_plot=True, xlim=[min(time_dat[0], time_json[0]), max(time_dat[-1], time_json[-1])], font_size=12)
+
+    md_text += f"| {channel} | {mod_source} | {nml_source} | ![{channel} NetPyNE]({channel}/{np_plot}) | ![{channel} NML]({channel}/{nml_plot}) | ![{channel} combined]({combined_plot})\n"
 
 print("--> Writing README.md")
 with open("README.md", 'w') as f:
