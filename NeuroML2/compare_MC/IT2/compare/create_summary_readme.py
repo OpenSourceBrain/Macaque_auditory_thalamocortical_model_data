@@ -34,7 +34,11 @@ for d in directories:
     nml_plot = f"nml_{channel}.png"
     combined_plot = f"{d.name}/Figure_1.png"
 
-    md_text += f"| {channel} | {mod_source} | {nml_source} | ![{channel} NetPyNE]({np_plot}) | ![{channel} NML]({nml_plot}) | ![{channel} combined]({combined_plot})\n"
+    if channel == "all":
+        mod_source = "-"
+        nml_source = "-"
+
+    md_text += f"| {channel} | {mod_source} | {nml_source} | ![{channel} NetPyNE]({channel}/{np_plot}) | ![{channel} NML]({channel}/{nml_plot}) | ![{channel} combined]({combined_plot})\n"
 
     combined_figure = Path(d) / Path("Figure_1.png")
 
