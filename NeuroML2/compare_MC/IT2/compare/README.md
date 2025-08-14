@@ -2,7 +2,7 @@
 
 | Channel | mod source | NeuroML source |  NetPyNE plot | NeuroML plot | Combined plot|
 |---------|------------|----------------|---------------|--------------|--------------|
-| all | - | - | ![all NetPyNE](all/netpyne_IT2_reduced_all_raster.png) | ![all NML](all/nml_Membrane_potential__IT2_reduced_cell.png) | ![all combined](all/Figure_1.png)
+| all | - | - | ![all NetPyNE](all/netpyne_IT2_reduced_all_traces.png) | ![all NML](all/nml_Membrane_potential__IT2_reduced_cell.png) | ![all combined](all/Figure_1.png)
 | cal | [cal.mod](../mod/cal.mod) | [cal.channel.nml](../cal.channel.nml) | ![cal NetPyNE](cal/netpyne_IT2_reduced_pas_cal_traces.png) | ![cal NML](cal/nml_Membrane_potential__IT2_reduced_cell.png) | ![cal combined](cal/Figure_1.png)
 | can | [can.mod](../mod/can.mod) | [can.channel.nml](../can.channel.nml) | ![can NetPyNE](can/netpyne_IT2_reduced_pas_can_traces.png) | ![can NML](can/nml_Membrane_potential__IT2_reduced_cell.png) | ![can combined](can/Figure_1.png)
 | cat | [cat.mod](../mod/cat.mod) | [cat.channel.nml](../cat.channel.nml) | ![cat NetPyNE](cat/netpyne_IT2_reduced_pas_cat_traces.png) | ![cat NML](cat/nml__IT2_reduced_pas_cat_traces.png) | ![cat combined](cat/Figure_1.png)

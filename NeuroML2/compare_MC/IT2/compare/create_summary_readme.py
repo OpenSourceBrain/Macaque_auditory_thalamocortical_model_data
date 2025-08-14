@@ -30,7 +30,7 @@ for d in directories:
     nml_source = f"[{channel}.channel.nml](../{channel}.channel.nml)"
     np_data = list(d.glob("netpyne*json"))[0]
     try:
-        np_plot = list(d.glob("netpyne*png"))[0].name
+        np_plot = list(d.glob("netpyne*traces.png"))[0].name
     except IndexError:
         np_plot = None
 
