@@ -13,7 +13,7 @@ soma['ions']['na'] = {'e': 50.0, 'i': 10.0, 'o': 140.0}
 soma['mechs']['pas'] = {'g': 5e-5, 'e': -77}
 soma['mechs']['cadad'] = {'cainf': 0.00024, 'depth': 1, 'kd': 0.0, 'kt': 0.0, 'taur': 5}
 # soma['mechs']['kl'] = {'gmax': 3e-06}
-# soma['mechs']['itre'] = {"gmax": 0.002,"shift": 2.0}
+soma['mechs']['itre'] = {"gmax": 0.002,"shift": 2.0}
 soma['mechs']['hh2ad'] = {"gkbar": 0.01,"gnabar": 0.09,"vtraub": -50.0}
 
 
@@ -25,7 +25,7 @@ pprint.pprint(netParams.cellParams['RE_HH_reduced'])
 
 netParams.popParams['RE'] = {'cellType': 'RE_HH_reduced', 'numCells': 1}
 
-netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.2}
+netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.02}
 netParams.stimTargetParams['Input->RE'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'RE_HH_reduced'}}
 netParams.defaultThreshold = 5.0
 # Simulation options
@@ -37,11 +37,11 @@ simConfig.duration = 2000           # Duration of the simulation, in ms
 simConfig.dt = 0.01       
           # Internal integration timestep to use
 simConfig.verbose = True           # Show detailed messages
-simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}, 'gNa':{'sec': 'soma', 'loc': 0.5, 'mech': 'hh2ad', 'var': 'inahh2'},'m':{'sec': 'soma', 'loc': 0.5, 'mech': 'hh2ad', 'var': 'm'}}  # Dict with traces to record
+simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}, 'm':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'm'},'h':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'h'}}  # Dict with traces to record
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
 simConfig.filename = 'RE_reduced_all'         # Set file output name
 simConfig.savePickle = False        # Save params, network and sim output to pickle file
-simConfig.saveDataInclude = ['simData']  
+simConfig.saveDataInclude = ['simData']
 simConfig.saveJson = True 
 simConfig.analysis['plotTraces'] = {'include': [0], 'saveFig': True}  # Plot recorded traces for this list of cells
 simConfig.analysis['plotRaster'] = {'saveFig': True}                  # Plot a raster
