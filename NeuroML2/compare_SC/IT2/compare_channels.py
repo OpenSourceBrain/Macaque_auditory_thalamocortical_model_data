@@ -13,10 +13,7 @@ import pprint
 
 
 def netpyne_run(ion = None, mech = None):
-    """Create and run netpyne simulation
-    :returns: TODO
-
-    """
+    """Create and run netpyne simulation """
     netParams = specs.NetParams()
     ## IT2 cell properties
     soma = {'geom': {}, 'ions': {}, 'mechs': {}, 'vinit': -85.7, 'threshold': 5.0}
