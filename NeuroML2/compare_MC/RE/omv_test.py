@@ -82,7 +82,7 @@ def step_current_omv():
     
     # Set up recording for each gate
     for gate in gates:
-        recorder_dict[f"{gate}_state.dat"] = [
+        recorder_dict[f"{gate}_{channel}_state.dat"] = [
             f"{pop.id}[0]/biophys/membraneProperties/itre_soma/{channel}/{gate}/q"
         ]
 
