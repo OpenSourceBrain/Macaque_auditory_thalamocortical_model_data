@@ -41,7 +41,8 @@ simConfig.verbose = True           # Show detailed messages
 
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}, 
                           'm_itre':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'm'},
-                          'h_itre':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'h'}}  # Dict with traces to record
+                          'h_itre':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'h'},
+                          'ica_itre':{'sec': 'soma', 'loc': 0.5, 'mech': 'itre', 'var': 'i'}}  # Dict with traces to record
 
 
 simConfig.recordStep = 0.01            # Step size in ms to save data (eg. V traces, LFP, etc)
