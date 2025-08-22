@@ -40,7 +40,7 @@
         </membraneProperties>
             
         <intracellularProperties>
-            <species ion="ca" initialExtConcentration="2.0E-6 mol_per_cm3" concentrationModel="cadad_RE_soma" id="ca" initialConcentration="5.0E-5 mM"/>
+            <species ion="ca" initialExtConcentration="2.0 mM" concentrationModel="cadad_RE_soma" id="ca" initialConcentration="5.0E-5 mM"/>
             <resistivity value="100 ohm_cm"/>
         </intracellularProperties>
     </biophysicalProperties>

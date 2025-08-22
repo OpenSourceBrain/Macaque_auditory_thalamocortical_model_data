@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 """
 Post process and add biophysics to cells.
-
 We make any updates to the morphology, and add biophysics.
-
 File: NeuroML2/postprocess_cells.py
-
 Copyright 2022 Ankur Sinha
 Author: Ankur Sinha <sanjay DOT ankur AT gmail DOT com>
 """
-
 import random
 import yaml
 import neuroml
@@ -38,22 +34,18 @@ import neuron
 import datetime
 import random
 from pyneuroml.analysis import generate_current_vs_frequency_curve
-
 random.seed(1412)
-
 def step_current_omv():
     netdoc = read_neuroml2_file("RE_reduced_cell.nml")
     RE_reduced_cell = netdoc.cells[0]
     net = netdoc.add(neuroml.Network, id="RE_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
     pop = net.add(neuroml.Population, id="RE_reduced_cell_pop", component=RE_reduced_cell.id, size=1)
-
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
             id="pg1", delay="200ms", duration="1600ms",
             amplitude="20pA"
         )
     )
-
     input_list1 = net.add(
         neuroml.InputList(id="input1_list", component=pg1.id, populations=pop.id)
     )
@@ -65,9 +57,7 @@ def step_current_omv():
             segment_id="0",
         )
     )
-
     write_neuroml2_file(netdoc, "RE_reduced_cell.net.nml")
-
     recorder_dict = {}
     channel = "itre"
     
@@ -83,7 +73,20 @@ def step_current_omv():
     recorder_dict[f"{channel}_iDensity.dat"] = [
         f"{pop.id}[0]/biophys/membraneProperties/itre_soma/iDensity"
     ]
-
+    
+    recorder_dict[f"{channel}_erev.dat"] = [
+        f"{pop.id}[0]/biophys/membraneProperties/itre_soma/erev"
+    ]
+    
+    # Add calcium concentration recording
+    recorder_dict["caConc.dat"] = [
+        f"{pop.id}[0]/caConc"
+    ]
+    
+    recorder_dict["caConcExt.dat"] = [
+        f"{pop.id}[0]/caConcExt"
+    ]
+    
     generate_lems_file_for_neuroml(
         sim_id="RE_reduced_cell_step_test",
         target=net.id,
@@ -97,13 +100,10 @@ def step_current_omv():
         target_dir=".",
         copy_neuroml=False
     )
-
     data = run_lems_with_jneuroml_neuron(
         "LEMS_RE_reduced_cell_step_test.xml", load_saved_data=True, compile_mods=True
     )
-
     print(data.keys())
-
     generate_plot(
         xvalues=[data["t"]],
         yvalues=[data["RE_reduced_cell_pop[0]/v"]],
@@ -140,6 +140,55 @@ def step_current_omv():
             labels=[iDensity_key],
             xaxis="time (ms)",
             yaxis="Current Density (A/m²)"
+        )
+    
+    erev_key = None
+    for key in data.keys():
+        if "erev" in key and "itre" in key:
+            erev_key = key
+            break
+    
+    if erev_key:
+        generate_plot(
+            xvalues=[data["t"]],
+            yvalues=[data[erev_key]],
+            title="itre Channel Reversal Potential",
+            labels=[erev_key],
+            xaxis="time (ms)",
+            yaxis="Reversal Potential (V)"
+        )
+    
+    # Plot calcium concentrations
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    if f"{pop.id}[0]/caConc" in data:
+        recorded_ca = numpy.array(data[f"{pop.id}[0]/caConc"])
+        generate_plot(
+            xvalues=[data["t"]],
+            yvalues=[recorded_ca],
+            title="Intracellular Calcium Concentration",
+            labels=["caConc"],
+            show_plot_already=True,
+            xaxis="time (ms)",
+            yaxis="conc (mM)",
+            save_figure_to=f"{timestamp}_test_{channel.lower()}_ca_NML.png",
+            title_above_plot="NML",
+            legend_position="outer right"
+        )
+    
+    if f"{pop.id}[0]/caConcExt" in data:
+        recorded_ca_ext = numpy.array(data[f"{pop.id}[0]/caConcExt"])
+        generate_plot(
+            xvalues=[data["t"]],
+            yvalues=[recorded_ca_ext],
+            title="Extracellular Calcium Concentration",
+            labels=["caConcExt"],
+            show_plot_already=True,
+            xaxis="time (ms)",
+            yaxis="conc (mM)",
+            save_figure_to=f"{timestamp}_test_{channel.lower()}_caExt_NML.png",
+            title_above_plot="NML",
+            legend_position="outer right"
         )
 
 if __name__ == "__main__":
