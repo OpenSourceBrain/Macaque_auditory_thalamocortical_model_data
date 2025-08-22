@@ -26,14 +26,14 @@ import subprocess
 from pyneuroml.io import write_neuroml2_file, read_neuroml2_file
 from pyneuroml.lems import generate_lems_file_for_neuroml
 from pyneuroml.runners import run_lems_with_jneuroml
-from pyneuroml.plot import generate_plot
+from pyneuroml.plot import generate_plot 
 from pyneuroml.neuron.analysis.HHanalyse import get_states
 from pyneuroml.analysis.NML2ChannelAnalysis import get_channel_gates
-from pyneuroml.utils.plot import get_next_hex_color
+from pyneuroml.utils.plot import get_next_hex_color 
 import neuron
 import datetime
 import random
-from pyneuroml.analysis import generate_current_vs_frequency_curve
+from pyneuroml.analysis import generate_current_vs_frequency_curve  
 random.seed(1412)
 def step_current_omv():
     netdoc = read_neuroml2_file("RE_reduced_cell.nml")
@@ -43,7 +43,7 @@ def step_current_omv():
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
             id="pg1", delay="200ms", duration="500ms",
-            amplitude="20pA"
+            amplitude="300pA"
         )
     )
     input_list1 = net.add(
@@ -59,31 +59,58 @@ def step_current_omv():
     )
     write_neuroml2_file(netdoc, "RE_reduced_cell.net.nml")
     recorder_dict = {}
-    channel = "itre"
     
-    channel_doc = read_neuroml2_file(f"{channel}.channel.nml")
-    ion_channel_Nernst = channel_doc.ion_channel[0]  
-    gates = get_channel_gates(ion_channel_Nernst)
-    
-    for gate in gates:
-        recorder_dict[f"{gate}_{channel}_state.dat"] = [
-            f"{pop.id}[0]/biophys/membraneProperties/itre_soma/{channel}/{gate}/q"
-        ]
-    
-    recorder_dict[f"{channel}_iDensity.dat"] = [
-        f"{pop.id}[0]/biophys/membraneProperties/itre_soma/iDensity"
-    ]
-    
+    channel_doc1 = read_neuroml2_file(f"hh2_na.channel.nml")
+    ion_channel1 = channel_doc1.ion_channel[0]
+
+    channel_doc2 = read_neuroml2_file(f"hh2_k.channel.nml")
+    ion_channel2 = channel_doc2.ion_channel[0]
+
+    '''
+
     recorder_dict[f"{channel}_erev.dat"] = [
         f"{pop.id}[0]/biophys/membraneProperties/itre_soma/erev"
     ]
     
+    recorder_dict["caConcExt.dat"] = [
+        f"{pop.id}[0]/caConcExt"
+    ]
+
+
     recorder_dict["caConc.dat"] = [
         f"{pop.id}[0]/caConc"
     ]
     
-    recorder_dict["caConcExt.dat"] = [
-        f"{pop.id}[0]/caConcExt"
+
+    '''
+
+    '''
+    recorder_dict[f"{channel}_iDensity.dat"] = [
+        f"{pop.id}[0]/biophys/membraneProperties/itre_soma/iDensity"
+    ]
+    '''
+
+    gates1 = get_channel_gates(ion_channel1)
+    
+    for gate in gates1:
+        recorder_dict[f"{gate}_hh2_na_state.dat"] = [
+            f"{pop.id}[0]/biophys/membraneProperties/hh2_na_soma/hh2_na/{gate}/q"
+        ]
+
+    gates2 = get_channel_gates(ion_channel2)
+    
+    for gate in gates2:
+        recorder_dict[f"{gate}_hh2_k_state.dat"] = [
+            f"{pop.id}[0]/biophys/membraneProperties/hh2_k_soma/hh2_k/{gate}/q"
+        ]
+
+
+    recorder_dict[f"hh2_k_iDensity.dat"] = [
+        f"{pop.id}[0]/biophys/membraneProperties/hh2_k_soma/iDensity"
+    ]
+    
+    recorder_dict[f"hh2_na_iDensity.dat"] = [
+        f"{pop.id}[0]/biophys/membraneProperties/hh2_na_soma/iDensity"
     ]
     
     generate_lems_file_for_neuroml(
@@ -103,6 +130,8 @@ def step_current_omv():
         "LEMS_RE_reduced_cell_step_test.xml", load_saved_data=True, nogui=True
     )
     print(data.keys())
+
+    '''
     generate_plot(
         xvalues=[data["t"]],
         yvalues=[data["RE_reduced_cell_pop[0]/v"]],
@@ -188,6 +217,7 @@ def step_current_omv():
             title_above_plot="NML",
             legend_position="outer right"
         )
+    '''
 
 if __name__ == "__main__":
     step_current_omv()

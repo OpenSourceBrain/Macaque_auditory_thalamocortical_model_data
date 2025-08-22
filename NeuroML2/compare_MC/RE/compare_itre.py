@@ -38,7 +38,7 @@ def compare_all():
     ica_itre_json = json_data['simData']['ica_itre']['cell_0']
     caConc_json = json_data['simData']['caConc_itre']['cell_0']
     
-    dt = 1e-5
+    dt = 1e-6
     time_json = np.arange(len(voltage_json)) * dt
     
     fig, axes = plt.subplots(3, 2, figsize=(15, 15))

@@ -29,10 +29,11 @@
     <biophysicalProperties id="biophys">
         <membraneProperties>
 
-            <channelDensityNernst id="itre_soma" ionChannel="itre" condDensity="0.002 S_per_cm2" ion="ca"/>
-
             <channelDensity ionChannel="pas" id="pas_soma" ion="non_specific"  erev="-77.0 mV" condDensity="5e-5 S_per_cm2"/>
 
+            <channelDensity ionChannel="hh2_k" id="hh2_k_soma" ion="k"  erev="-95.0 mV" condDensity="0.01 S_per_cm2"/>
+
+            <channelDensity ionChannel="hh2_na" id="hh2_na_soma" ion="na"  erev="50.0 mV" condDensity="0.09 S_per_cm2"/>
 
             <spikeThresh value="5mV"/>
             <specificCapacitance value="1 uF_per_cm2"/>
