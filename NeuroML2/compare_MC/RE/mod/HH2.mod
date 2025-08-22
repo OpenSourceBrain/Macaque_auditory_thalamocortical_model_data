@@ -41,7 +41,7 @@ PARAMETER {
   celsius    (degC)
   dt              (ms)
   v               (mV)
-  vtraub  = -50   (mV)
+  vtraub  = -63   (mV)
 }
 
 STATE {
@@ -124,7 +124,7 @@ PROCEDURE evaluate_fct(v(mV)) { LOCAL a,b,v2
 }
 FUNCTION vtrap(x,y) {
   if (fabs(x/y) < 1e-6) {
-    vtrap = x/(Exp(x/y)-1)
+    vtrap = y*(1 - x/y/2)
   }else{
     vtrap = x/(Exp(x/y)-1)
   }
@@ -132,7 +132,7 @@ FUNCTION vtrap(x,y) {
 
 FUNCTION Exp(x) {
   if (x < -100) {
-    Exp = exp(x)
+    Exp = 0
   }else{
     Exp = exp(x)
   }
