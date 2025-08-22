@@ -1,0 +1,64 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.3.15 (libNeuroML v0.6.5)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="RE_reduced_cell_step_test"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="RE_reduced_cell.net.nml"/>
+    <Include file="cadad.channel.nml"/>
+    <Include file="hh2_k.channel.nml"/>
+    <Include file="hh2_na.channel.nml"/>
+    <Include file="itre.channel.nml"/>
+    <Include file="kl.channel.nml"/>
+    <Include file="pas.channel.nml"/>
+
+    <Simulation id="RE_reduced_cell_step_test" length="2000.0ms" step="0.01ms" target="RE_reduced_cell_net" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="DispPop__RE_reduced_cell_pop" title="Membrane potentials of cells in RE_reduced_cell_pop" timeScale="1ms" xmin="-200.0" xmax="2200.0" ymin="-90" ymax="50">
+            <Line id="RE_reduced_cell_pop[0]: v" quantity="RE_reduced_cell_pop[0]/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Volts_file__RE_reduced_cell_pop" fileName="RE_reduced_cell_step_test.RE_reduced_cell_pop.v.dat">
+            <OutputColumn id="v_RE_reduced_cell_pop_0__v" quantity="RE_reduced_cell_pop[0]/v"/>
+        </OutputFile>
+
+        <OutputFile id="caConc_dat" fileName="caConc.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__caConc" quantity="RE_reduced_cell_pop[0]/caConc"/>
+        </OutputFile>
+
+        <OutputFile id="caConcExt_dat" fileName="caConcExt.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__caConcExt" quantity="RE_reduced_cell_pop[0]/caConcExt"/>
+        </OutputFile>
+
+        <OutputFile id="h_itre_state_dat" fileName="h_itre_state.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__biophys_membraneProperties_itre_soma_itre_h_q" quantity="RE_reduced_cell_pop[0]/biophys/membraneProperties/itre_soma/itre/h/q"/>
+        </OutputFile>
+
+        <OutputFile id="itre_erev_dat" fileName="itre_erev.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__biophys_membraneProperties_itre_soma_erev" quantity="RE_reduced_cell_pop[0]/biophys/membraneProperties/itre_soma/erev"/>
+        </OutputFile>
+
+        <OutputFile id="itre_iDensity_dat" fileName="itre_iDensity.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__biophys_membraneProperties_itre_soma_iDensity" quantity="RE_reduced_cell_pop[0]/biophys/membraneProperties/itre_soma/iDensity"/>
+        </OutputFile>
+
+        <OutputFile id="m_itre_state_dat" fileName="m_itre_state.dat">
+            <OutputColumn id="RE_reduced_cell_pop_0__biophys_membraneProperties_itre_soma_itre_m_q" quantity="RE_reduced_cell_pop[0]/biophys/membraneProperties/itre_soma/itre/m/q"/>
+        </OutputFile>
+
+        <EventOutputFile id="Spikes_file__RE_reduced_cell_pop" fileName="RE_reduced_cell_step_test.RE_reduced_cell_pop.spikes" format="ID_TIME">
+            <EventSelection id="0" select="RE_reduced_cell_pop[0]" eventPort="spike"/>
+        </EventOutputFile>
+
+    </Simulation>
+
+</Lems>

@@ -25,7 +25,7 @@ pprint.pprint(netParams.cellParams['RE_HH_reduced'])
 
 netParams.popParams['RE'] = {'cellType': 'RE_HH_reduced', 'numCells': 1}
 
-netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 1600, 'del': 200, 'amp': 0.02}
+netParams.stimSourceParams['Input'] = {'type': 'IClamp', 'dur': 400, 'del': 500, 'amp': 0.02}
 netParams.stimTargetParams['Input->RE'] = {'source': 'Input', 'sec': 'soma', 'loc': 0.5, 'conds': {'cellType': 'RE_HH_reduced'}}
 netParams.defaultThreshold = 5.0
 # Simulation options

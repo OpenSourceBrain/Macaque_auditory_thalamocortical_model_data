@@ -42,7 +42,7 @@ def step_current_omv():
     pop = net.add(neuroml.Population, id="RE_reduced_cell_pop", component=RE_reduced_cell.id, size=1)
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg1", delay="200ms", duration="1600ms",
+            id="pg1", delay="500ms", duration="400ms",
             amplitude="20pA"
         )
     )
@@ -100,8 +100,8 @@ def step_current_omv():
         target_dir=".",
         copy_neuroml=False
     )
-    data = run_lems_with_jneuroml_neuron(
-        "LEMS_RE_reduced_cell_step_test.xml", load_saved_data=True, compile_mods=True
+    data = run_lems_with_jneuroml(
+        "LEMS_RE_reduced_cell_step_test.xml", load_saved_data=True, nogui=True
     )
     print(data.keys())
     generate_plot(
