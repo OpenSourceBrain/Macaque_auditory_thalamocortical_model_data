@@ -42,7 +42,7 @@ def step_current_omv():
     pop = net.add(neuroml.Population, id="RE_reduced_cell_pop", component=RE_reduced_cell.id, size=1)
     pg1 = netdoc.add(
         neuroml.PulseGenerator(
-            id="pg1", delay="500ms", duration="400ms",
+            id="pg1", delay="200ms", duration="500ms",
             amplitude="20pA"
         )
     )
@@ -78,7 +78,6 @@ def step_current_omv():
         f"{pop.id}[0]/biophys/membraneProperties/itre_soma/erev"
     ]
     
-    # Add calcium concentration recording
     recorder_dict["caConc.dat"] = [
         f"{pop.id}[0]/caConc"
     ]
@@ -91,8 +90,8 @@ def step_current_omv():
         sim_id="RE_reduced_cell_step_test",
         target=net.id,
         neuroml_file="RE_reduced_cell.net.nml",
-        duration="2000ms",
-        dt="0.01ms",
+        duration="1000ms",
+        dt="0.001ms",
         lems_file_name="LEMS_RE_reduced_cell_step_test.xml",
         nml_doc=netdoc,
         gen_spike_saves_for_all_somas=True,
@@ -157,8 +156,7 @@ def step_current_omv():
             xaxis="time (ms)",
             yaxis="Reversal Potential (V)"
         )
-    
-    # Plot calcium concentrations
+
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     
     if f"{pop.id}[0]/caConc" in data:

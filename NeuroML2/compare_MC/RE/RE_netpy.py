@@ -34,7 +34,7 @@ simConfig = specs.SimConfig()       # object of class SimConfig to store simulat
 simConfig.recordCells = ['all']
 simConfig.hParams['celsius'] = 34
 simConfig.duration = 2000           # Duration of the simulation, in ms
-simConfig.dt = 0.01       
+simConfig.dt = 0.001       
           # Internal integration timestep to use
 simConfig.verbose = True           # Show detailed messages
 
