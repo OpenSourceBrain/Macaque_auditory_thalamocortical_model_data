@@ -81,11 +81,11 @@ def compare_all():
     axes[2, 0].set_title('caConc Comparison', fontsize=12)
     axes[2, 0].legend(fontsize=8)
     axes[2, 0].grid(True, linestyle='--', alpha=0.7)
-    
+
     axes[2, 1].axis('off')
     plt.tight_layout()
     current_dir = os.getcwd()
-    save_path = os.path.join(current_dir, "compare_all.png")
+    save_path = os.path.join(current_dir, "compare_itre.png")
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
 if __name__ == "__main__":
