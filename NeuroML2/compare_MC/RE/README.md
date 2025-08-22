@@ -1,1 +1,0 @@
-Please see https://github.com/OpenSourceBrain/Macaque_auditory_thalamocortical_model_data/blob/feat-neuroml-gsoc/NeuroML2/compare_MC/RE/compare_all.png
