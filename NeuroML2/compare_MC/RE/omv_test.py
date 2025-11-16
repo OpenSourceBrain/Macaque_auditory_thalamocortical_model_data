@@ -7,14 +7,13 @@ Copyright 2022 Ankur Sinha
 Author: Ankur Sinha <sanjay DOT ankur AT gmail DOT com>
 """
 import random
+import os
 import yaml
 import neuroml
 from neuroml.loaders import read_neuroml2_file
 from pyneuroml.pynml import write_neuroml2_file, run_lems_with_jneuroml_neuron
 from pyneuroml.lems import generate_lems_file_for_neuroml
 from pyneuroml.plot import generate_plot
-from pyneuroml.neuron import morphinfo, getinfo, load_hoc_or_python_file
-from pyneuroml.annotations import create_annotation
 from neuroml.utils import component_factory
 from textwrap import indent
 import copy
@@ -27,15 +26,21 @@ from pyneuroml.io import write_neuroml2_file, read_neuroml2_file
 from pyneuroml.lems import generate_lems_file_for_neuroml
 from pyneuroml.runners import run_lems_with_jneuroml
 from pyneuroml.plot import generate_plot 
-from pyneuroml.neuron.analysis.HHanalyse import get_states
 from pyneuroml.analysis.NML2ChannelAnalysis import get_channel_gates
 from pyneuroml.utils.plot import get_next_hex_color 
-import neuron
 import datetime
 import random
 from pyneuroml.analysis import generate_current_vs_frequency_curve  
 random.seed(1412)
 def step_current_omv():
+    # Headless + NEURON backend setup
+    os.environ.setdefault("MPLBACKEND", "Agg")
+    os.environ["NEURON_NO_GUI"] = "1"
+    os.environ.pop("DISPLAY", None)
+    if not os.environ.get("NEURON_HOME"):
+        nrniv = shutil.which("nrniv")
+        if nrniv:
+            os.environ["NEURON_HOME"] = os.path.dirname(os.path.dirname(nrniv))
     netdoc = read_neuroml2_file("RE_reduced_cell.nml")
     RE_reduced_cell = netdoc.cells[0]
     net = netdoc.add(neuroml.Network, id="RE_reduced_cell_net", type="networkWithTemperature", temperature="34 degC", validate=False)
@@ -118,7 +123,7 @@ def step_current_omv():
         target=net.id,
         neuroml_file="RE_reduced_cell.net.nml",
         duration="1000ms",
-        dt="0.001ms",
+        dt="0.025ms",
         lems_file_name="LEMS_RE_reduced_cell_step_test.xml",
         nml_doc=netdoc,
         gen_spike_saves_for_all_somas=True,
@@ -126,97 +131,13 @@ def step_current_omv():
         target_dir=".",
         copy_neuroml=False
     )
-    data = run_lems_with_jneuroml(
+    data = run_lems_with_jneuroml_neuron(
         "LEMS_RE_reduced_cell_step_test.xml", load_saved_data=True, nogui=True
     )
     print(data.keys())
 
     '''
-    generate_plot(
-        xvalues=[data["t"]],
-        yvalues=[data["RE_reduced_cell_pop[0]/v"]],
-        title="Membrane potential: RE_reduced_cell",
-    )
-    
-    if any("itre" in key for key in data.keys()):
-        itre_states = {k: v for k, v in data.items() if "itre" in k and "q" in k}
-        colors = ['r', 'g', 'b', 'c', 'm', 'y']
-        
-        if itre_states:
-            generate_plot(
-                xvalues=[data["t"]] * len(itre_states),
-                yvalues=list(itre_states.values()),
-                title="itre Channel States",
-                labels=list(itre_states.keys()),
-                colors=colors[:len(itre_states)],
-                xaxis="time (ms)",
-                yaxis="state value",
-                ylim=[-0.1, 1.1]
-            )
-    
-    iDensity_key = None
-    for key in data.keys():
-        if "iDensity" in key and "itre" in key:
-            iDensity_key = key
-            break
-    
-    if iDensity_key:
-        generate_plot(
-            xvalues=[data["t"]],
-            yvalues=[data[iDensity_key]],
-            title="itre Channel Current Density",
-            labels=[iDensity_key],
-            xaxis="time (ms)",
-            yaxis="Current Density (A/m²)"
-        )
-    
-    erev_key = None
-    for key in data.keys():
-        if "erev" in key and "itre" in key:
-            erev_key = key
-            break
-    
-    if erev_key:
-        generate_plot(
-            xvalues=[data["t"]],
-            yvalues=[data[erev_key]],
-            title="itre Channel Reversal Potential",
-            labels=[erev_key],
-            xaxis="time (ms)",
-            yaxis="Reversal Potential (V)"
-        )
-
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    if f"{pop.id}[0]/caConc" in data:
-        recorded_ca = numpy.array(data[f"{pop.id}[0]/caConc"])
-        generate_plot(
-            xvalues=[data["t"]],
-            yvalues=[recorded_ca],
-            title="Intracellular Calcium Concentration",
-            labels=["caConc"],
-            show_plot_already=True,
-            xaxis="time (ms)",
-            yaxis="conc (mM)",
-            save_figure_to=f"{timestamp}_test_{channel.lower()}_ca_NML.png",
-            title_above_plot="NML",
-            legend_position="outer right"
-        )
-    
-    if f"{pop.id}[0]/caConcExt" in data:
-        recorded_ca_ext = numpy.array(data[f"{pop.id}[0]/caConcExt"])
-        generate_plot(
-            xvalues=[data["t"]],
-            yvalues=[recorded_ca_ext],
-            title="Extracellular Calcium Concentration",
-            labels=["caConcExt"],
-            show_plot_already=True,
-            xaxis="time (ms)",
-            yaxis="conc (mM)",
-            save_figure_to=f"{timestamp}_test_{channel.lower()}_caExt_NML.png",
-            title_above_plot="NML",
-            legend_position="outer right"
-        )
+    (Plotting disabled for headless runs)
     '''
 
 if __name__ == "__main__":

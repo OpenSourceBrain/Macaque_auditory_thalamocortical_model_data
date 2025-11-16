@@ -124,7 +124,7 @@ PROCEDURE evaluate_fct(v(mV)) { LOCAL a,b,v2
 }
 FUNCTION vtrap(x,y) {
   if (fabs(x/y) < 1e-6) {
-    vtrap = y*(1 - x/y/2)
+    vtrap = x/(Exp(x/y)-1)
   }else{
     vtrap = x/(Exp(x/y)-1)
   }
@@ -132,7 +132,7 @@ FUNCTION vtrap(x,y) {
 
 FUNCTION Exp(x) {
   if (x < -100) {
-    Exp = 0
+    Exp = exp(x)
   }else{
     Exp = exp(x)
   }

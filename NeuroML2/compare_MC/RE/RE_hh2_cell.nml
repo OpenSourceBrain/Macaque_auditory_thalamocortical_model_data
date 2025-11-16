@@ -1,0 +1,30 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.1.xsd" id="RE_hh2">
+    <notes>NeuroML cell with only hh2_na/hh2_k and passive leak</notes>
+    <include href="hh2_na.channel.nml"/>
+    <include href="hh2_k.channel.nml"/>
+    <include href="pas.channel.nml"/>
+
+    <cell id="RE_hh2_cell">
+        <notes>Single-compartment soma</notes>
+        <morphology id="morphology">
+            <segment id="0" name="Seg0_soma">
+                <proximal x="0.0" y="0.0" z="0.0" diameter="70.0"/>
+                <distal x="0.0" y="64.86" z="0.0" diameter="70.0"/>
+            </segment>
+        </morphology>
+        <biophysicalProperties id="biophys">
+            <membraneProperties>
+                <channelDensity id="pas_soma" ionChannel="pas" condDensity="5e-5 S_per_cm2" erev="-77.0 mV" ion="non_specific"/>
+                <channelDensity ionChannel="hh2_k" id="hh2_k_soma" ion="k"  erev="-95.0 mV" condDensity="0.01 S_per_cm2"/>
+                <channelDensity ionChannel="hh2_na" id="hh2_na_soma" ion="na"  erev="50.0 mV" condDensity="0.09 S_per_cm2"/>
+                <spikeThresh value="5mV"/>
+                <specificCapacitance value="1 uF_per_cm2"/>
+                <initMembPotential value="-70mV"/>
+            </membraneProperties>
+            <intracellularProperties>
+                <resistivity value="100 ohm_cm"/>
+            </intracellularProperties>
+        </biophysicalProperties>
+    </cell>
+</neuroml>
+
