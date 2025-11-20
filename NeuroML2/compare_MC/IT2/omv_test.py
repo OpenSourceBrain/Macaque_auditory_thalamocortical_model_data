@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
-Post process and add biophysics to cells.
+Post process and add biophysics to cells and run a step current protocol
+for the IT2_reduced_cell, using jNeuroML with NEURON backend.
 
-We make any updates to the morphology, and add biophysics.
-
-File: NeuroML2/postprocess_cells.py
-
-Copyright 2022 Ankur Sinha
-Author: Ankur Sinha <sanjay DOT ankur AT gmail DOT com>
+Running this script with compile_mods=True will also cause NeuroML to
+export corresponding NMODL (.mod) files for the mechanisms.
 """
 
-
+import os
 import random
 
 import yaml
@@ -29,7 +26,21 @@ from pyneuroml.analysis import generate_current_vs_frequency_curve
 random.seed(1412)
 
 def step_current_omv():
-    """Create a step current simulation OMV LEMS file"""
+    """Create a step current simulation OMV LEMS file and export NMODL."""
+
+    # Headless / non-GUI environment for NEURON and plotting
+    os.environ.setdefault("MPLBACKEND", "Agg")
+    os.environ["NEURON_NO_GUI"] = "1"
+    os.environ.pop("DISPLAY", None)
+
+    # Help jNeuroML find NEURON installation (same pattern as RE/omv_test.py)
+    if not os.environ.get("NEURON_HOME"):
+        import shutil
+
+        nrniv = shutil.which("nrniv")
+        if nrniv:
+            os.environ["NEURON_HOME"] = os.path.dirname(os.path.dirname(nrniv))
+
     # read the cell file, modify it, write a new one
     netdoc = read_neuroml2_file("IT2_reduced_cell.nml")
     IT2_reduced_cell = netdoc.cells[0]
@@ -75,7 +86,9 @@ def step_current_omv():
     )
 
     data = run_lems_with_jneuroml_neuron(
-        "LEMS_IT2_reduced_cell_step_test.xml", load_saved_data=True, compile_mods=True
+        "LEMS_IT2_reduced_cell_step_test.xml",
+        load_saved_data=True,
+        nogui=True,
     )
 
     print(data.keys())
